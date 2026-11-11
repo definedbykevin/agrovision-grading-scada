@@ -1,0 +1,1772 @@
+.som-sterilizer-station {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f8fafc;
+}
+
+.som-sterilizer-station-header {
+  padding: 0.4rem 1.75rem;
+  background: #ffffff;
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid #ffdb3b;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.som-sterilizer-station-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #0f172a 0%, #ffdb3b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-right: 2px solid #e2e8f0;
+  padding-right: 1.5rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+body .som-sterilizer-station .som-sterilizer-station-header .som-header-left {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 1.5rem !important;
+}
+
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+
+  .som-dashboard-header,
+  [class*="header"] {
+    height: auto !important;
+    min-height: unset !important;
+    padding: 0px 10px !important;
+  }
+}
+
+.som-station-tabs {
+  display: flex;
+  gap: 4px;
+  background: #f1f5f9;
+  padding: 3px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.som-station-tab {
+  padding: 5px 14px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+body .som-sterilizer-station .som-station-tabs button.som-station-tab:hover {
+  background: #ffdb3b !important;
+  color: #0f172a !important;
+}
+
+.som-station-tab.active {
+  background: #ffdb3b !important;
+  color: #0f172a !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  font-weight: 900 !important;
+}
+
+.som-mini-edit-btn:hover {
+  background: #ffdb3b;
+  color: #0f172a;
+  border-color: #ffdb3b;
+}
+
+/* Editing Style */
+.som-recipe-input {
+  width: 100%;
+  height: 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 9px;
+  font-weight: 800;
+  color: #0f172a;
+  outline: none;
+  transition: border-color 0.2s;
+  padding: 0 4px;
+}
+
+.som-recipe-input:focus {
+  border-color: #ffdb3b;
+}
+
+.som-recipe-select-tiny {
+  width: 100%;
+  height: 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 800;
+  color: #0f172a;
+  outline: none;
+  cursor: pointer;
+  padding: 0 6px;
+  transition: all 0.2s;
+}
+
+.som-recipe-select-tiny:focus {
+  border-color: #ffdb3b;
+  background: #fffdf5;
+}
+
+.som-editable {
+  cursor: pointer;
+  border: 1px dashed #3b82f6 !important;
+}
+
+.som-editable:hover {
+  filter: brightness(1.3);
+  transform: scale(1.02);
+}
+
+.som-edit-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+.som-mini-save-btn {
+  background: #22c55e;
+  color: #020617;
+  border: none;
+  font-size: 8px;
+  font-weight: 800;
+  padding: 2px 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.som-mini-cancel-btn {
+  background: #475569;
+  color: #e2e8f0;
+  border: none;
+  font-size: 8px;
+  font-weight: 800;
+  padding: 2px 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+/* ==========================================
+   TREND PAGE STYLES (DARK MODE)
+   ========================================== */
+.som-trend-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 8px;
+  gap: 10px;
+}
+
+.som-trend-graph-main {
+  flex: 1;
+  display: flex;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.som-trend-y-axis {
+  display: flex;
+  flex-direction: row;
+  padding-right: 12px;
+  padding-left: 8px;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.som-trend-y-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 11px;
+  font-weight: 950;
+  color: #0f172a;
+  margin-right: 15px;
+  margin-bottom: 25px;
+  /* Adjusting it slightly higher by increasing bottom margin */
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.som-trend-y-ticks {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 10px 4px 10px 0;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.som-trend-plot-wrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  padding: 0 15px;
+}
+
+.som-trend-tooltip-card {
+  position: absolute;
+  top: 60px;
+  z-index: 100;
+  pointer-events: none;
+  background: #ffffff;
+  backdrop-filter: blur(12px);
+  border: 1px solid #ffdb3b;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  min-width: 180px;
+  padding: 0;
+  overflow: hidden;
+  transition: transform 0.1s ease-out;
+}
+
+.tooltip-header {
+  background: rgba(30, 41, 59, 0.8);
+  padding: 8px 12px;
+  font-size: 10px;
+  font-weight: 800;
+  color: #94a3b8;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tooltip-body {
+  padding: 10px 12px;
+}
+
+.tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.tooltip-row:last-child {
+  margin-bottom: 0;
+}
+
+.tooltip-row .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.tooltip-row.s1 .dot {
+  background: #ef4444;
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.5);
+}
+
+.tooltip-row.s2 .dot {
+  background: #3b82f6;
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.5);
+}
+
+.tooltip-row.s3 .dot {
+  background: #0f172a;
+  box-shadow: 0 0 6px rgba(15, 23, 42, 0.5);
+}
+
+.tooltip-row.s4 .dot {
+  background: #16a34a;
+  box-shadow: 0 0 6px rgba(22, 163, 74, 0.5);
+}
+
+.tooltip-row .label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #94a3b8;
+  flex: 1;
+}
+
+.tooltip-row .value {
+  font-size: 11px;
+  font-weight: 800;
+  color: #e2e8f0;
+}
+
+.som-trend-tools {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 5px;
+  z-index: 10;
+}
+
+.som-trend-tool-btn {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.som-trend-tool-btn:hover {
+  background: #f8fafc;
+  color: #ffdb3b;
+  border-color: #ffdb3b;
+}
+
+.som-trend-tool-btn.active {
+  background: #ffdb3b;
+  color: #0f172a;
+  border-color: #ffdb3b;
+}
+
+/* SETTINGS DROPDOWN (DARK) */
+.som-trend-settings-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 200px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.som-trend-settings-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.som-settings-label {
+  font-size: 10px;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.som-settings-item-btn {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0f172a;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.som-settings-item-btn:hover {
+  background: rgba(57, 255, 20, 0.08);
+  border-color: rgba(57, 255, 20, 0.2);
+}
+
+.som-period-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.som-period-btn {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+}
+
+.som-period-btn:hover {
+  background: #ffffff;
+  color: #0f172a;
+  border-color: #ffdb3b;
+}
+
+.som-period-btn.active {
+  background: #ffdb3b;
+  color: #0f172a;
+  border-color: #ffdb3b;
+  box-shadow: 0 4px 10px rgba(255, 219, 59, 0.3);
+}
+
+/* FULLSCREEN MODE */
+.som-trend-container.som-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background: #020617;
+  padding: 20px;
+}
+
+.som-trend-date-stamp {
+  padding: 8px 15px;
+  font-size: 14px;
+  font-weight: 950;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.som-trend-svg {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.som-trend-x-axis {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 15px;
+  margin-top: 5px;
+  color: #64748b;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.som-trend-x-axis span {
+  width: 0;
+  display: flex;
+  justify-content: center;
+  overflow: visible;
+  font-size: 8px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.som-trend-legend {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 10px;
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+}
+
+.som-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #94a3b8;
+}
+
+.som-box {
+  width: 18px;
+  height: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+
+.som-box.s1 {
+  background: #ef4444;
+}
+
+.som-box.s2 {
+  background: #3b82f6;
+}
+
+.som-box.s3 {
+  background: #0f172a;
+}
+
+.som-box.s4 {
+  background: #16a34a;
+}
+
+/* SUMMARY FOOTER (DARK) */
+.som-trend-summary-footer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  height: 100px;
+  flex-shrink: 0;
+}
+
+.som-trend-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.som-trend-card:hover {
+  border-color: #ffdb3b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 219, 59, 0.15);
+}
+
+.som-trend-card-section {
+  text-align: center;
+}
+
+.som-trend-card-label {
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.som-trend-card-val {
+  font-size: 1.6rem;
+  font-weight: 950;
+  color: #0f172a;
+  line-height: 1;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.som-trend-accent-val {
+  color: #d4ac0d;
+}
+
+.som-unit {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-left: 5px;
+  color: #64748b;
+}
+
+/* ==========================================
+   MAIN STATION LAYOUT (DARK)
+   ========================================== */
+.som-sterilizer-station-main {
+  flex: 1;
+  min-height: 0;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.som-sterilizer-station-layout {
+  flex: 1;
+  min-height: 0;
+  background: #ffffff;
+  border-radius: 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.som-sterilizer-station-flow-card {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
+.som-sterilizer-station-flow-body {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #f8fafc;
+}
+
+/* SVG Canvas styling */
+.station-svg-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.svg-equipment {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.svg-equipment:hover {
+  filter: drop-shadow(0 0 8px rgba(57, 255, 20, 0.5));
+}
+
+/* Ensure steam flow paths are never affected by equipment hover */
+.liquid-flow--flowing,
+.liquid-flow--standby,
+.liquid-flow--liquid {
+  cursor: default !important;
+}
+
+.liquid-flow--flowing:hover,
+.liquid-flow--standby:hover,
+.liquid-flow--liquid:hover {
+  filter: none !important;
+  transform: none !important;
+}
+
+/* Steam flow hover effect removed to match AgroVision */
+
+/* Valve SVG Theme Colors */
+.valve-group image {
+  transition: filter 0.3s ease;
+}
+
+/* On = Green tint */
+.valve-on image {
+  filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(114deg) brightness(118%) contrast(119%);
+}
+
+/* Off = Grey grayscale */
+.valve-off image {
+  filter: grayscale(100%) opacity(0.5);
+}
+
+/* Mini Cards within SVG */
+.som-sterilizer-mini-card {
+  background: #ffffff;
+  backdrop-filter: blur(8px);
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 6px 10px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+  user-select: none;
+}
+
+.som-sterilizer-mini-card.compact {
+  padding: 2px 4px;
+}
+
+.som-mini-label {
+  font-size: 10px;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.som-mini-value {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.som-mini-value--open {
+  color: #10b981;
+}
+
+.som-mini-value--closed {
+  color: #ef4444;
+}
+
+.som-door-card {
+  border-left: 4px solid #475569;
+}
+
+/* ==========================================
+   LIQUID NEON GLOW FLOW (DARK - ENHANCED)
+   ========================================== */
+.liquid-flow-glow {
+  stroke-width: 14px;
+  stroke-linecap: round;
+  filter: blur(4px);
+  opacity: 0.4;
+}
+
+.liquid-flow-aura {
+  stroke-width: 8px;
+  stroke-linecap: round;
+  filter: blur(1.5px);
+  opacity: 0.8;
+}
+
+/* MODE 1: FLOWING */
+.liquid-flow--flowing .liquid-flow-glow {
+  stroke-dasharray: 20, 40;
+  animation: move-liquid 0.6s linear infinite;
+  opacity: 0.5;
+}
+
+.liquid-flow--flowing .liquid-flow-aura {
+  stroke-dasharray: 15, 45;
+  animation: move-liquid 0.6s linear infinite;
+  opacity: 0.9;
+}
+
+/* MODE 2: STANDBY */
+.liquid-flow--standby .liquid-flow-glow {
+  stroke-dasharray: none;
+  animation: flow-pulse-opacity 2s ease-in-out infinite;
+}
+
+.liquid-flow--standby .liquid-flow-aura {
+  stroke-dasharray: none;
+  animation: flow-pulse-opacity 2s ease-in-out infinite;
+}
+
+/* MODE 3: LIQUID (Condensate) */
+.liquid-flow--liquid .liquid-flow-glow {
+  stroke-dasharray: 20, 40;
+  opacity: 0.4;
+}
+
+.liquid-flow--liquid .liquid-flow-aura {
+  stroke-dasharray: 15, 45;
+  opacity: 0.9;
+  animation: move-liquid 0.6s linear infinite;
+}
+
+@keyframes move-liquid {
+  from {
+    stroke-dashoffset: 300;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1.0;
+  }
+}
+
+@keyframes flow-pulse-opacity {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+
+  50% {
+    opacity: 1.0;
+  }
+}
+
+/* Neon Flow Layers */
+.neon-flow-layer {
+  stroke-width: 6px;
+  stroke-linecap: round;
+  filter: blur(4px);
+  opacity: 0.8;
+}
+
+.neon-flow-core {
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke: #ffffff;
+  opacity: 0.9;
+  filter: blur(1px);
+}
+
+@keyframes flow-h {
+  0% {
+    x1: -100%;
+    x2: 0%;
+  }
+
+  100% {
+    x1: 100%;
+    x2: 200%;
+  }
+}
+
+@keyframes flow-v {
+  0% {
+    y1: 100%;
+    y2: 200%;
+  }
+
+  100% {
+    y1: -100%;
+    y2: 0%;
+  }
+}
+
+/* Custom SVG Labels */
+.som-line-badge-svg {
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ==========================================
+   AMPERE / TREND POPUP (DARK)
+   ========================================== */
+.som-amp-popup {
+  position: fixed;
+  z-index: 9999;
+  width: 450px;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ffdb3b;
+  overflow: hidden;
+  transition: opacity 0.2s ease;
+}
+
+.som-amp-popup-header {
+  padding: 1rem;
+  background: #ffdb3b;
+  border-bottom: 1px solid #ffdb3b;
+}
+
+.som-amp-popup-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #e2e8f0;
+}
+
+.som-amp-popup-subtitle {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #475569;
+  margin-top: 4px;
+  font-weight: 700;
+}
+
+.som-amp-popup-body {
+  padding: 1.5rem;
+  background: #ffffff;
+}
+
+/* ==========================================
+   DIGESTER & MONITORING CARDS (DARK)
+   ========================================== */
+.som-dig-card {
+  background: #ffffff;
+  backdrop-filter: blur(8px);
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.som-dig-card-header {
+  background: #ffdb3b;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 900;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid #ffdb3b;
+}
+
+.som-dig-card-body {
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.som-dig-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.som-dig-row:last-child {
+  border-bottom: none;
+}
+
+.som-dig-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.som-dig-value {
+  font-size: 18px;
+  font-weight: 900;
+  color: #0f172a;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.1;
+}
+
+.som-dig-unit {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+  margin-left: 2px;
+}
+
+/* ==========================================
+   MINIMALIST INDUSTRIAL CARDS (DARK GLASSMORPHISM)
+   ========================================== */
+.som-minimal-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.som-minimal-header {
+  padding: 10px 16px;
+  background: #ffdb3b;
+  border-bottom: 1px solid #ffdb3b;
+  font-size: 14px;
+  font-weight: 900;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+.som-minimal-body {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.som-minimal-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.som-minimal-row:last-child {
+  border-bottom: none;
+}
+
+.som-minimal-label {
+  font-size: 24px;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.som-minimal-value {
+  font-size: 24px;
+  font-weight: 900;
+  color: #0f172a;
+  line-height: 1;
+}
+
+.som-minimal-unit {
+  font-size: 16px;
+  font-weight: 700;
+  color: #64748b;
+  margin-left: 6px;
+}
+
+.som-minimal-divider {
+  margin: 15px 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+}
+
+.som-minimal-section-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 15px;
+  letter-spacing: 0.1em;
+}
+
+/* ==========================================================================
+   RECIPE VIEW (DARK INDUSTRIAL MISSION CONTROL)
+   ========================================================================== */
+.som-recipe-master-view {
+  background: #f8fafc;
+  height: calc(100vh - 120px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 12px;
+  overflow: hidden;
+}
+
+.som-recipe-panel {
+  background: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  min-height: 0;
+  /* Crucial for scrolling in flex */
+}
+
+.som-recipe-panel-header {
+  background: #1e293b;
+  color: #ffdb3b;
+  padding: 6px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 900;
+  font-size: 11px;
+  border-bottom: 2px solid #ffdb3b;
+  text-transform: uppercase;
+}
+
+.som-recipe-panel-stats {
+  color: #64748b;
+}
+
+.som-recipe-dense-table {
+  flex: 1;
+  overflow: auto !important;
+  border-bottom: 2px solid #ffdb3b44;
+  min-height: 0;
+  /* Crucial for scrolling in flex */
+}
+
+/* Custom Scrollbar for Recipe Table (AgroVision Theme) */
+.som-recipe-dense-table::-webkit-scrollbar {
+  width: 8px;
+  /* Slightly wider */
+  height: 8px;
+}
+
+.som-recipe-dense-table::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.05);
+  border-radius: 10px;
+}
+
+.som-recipe-dense-table::-webkit-scrollbar-thumb {
+  background: #ffdb3b;
+  border-radius: 10px;
+  border: 2px solid #ffffff;
+  /* Contrast border */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.som-recipe-dense-table::-webkit-scrollbar-thumb:hover {
+  background: #eab308;
+}
+
+.som-ultra-table {
+  width: 100%;
+  border-collapse: separate;
+  /* Changed for sticky header support */
+  border-spacing: 0;
+  font-size: 8.5px;
+  text-align: center;
+}
+
+.som-ultra-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #ff3000;
+  color: #ffffff;
+  padding: 8px 2px;
+  /* Slightly more padding */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  font-weight: 950;
+  font-size: 8.5px;
+  text-transform: uppercase;
+}
+
+/* Unified Headers */
+.som-ultra-table thead tr:first-child th {
+  top: 0;
+  z-index: 11;
+}
+
+.som-ultra-table thead tr:nth-child(2) th {
+  position: sticky;
+  top: 25px;
+  /* Offset by the height of the first row header */
+  z-index: 10;
+  background: #1e293b;
+  color: #64748b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.som-ultra-table tbody td {
+  padding: 4px 1px;
+  border: 1px solid #e2e8f0;
+  font-weight: 700;
+  height: 28px;
+  color: #0f172a;
+  background: #ffffff;
+}
+
+.som-ultra-table tbody tr:nth-child(even) td {
+  background: #f8fafc;
+}
+
+.som-ultra-table tbody tr:nth-child(even) {
+  background: rgba(15, 23, 42, 0.5);
+}
+
+.som-n {
+  background: #64748b !important;
+  color: #ffffff !important;
+  width: 20px;
+  font-weight: 900;
+}
+
+/* Rectangular Status Boxes (Dark) */
+.som-rect-status {
+  padding: 3px 0;
+  border-radius: 4px;
+  font-weight: 900;
+  font-size: 8px;
+  text-transform: uppercase;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.som-rect-status.open {
+  background: #39ff14;
+  color: #000000;
+  border-color: #39ff14;
+}
+
+.som-rect-status.close {
+  background: #a1a1aa;
+  color: #000000;
+  border-color: #71717a;
+}
+
+.som-rect-status.off {
+  background: #93c5fd;
+  color: #000000;
+  border-color: #60a5fa;
+}
+
+.som-rect-status.mode-high {
+  background: #3b82f6;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+.som-rect-status.mode-low {
+  background: #99ff99;
+  color: #000000;
+  border-color: #39ff14;
+}
+
+.som-rect-status.mode-off {
+  background: #93c5fd;
+  color: #000000;
+  border-color: #60a5fa;
+}
+
+.som-val {
+  background: #ffffff;
+  border: 1px solid #e2e8f0 !important;
+  color: #0f172a;
+}
+
+.som-tiny-txt {
+  font-size: 7.5px;
+  color: #64748b;
+}
+
+.som-recipe-panel-footer {
+  padding: 4px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+.som-mini-edit-btn {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #0f172a;
+  font-size: 8px;
+  font-weight: 800;
+  width: 100%;
+  padding: 3px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.som-mini-edit-btn:hover {
+  background: #ffdb3b;
+  border-color: #ffdb3b;
+}
+
+/* ==========================================
+   SVG TREND GRID LINES (DARK)
+   ========================================== */
+.som-trend-svg line {
+  stroke: #e2e8f0;
+}
+
+/* --- View Toggle Buttons (AGROVISION STYLE) --- */
+.som-view-toggle-container {
+  display: flex;
+  background: #f1f5f9;
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.som-view-btn {
+  padding: 6px 16px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  border-radius: 7px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.som-view-btn:hover {
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.som-view-btn.active {
+  background: #ffffff;
+  color: #d4ac0d;
+  box-shadow: 0 4px 12px rgba(212, 172, 13, 0.2);
+  border: 1px solid rgba(212, 172, 13, 0.1);
+}
+
+/* ==========================================
+   BPV SPECIFIC STYLES (AGROVISION)
+   ========================================== */
+.bpv-modern-control-group:hover foreignObject>div,
+g[onClick*="bpv_status"]:hover foreignObject>div {
+  border-color: #ffdb3b !important;
+  box-shadow: 0 0 30px rgba(255, 219, 59, 0.3) !important;
+  transform: translateY(-2px);
+}
+
+/* Override AgroVision defaults for AGROVISION BPV */
+.bpv-modern-control-group foreignObject>div {
+  transition: all 0.3s ease;
+}
+
+/* ==========================================
+   MAINTENANCE MODE & HUD (AGROVISION)
+   ========================================== */
+
+.som-diagnostic-banner {
+  background: rgba(255, 219, 59, 0.1);
+  border: 1px solid #ffdb3b;
+  color: #0f172a;
+  font-weight: 900;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  box-shadow: 0 0 20px rgba(255, 219, 59, 0.2);
+  animation: banner-glow 2s infinite alternate;
+}
+
+@keyframes banner-glow {
+  from {
+    box-shadow: 0 0 10px rgba(255, 219, 59, 0.1);
+  }
+
+  to {
+    box-shadow: 0 0 25px rgba(255, 219, 59, 0.3);
+  }
+}
+
+.som-motor-mini-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow: visible;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  pointer-events: auto;
+  min-width: 160px;
+  width: fit-content;
+}
+
+.maintenance-card-group:hover .som-motor-mini-card {
+  border-color: #0f172a !important;
+  box-shadow: 0 0 30px rgba(15, 23, 42, 0.2) !important;
+  transform: translateY(-2px);
+}
+
+.som-motor-mini-header {
+  background: #ffdb3b;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 900;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.maintenance-card .som-motor-mini-header {
+  background: #0f172a !important;
+}
+
+.maintenance-card .som-motor-mini-label {
+  color: #ffffff !important;
+}
+
+.som-motor-mini-body {
+  padding: 6px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: #ffffff;
+}
+
+.som-motor-param-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.som-motor-param-row:last-child {
+  border-bottom: none;
+}
+
+.som-motor-param-label {
+  font-size: 9px;
+  font-weight: 800;
+  color: #64748b;
+  flex: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.som-motor-mini-value {
+  font-size: 13.5px;
+  font-weight: 950;
+  color: #0f172a;
+  font-family: 'Inter', sans-serif;
+  text-align: right;
+}
+
+.som-motor-mini-value[data-unit]::after {
+  content: attr(data-unit);
+  margin-left: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.som-maintenance-mini-icon {
+  color: #ffdb3b;
+  display: flex;
+  align-items: center;
+}
+
+.som-mode-maintenance .station-svg-canvas image {
+  filter: grayscale(1) brightness(0.4) contrast(1.2);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Maintenance mode exception removed to match AgroVision */
+
+.som-mode-maintenance .som-dig-card:not(.maintenance-card) {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* --- STATUS LED INDICATOR --- */
+.som-status-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.som-status-indicator.running {
+  background: #10b981;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
+  animation: led-pulse-green 2s infinite;
+}
+
+.som-status-indicator.stop {
+  background: #ef4444;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.8);
+  animation: led-pulse-red 2s infinite;
+}
+
+@keyframes led-pulse-green {
+  0% {
+    box-shadow: 0 0 5px rgba(16, 185, 129, 0.5);
+  }
+
+  50% {
+    box-shadow: 0 0 15px rgba(16, 185, 129, 1);
+  }
+
+  100% {
+    box-shadow: 0 0 5px rgba(16, 185, 129, 0.5);
+  }
+}
+
+@keyframes led-pulse-red {
+  0% {
+    box-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
+  }
+
+  50% {
+    box-shadow: 0 0 15px rgba(239, 68, 68, 1);
+  }
+
+  100% {
+    box-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
+  }
+}
+
+/* ==========================================================================
+   SOM PREMIUM MODULATE CARD (AGROVISION LIGHT THEME STYLING)
+   ========================================================================== */
+.som-premium-modulate-card {
+  background: rgba(255, 255, 255, 0.92) !important; /* Premium light white glass */
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(226, 232, 240, 0.8) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.06), 
+              inset 0 0 0 1px rgba(255, 255, 255, 0.8) !important;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.som-premium-modulate-card:hover {
+  transform: translateY(-5px) scale(1.008);
+  border-color: rgba(250, 204, 21, 0.6) !important;
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.1), 
+              0 0 25px rgba(250, 204, 21, 0.2) !important;
+}
+
+/* Header style for premium card */
+.som-premium-modulate-header {
+  padding: 14px 20px;
+  background: linear-gradient(90deg, #ffdb3b 0%, #facc15 100%) !important; /* Warm AgroVision yellow gradient */
+  border-bottom: 1.5px solid #facc15;
+  font-size: 13px;
+  font-weight: 900;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+/* Sub-card container inside the card */
+.som-premium-subcard {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+}
+
+.som-premium-subcard:hover {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%) !important;
+  border-color: #cbd5e1 !important;
+  transform: translateY(-2px);
+}
+
+/* Subcard Header */
+.som-premium-subcard-header {
+  background: #f1f5f9 !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  padding: 6px 10px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 900;
+  color: #475569 !important; /* Cool grey text */
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Warning Subcard for High Temp */
+.som-premium-subcard-warning {
+  background: rgba(239, 68, 68, 0.03) !important;
+  border: 1px solid rgba(239, 68, 68, 0.15) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+}
+
+.som-premium-subcard-warning:hover {
+  background: rgba(239, 68, 68, 0.06) !important;
+  border-color: rgba(239, 68, 68, 0.3) !important;
+  transform: translateY(-2px);
+}
+
+.som-premium-subcard-warning-header {
+  background: #f1f5f9 !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  padding: 6px 10px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 900;
+  color: #475569 !important; /* Cool grey text to match other subcard headers */
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Row elements inside subcard */
+.som-premium-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+  margin: 2px 4px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.som-premium-row:hover {
+  background-color: rgba(226, 232, 240, 0.4) !important;
+  transform: translateX(2px);
+}
+
+/* Row Labels */
+.som-premium-row-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569 !important; /* Slate grey */
+  text-transform: uppercase;
+}
+
+/* Value stylings (AgroVision red value standard) */
+.som-premium-value-sp,
+.som-premium-value-minmax,
+.som-premium-value-cl {
+  font-size: 15px;
+  font-weight: 900;
+  color: #ef4444 !important; /* Red for values to match standard AgroVision cards */
+}
+
+.som-premium-warning-value {
+  font-size: 24px;
+  font-weight: 900;
+  font-style: italic;
+  color: #ef4444 !important; /* Standard AgroVision Red */
+}
+
+.som-premium-warning-unit {
+  font-size: 14px;
+  font-weight: 800;
+  color: #0f172a !important;
+  margin-left: 2px;
+}
+
+/* Muted Unit Labels */
+.som-premium-row-unit {
+  font-size: 11px;
+  font-weight: 700;
+  color: #475569 !important;
+  margin-left: 4px;
+}
+
+/* ==========================================================================
+   SCADA MODULATE VALVE CARDS (LINE VIEW - AUTO & MANUAL)
+   ========================================================================== */
+.som-scada-modulate-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 440px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  user-select: none;
+}
+
+.som-scada-modulate-card {
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.som-scada-modulate-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.12);
+}
+
+.som-scada-modulate-header {
+  background: #f5be00; /* Rich golden yellow matching SCADA */
+  color: #0f172a;
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+  padding: 8px 12px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.som-scada-modulate-body {
+  padding: 14px 18px;
+  background: #ffffff;
+}
+
+.som-scada-modulate-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  column-gap: 24px;
+}
+
+.som-scada-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.som-scada-field-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 32px;
+}
+
+.som-scada-manual-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 32px;
+}
+
+.som-scada-label {
+  font-size: 13px;
+  font-weight: 800;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.som-scada-input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.som-scada-input-box {
+  background: #ffffff;
+  border: 1.5px solid #94a3b8;
+  border-radius: 6px;
+  min-width: 68px;
+  height: 28px;
+  padding: 2px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+  color: #0f172a;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.som-scada-input-box:hover {
+  border-color: #f5be00;
+  background: #fffbeb;
+  box-shadow: 0 0 0 2px rgba(245, 190, 0, 0.25);
+}
+
+.som-scada-input-box.no-unit {
+  min-width: 68px;
+}
+
+.som-scada-unit {
+  font-size: 13px;
+  font-weight: 800;
+  color: #0f172a;
+  min-width: 24px;
+  text-align: left;
+}
+
+.som-scada-unit-placeholder {
+  min-width: 24px;
+}

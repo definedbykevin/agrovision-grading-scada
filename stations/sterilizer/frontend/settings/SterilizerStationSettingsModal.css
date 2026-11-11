@@ -1,0 +1,1272 @@
+/* ==========================================================================
+   STERILIZER STATION SETTINGS - AGROVISION PREMIUM THEME
+   Fixed viewport layout: NO SCROLLING in any direction
+   ========================================================================== */
+
+/* Main page layout - fills entire viewport below header */
+.som-ster-page {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  background-color: #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow: hidden;
+  color: #0f172a;
+  box-sizing: border-box;
+}
+
+/* Top bar: Line Tabs & Copy Panel */
+.som-settings-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  border-bottom: 1px solid #cbd5e1;
+  padding: 2px 12px;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.som-line-tabs-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.som-tab-group-label {
+  font-size: 10px;
+  font-weight: 800;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.som-line-tabs {
+  display: flex;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #f8fafc;
+}
+
+.som-line-tab-btn {
+  padding: 2px 12px;
+  border: none;
+  background: transparent;
+  color: #475569;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-right: 1px solid #cbd5e1;
+}
+
+.som-line-tab-btn:last-child {
+  border-right: none;
+}
+
+.som-line-tab-btn.active {
+  background-color: #ffdb3b;
+  color: #0f172a;
+}
+
+.som-line-tab-btn:hover:not(.active) {
+  background-color: #e2e8f0;
+}
+
+/* Copy panel */
+.som-copy-setting-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.som-copy-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #475569;
+  white-space: nowrap !important;
+}
+
+.som-copy-select {
+  padding: 1px 6px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 9.5px !important;
+  font-weight: 700;
+  outline: none;
+  background-color: #ffffff;
+  cursor: pointer;
+  height: 18px !important;
+  box-sizing: border-box !important;
+}
+
+.som-copy-btn {
+  background-color: #10b981;
+  border: 1px solid #10b981;
+  color: #ffffff;
+  padding: 1px 10px;
+  border-radius: 4px;
+  font-size: 9.5px !important;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  height: 18px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.som-copy-btn:hover {
+  background-color: #059669;
+}
+
+/* =========================================================
+   CONTENT GRID: 2 columns (left wider, right narrower)
+   ========================================================= */
+.som-settings-columns-container {
+  display: grid;
+  grid-template-columns: 1.4fr 0.70fr 0.9fr;
+  gap: 6px;
+  flex: 1;
+  min-height: 0;
+  padding: 6px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.som-settings-col {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* =========================================================
+   CARDS - shared base
+   ========================================================= */
+.som-settings-card {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Card headers */
+.som-settings-card-header {
+  background: #ffdb3b;
+  padding: 3px 10px;
+  border-bottom: 1px solid #cbd5e1;
+  font-size: 10px;
+  font-weight: 800;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.som-card-header-icon {
+  font-size: 11px;
+}
+
+/* Card body */
+.som-settings-card-body {
+  padding: 4px;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* =========================================================
+   RECIPE TABLE (Card 1 - Ultra Dense)
+   ========================================================= */
+.som-table-wrapper {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+}
+
+/* Scrollbar cosmetics (hidden by default, fallback only) */
+.som-table-wrapper::-webkit-scrollbar,
+.som-logic-scroll-body::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.som-table-wrapper::-webkit-scrollbar-track,
+.som-logic-scroll-body::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.som-table-wrapper::-webkit-scrollbar-thumb,
+.som-logic-scroll-body::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 2px;
+}
+
+/* Ultra-dense recipe table override */
+.som-ster-page .som-ultra-table {
+  width: 100%;
+  border-collapse: collapse !important;
+  font-size: 9px !important;
+  text-align: center;
+  table-layout: fixed;
+}
+
+.som-ster-page .som-ultra-table th,
+.som-ster-page .som-ultra-table td {
+  padding: 0px 2px !important;
+  border: 1px solid #cbd5e1 !important;
+  box-sizing: border-box !important;
+  overflow: hidden;
+  height: 26px !important;
+}
+
+/* Recipe table headers - bright/light AgroVision */
+.som-ster-page .som-ultra-table thead th {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-bottom: 1px solid #cbd5e1 !important;
+  border-right: 1px solid #cbd5e1 !important;
+  font-weight: 850 !important;
+  font-size: 8.5px !important;
+  padding: 1px 1px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  height: 22px !important;
+}
+
+.som-ster-page .som-ultra-table thead tr:nth-child(2) th {
+  background: #f8fafc !important;
+  color: #475569 !important;
+  font-size: 8px !important;
+  padding: 1px 1px !important;
+}
+
+/* Table body rows */
+.som-ster-page .som-ultra-table tbody tr:nth-child(even) td {
+  background: #fafaf9 !important;
+}
+
+.som-ster-page .som-ultra-table tbody tr:hover td {
+  background-color: #fffbeb !important;
+}
+
+.som-ster-page .som-ultra-table td.som-n {
+  background: #f8fafc !important;
+  color: #475569 !important;
+  font-weight: 850 !important;
+  border-right: 1px solid #cbd5e1 !important;
+  width: 20px !important;
+}
+
+.som-ster-page .som-ultra-table td.som-tiny-txt {
+  font-size: 7.5px !important;
+  color: #475569 !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+}
+
+/* Status buttons (OPEN/CLOSE) override */
+.som-ster-page .som-rect-status {
+  padding: 1px 3px !important;
+  border-radius: 2px !important;
+  font-weight: 900 !important;
+  font-size: 7.5px !important;
+  text-transform: uppercase !important;
+  display: inline-block !important;
+  line-height: 1.5 !important;
+  margin: 0 auto !important;
+  width: 90% !important;
+  box-sizing: border-box !important;
+  height: 18px !important;
+}
+
+.som-ster-page .som-rect-status.som-editable {
+  border: 1px solid transparent !important;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+.som-ster-page .som-rect-status.som-editable:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+  filter: brightness(1.05) !important;
+}
+
+.som-ster-page .som-rect-status.open {
+  background: #10b981 !important;
+  color: #ffffff !important;
+  border-color: #10b981 !important;
+}
+
+.som-ster-page .som-rect-status.close {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  border-color: #ef4444 !important;
+}
+
+/* ValBoxes inside recipe table */
+.som-ster-page .som-ultra-table .som-val-box {
+  width: 100% !important;
+  min-width: 0 !important;
+  justify-content: center !important;
+  text-align: center !important;
+  height: 18px !important;
+  border-color: #ffe082 !important;
+  font-size: 9px !important;
+  padding: 0 !important;
+}
+
+.som-ster-page .som-bpv-settings-table .som-val-box {
+  width: 100% !important;
+  min-width: 0 !important;
+  justify-content: center !important;
+  text-align: center !important;
+  height: 13px !important;
+  border-color: #ffe082 !important;
+  font-size: 8px !important;
+  padding: 0 !important;
+}
+
+.som-ster-page .som-score-logics-table .som-val-box {
+  width: 100% !important;
+  min-width: 0 !important;
+  justify-content: center !important;
+  text-align: center !important;
+  height: 15px !important;
+  border-color: #ffe082 !important;
+  font-size: 9px !important;
+  padding: 0 !important;
+}
+
+.som-ster-page .som-ultra-table .som-val-box--editable:hover {
+  background: rgba(255, 219, 59, 0.15) !important;
+  border-color: #f59e0b !important;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.4) !important;
+}
+
+/* Recipe dropdown */
+.som-ster-page .som-recipe-select-tiny {
+  width: 100% !important;
+  height: 18px !important;
+  background: #ffffff !important;
+  border: 1px solid #ffe082 !important;
+  border-radius: 3px !important;
+  font-size: 8.5px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  outline: none;
+  cursor: pointer !important;
+  text-align: center !important;
+  text-align-last: center !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+}
+
+.som-ster-page .som-recipe-select-tiny:hover {
+  background: rgba(255, 219, 59, 0.15) !important;
+  border-color: #f59e0b !important;
+}
+
+/* =========================================================
+   TOTALS PANEL (below recipe table)
+   ========================================================= */
+/* =========================================================
+   TOTALS PANEL (below recipe table)
+   ========================================================= */
+.som-ster-page .som-totals-container {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 8px !important;
+  padding: 6px 8px !important;
+  flex-shrink: 0 !important;
+  border-top: 1px solid #cbd5e1 !important;
+  background-color: #f8fafc !important;
+}
+
+.som-ster-page .som-total-item {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+.som-ster-page .som-total-label {
+  font-size: 8.5px !important;
+  font-weight: 850 !important;
+  color: #475569 !important;
+  text-transform: uppercase !important;
+  margin-bottom: 2px !important;
+}
+
+.som-ster-page .som-total-boxes {
+  display: flex !important;
+  gap: 4px !important;
+}
+
+.som-ster-page .som-total-box {
+  flex: 1 !important;
+  background: #ffffff !important;
+  border: 1px solid #ffe082 !important;
+  border-radius: 4px !important;
+  padding: 6px 4px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+}
+
+.som-ster-page .som-total-box-val {
+  font-size: 12px !important;
+  font-weight: 900 !important;
+  color: #f59e0b !important;
+  line-height: 1.2 !important;
+}
+
+.som-ster-page .som-total-box-lbl {
+  font-size: 7.5px !important;
+  color: #64748b !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  margin-top: 1px !important;
+}
+
+/* =========================================================
+   CARD 2 - SCORE LOGICS
+   ========================================================= */
+.som-score-card-body {
+  padding: 4px;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  gap: 4px;
+}
+
+.som-score-table-panel {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+}
+
+/* Score logics table styling */
+.som-ster-page .som-score-logics-table {
+  width: 100%;
+  border-collapse: collapse !important;
+  font-size: 9px !important;
+  text-align: center;
+}
+
+.som-ster-page .som-score-logics-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-bottom: 1px solid #cbd5e1 !important;
+  border-right: 1px solid #cbd5e1 !important;
+  font-weight: 850;
+  padding: 2px 2px !important;
+  font-size: 8.5px !important;
+  text-transform: uppercase;
+  height: 20px !important;
+}
+
+.som-ster-page .som-score-logics-table tbody td {
+  padding: 0px 3px !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  border-right: 1px solid #e2e8f0 !important;
+  height: 21px !important;
+  box-sizing: border-box !important;
+  font-size: 9px !important;
+}
+
+.som-ster-page .som-score-logics-table tbody tr:nth-child(even) td {
+  background: #fafaf9 !important;
+}
+
+.som-ster-page .som-score-logics-table tbody tr:hover td {
+  background-color: #fffbeb !important;
+}
+
+.som-ster-page .som-score-logics-table td.som-n {
+  background: #f8fafc !important;
+  color: #475569 !important;
+  font-weight: 850 !important;
+  width: 22px !important;
+  font-size: 9px !important;
+}
+
+.som-ster-page .som-score-logics-table td.som-func-name {
+  text-align: left !important;
+  font-weight: 700 !important;
+  color: #334155 !important;
+  padding-left: 6px !important;
+  font-size: 9px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100px !important;
+}
+
+.som-ster-page .som-score-cell {
+  font-weight: 850 !important;
+}
+
+.som-ster-page .som-score-text {
+  color: #d97706 !important;
+  font-weight: 850 !important;
+  font-size: 9.5px !important;
+}
+
+/* Styled Divider Row for Score Logics Table */
+.som-ster-page .som-score-logics-table tr.som-table-divider-row td {
+  background: #ffdb3b1c !important;
+  color: #b45309 !important;
+  font-weight: 900 !important;
+  text-align: center !important;
+  padding: 3px 6px !important;
+  height: 17px !important;
+  font-size: 8px !important;
+  letter-spacing: 0.08em !important;
+  border-top: 1px solid #f59e0b !important;
+  border-bottom: 1px solid #f59e0b !important;
+  border-right: none !important;
+  border-left: none !important;
+  text-transform: uppercase !important;
+}
+
+/* Styled Global Metric Rows for FFB, Target times, Throughput */
+.som-ster-page .som-score-logics-table tr.som-global-metric-row td {
+  background: #fffbeb !important;
+}
+
+.som-ster-page .som-score-logics-table tr.som-global-metric-row td.som-n {
+  background: #fef3c7 !important;
+  color: #b45309 !important;
+}
+
+/* Horizontal Score Bottom Panel */
+.som-score-bottom-panels {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+  height: 120px !important;
+}
+
+/* Group boxes for capacity / tolerance */
+.som-score-group-box {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 5px 10px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 4px !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  flex: 1.1;
+  min-width: 0;
+  justify-content: flex-start !important;
+}
+
+.som-score-group-title {
+  margin: 0 0 4px 0 !important;
+  font-size: 9.5px !important;
+  font-weight: 850;
+  color: #d97706;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 3px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.som-ster-page .som-capacity-row {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 4px !important;
+  height: 18px !important;
+}
+
+.som-ster-page .som-capacity-label {
+  font-size: 8.5px !important;
+  font-weight: 700 !important;
+  color: #475569 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  min-width: 0 !important;
+  flex: 1 !important;
+}
+
+/* Score Telemetry Panel */
+.som-score-panel-card {
+  background-color: #fffbef;
+  border: 1px solid #ffe082;
+  border-radius: 6px;
+  padding: 5px 10px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start !important;
+  gap: 4px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
+  flex: 0.9;
+  min-width: 0;
+}
+
+.som-score-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 9px !important;
+  height: 18px !important;
+}
+
+.som-score-label {
+  font-weight: 700;
+  color: #78350f;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 8.5px !important;
+}
+
+.som-score-val {
+  font-weight: 900;
+  color: #d97706;
+  font-size: 9.5px !important;
+}
+
+/* Specific size for val boxes inside the bottom score panels */
+.som-ster-page .som-score-bottom-panels .som-val-box {
+  height: 18px !important;
+  font-size: 9px !important;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+/* =========================================================
+   CARD 3 - CONTROL LOGICS
+   ========================================================= */
+.som-logic-body {
+  padding: 4px;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.som-control-logics-layout {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  height: 100%;
+  overflow-y: auto !important;
+}
+
+.som-control-logics-layout::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.som-control-logics-layout::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.som-control-logics-layout::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 2px;
+}
+
+.som-ster-page .som-logic-top-row {
+  display: grid !important;
+  grid-template-columns: 0.9fr 1.1fr !important;
+  gap: 6px !important;
+  width: 100% !important;
+}
+
+.som-logic-section {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 5px 8px !important;
+}
+
+.som-logic-section-title {
+  margin: 0 0 4px 0 !important;
+  font-size: 9.5px !important;
+  font-weight: 850;
+  color: #d97706;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 2px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.som-ster-page .som-logic-row {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 4px !important;
+  margin-bottom: 2px !important;
+  height: 20px !important;
+}
+
+.som-ster-page .som-logic-row:last-child {
+  margin-bottom: 0 !important;
+}
+
+.som-ster-page .som-logic-label {
+  font-size: 8.5px !important;
+  font-weight: 700 !important;
+  color: #475569 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  min-width: 0 !important;
+  flex: 1 !important;
+}
+
+/* Compact layout grids */
+.som-logic-grid-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.som-logic-row-compact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  height: 20px !important;
+}
+
+.som-logic-row-compact .som-val-box {
+  min-width: 35px !important;
+  width: 40px !important;
+  justify-content: center !important;
+  padding: 1px 0 !important;
+  height: 18px !important;
+  font-size: 9px !important;
+}
+
+.som-logic-inline-note {
+  font-size: 8px;
+  color: #64748b;
+  font-style: italic;
+  margin-left: 4px;
+  white-space: nowrap;
+}
+
+/* BPV table */
+.som-ster-page .som-bpv-settings-table {
+  width: 100%;
+  border-collapse: collapse !important;
+  font-size: 9px !important;
+  margin-top: 4px;
+}
+
+.som-ster-page .som-bpv-settings-table th,
+.som-ster-page .som-bpv-settings-table td {
+  border: 1px solid #cbd5e1 !important;
+  padding: 1px 3px !important;
+  text-align: center !important;
+  height: 20px !important;
+  box-sizing: border-box !important;
+}
+
+.som-ster-page .som-bpv-settings-table th {
+  background-color: #f8fafc !important;
+  color: #475569 !important;
+  font-weight: 850 !important;
+  text-transform: uppercase !important;
+  font-size: 8.5px !important;
+}
+
+/* Flow direction rows */
+.som-row-left-aligned {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.som-logic-result-label {
+  font-size: 8.5px;
+  font-weight: 700;
+  color: #475569;
+  white-space: nowrap;
+}
+
+.flow-direction-row {
+  margin-top: 1px;
+}
+
+/* Sequencing counter widget */
+.som-logic-counter {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ffdb3b !important;
+  border-radius: 4px;
+  overflow: hidden;
+  height: 20px !important;
+  background-color: #ffffff;
+}
+
+/* Card 3 specific val boxes size override */
+.som-ster-page .som-logic-section .som-val-box {
+  height: 18px !important;
+  font-size: 9.5px !important;
+}
+
+.som-counter-btn {
+  width: 16px !important;
+  height: 100% !important;
+  border: none !important;
+  background: #f1f5f9 !important;
+  color: #475569 !important;
+  font-size: 10px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background-color 0.2s;
+  padding: 0 !important;
+}
+
+.som-counter-btn:hover {
+  background: #cbd5e1 !important;
+}
+
+/* Counter ValBox override */
+.som-logic-counter .som-val-box {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  min-width: 25px !important;
+  width: 30px !important;
+  height: 100% !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  font-size: 9px !important;
+}
+
+.som-ster-page .som-val-box {
+  background: #ffffff !important;
+  border: 1px solid #ffdb3b !important;
+  padding: 1px 4px !important;
+  border-radius: 3px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 3px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 8.5px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  min-width: 50px !important;
+  width: 58px !important;
+  flex-shrink: 0 !important;
+  cursor: default !important;
+  height: 14px !important;
+  box-sizing: border-box !important;
+}
+
+/* Read-only ValBox */
+.som-ster-page .som-val-box:not(.som-val-box--editable) {
+  background: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #475569 !important;
+}
+
+/* Editable ValBox */
+.som-ster-page .som-val-box--editable {
+  cursor: pointer !important;
+  border-color: #ffdb3b !important;
+  transition: all 0.2s !important;
+}
+
+.som-ster-page .som-val-box--editable:hover {
+  background: rgba(255, 219, 59, 0.1) !important;
+  border-color: #f59e0b !important;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.3) !important;
+}
+
+.som-ster-page .som-val-unit {
+  font-size: 7px !important;
+  color: #94a3b8 !important;
+  font-weight: 600 !important;
+}
+
+/* =========================================================
+   FOOTER ACTIONS BAR
+   ========================================================= */
+.som-settings-footer-actions {
+  background-color: #ffffff;
+  border-top: 1px solid #cbd5e1;
+  padding: 4px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.som-footer-left-group,
+.som-footer-right-group {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.som-footer-btn {
+  height: 24px;
+  padding: 0 12px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  box-sizing: border-box;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.som-footer-btn svg {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+}
+
+/* Button colors */
+.som-btn-save-settings {
+  background-color: #f59e0b;
+  border: 1px solid #f59e0b;
+  color: #ffffff;
+}
+
+.som-btn-save-settings:hover:not(:disabled) {
+  background-color: #d97706;
+  border-color: #d97706;
+}
+
+.som-btn-save-settings:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.som-btn-cancel-settings {
+  background-color: #475569;
+  border: 1px solid #475569;
+  color: #ffffff;
+}
+
+.som-btn-cancel-settings:hover {
+  background-color: #334155;
+}
+
+.som-btn-restore-settings {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+}
+
+.som-btn-restore-settings:hover {
+  background-color: #f1f5f9;
+}
+
+.som-btn-export-settings {
+  background-color: #15803d;
+  border: 1px solid #15803d;
+  color: #ffffff;
+}
+
+.som-btn-export-settings:hover {
+  background-color: #166534;
+}
+
+.som-btn-import-settings {
+  background-color: #6d28d9;
+  border: 1px solid #6d28d9;
+  color: #ffffff;
+}
+
+.som-btn-import-settings:hover {
+  background-color: #5b21b6;
+}
+
+/* =========================================================
+   NUMERIC KEYPAD (Portal overlay)
+   ========================================================= */
+.som-numeric-keypad-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.3);
+  backdrop-filter: blur(2px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.som-numeric-keypad {
+  background: #ffffff;
+  border: 1px solid #ffdb3b;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  width: 320px;
+}
+
+.som-numeric-keypad-header {
+  background: #f8fafc;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.som-numeric-keypad-label {
+  color: #0f172a;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.som-numeric-keypad-display {
+  background: #ffffff;
+  margin: 16px;
+  border: 1px solid #ffdb3b;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.som-numeric-keypad-value {
+  font-size: 32px;
+  font-weight: bold;
+  color: #0f172a;
+}
+
+.som-numeric-keypad-unit {
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* =========================================================
+   MISC UTILITY
+   ========================================================= */
+.som-func-name {
+  text-align: left;
+  font-weight: 600;
+  padding-left: 4px !important;
+  color: #334155;
+  white-space: nowrap;
+  font-size: 7.5px;
+}
+
+.som-unit-td {
+  color: #64748b;
+  font-size: 7px;
+}
+
+.som-td-center {
+  text-align: center;
+}
+
+.som-settings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 8px;
+  text-align: center;
+}
+
+.som-settings-table th,
+.som-settings-table td {
+  padding: 1px 2px;
+  border: 1px solid #cbd5e1;
+  box-sizing: border-box;
+}
+
+.som-settings-table th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 7px;
+}
+
+/* Capacity input wrappers (legacy support) */
+.som-capacity-input-wrap {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  height: 16px;
+  padding: 0 3px;
+  box-sizing: border-box;
+}
+
+.som-capacity-input-wrap input {
+  border: none;
+  outline: none;
+  font-size: 8px;
+  font-family: inherit;
+  font-weight: 700;
+  text-align: right;
+  width: 40px;
+  height: 100%;
+}
+
+.som-capacity-unit {
+  font-size: 7px;
+  color: #64748b;
+  margin-left: 2px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.som-capacity-input-wrap.actual-wrap {
+  background-color: #e0f2fe;
+  border-color: #bae6fd;
+}
+
+.som-capacity-input-wrap.actual-wrap input {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+
+/* Logic input wraps (legacy support) */
+.som-logic-input-wrap {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  height: 16px;
+  padding: 0 3px;
+  box-sizing: border-box;
+}
+
+.som-logic-input-wrap input {
+  border: none;
+  outline: none;
+  font-size: 8px;
+  font-family: inherit;
+  font-weight: 700;
+  text-align: right;
+  width: 35px;
+  height: 100%;
+}
+
+.som-logic-unit {
+  font-size: 7px;
+  color: #64748b;
+  margin-left: 2px;
+  font-weight: 600;
+}
+
+/* Flat Form Controls */
+.som-tbl-input {
+  width: 100%;
+  height: 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 3px;
+  padding: 0 3px;
+  font-size: 8px;
+  font-family: inherit;
+  font-weight: 600;
+  color: #0f172a;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  background-color: #ffffff;
+}
+
+.som-tbl-input:focus {
+  border-color: #0b57d0;
+}
+
+.som-tbl-select {
+  width: 100%;
+  height: 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 3px;
+  font-size: 8px;
+  font-family: inherit;
+  font-weight: 600;
+  color: #334155;
+  outline: none;
+  background-color: #ffffff;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 0;
+}
+
+.som-counter-input {
+  border: none;
+  border-left: 1px solid #cbd5e1;
+  border-right: 1px solid #cbd5e1;
+  width: 20px;
+  height: 100%;
+  text-align: center;
+  font-size: 8px;
+  font-weight: 700;
+  outline: none;
+}
+
+/* Design Capacity layout (legacy) */
+.som-design-capacity-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr 1fr;
+  gap: 6px;
+  height: 100%;
+}
+
+.som-capacity-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  justify-content: center;
+}

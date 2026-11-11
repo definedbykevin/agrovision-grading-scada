@@ -1,0 +1,62 @@
+{
+  "categories": {
+    "normal_cook": {
+      "display_name": "Normal Cook",
+      "model_labels": ["normal_cook", "normal cooked", "normal"],
+      "minimum_confidence": 0.55,
+      "color_bgr": [129, 185, 16]
+    },
+    "under_cook": {
+      "display_name": "Under Cook",
+      "model_labels": ["under_cook", "undercook", "under cooked"],
+      "minimum_confidence": 0.55,
+      "color_bgr": [11, 158, 245]
+    },
+    "over_cook": {
+      "display_name": "Over Cook",
+      "model_labels": ["over_cook", "overcook", "over cooked"],
+      "minimum_confidence": 0.55,
+      "color_bgr": [22, 115, 249]
+    }
+  },
+  "decision": {
+    "window_seconds": 60,
+    "minimum_detections": 10,
+    "publish_interval_seconds": 5,
+    "tie_break_priority": ["under_cook", "over_cook", "normal_cook"]
+  },
+  "inference": {
+    "target_fps": 5,
+    "image_size": 640
+  },
+  "lines": [
+    {
+      "line_no": 1,
+      "name": "MPD Conveyor",
+      "enabled": false,
+      "camera": {
+        "camera_code": "THR-MPD-CAM-01",
+        "camera_name": "MPD Conveyor Camera",
+        "rtsp_url": "",
+        "transport": "tcp"
+      }
+    }
+  ],
+  "actions": {
+    "normal_cook": {
+      "action_code": "MPD_STANDARD_OPERATION",
+      "action_name": "Maintain current threshing operation",
+      "parameters": {"review_required": false}
+    },
+    "under_cook": {
+      "action_code": "MPD_REVIEW_UNDER_COOK",
+      "action_name": "Review upstream sterilizer holding time",
+      "parameters": {"review_required": true, "source": "sterilizer"}
+    },
+    "over_cook": {
+      "action_code": "MPD_REVIEW_OVER_COOK",
+      "action_name": "Review upstream sterilizer exposure",
+      "parameters": {"review_required": true, "source": "sterilizer"}
+    }
+  }
+}

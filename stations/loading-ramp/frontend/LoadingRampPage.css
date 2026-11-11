@@ -1,0 +1,310 @@
+.som-loading-ramp-page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #f8fafc;
+}
+
+.som-ramp-header {
+    padding: 0.4rem 1.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid #ffdb3b;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.som-ramp-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #0f172a 0%, #ffdb3b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.som-ramp-count {
+    font-size: 9px;
+    font-weight: 800;
+    color: #64748b;
+    margin-top: 4px;
+    text-transform: uppercase;
+}
+
+.ramp-stat-box.highlight {
+    background: #ffffff;
+    padding: 0.25rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.ramp-stat-box .label {
+    font-size: 9px;
+    font-weight: 800;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+.ramp-stat-box .value {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #0f172a;
+}
+
+.som-ramp-grid-container {
+    flex: 1;
+    min-height: 0;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 1.5rem;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.som-bays-layout {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    overflow-y: auto;
+    padding-right: 5px;
+    padding-bottom: 1rem;
+}
+
+.som-bay-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.som-bay-card:hover { transform: translateY(-4px); border-color: #ffdb3b; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+
+.bay-number {
+    font-size: 9px;
+    font-weight: 900;
+    color: #475569;
+    margin-bottom: 10px;
+}
+
+.bay-visual {
+    height: 60px;
+}
+
+.truck-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.plate-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #0f172a;
+    background: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.empty-slot {
+    font-size: 0.65rem;
+    font-weight: 900;
+    color: #94a3b8;
+    background: #f8fafc;
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: none;
+    text-transform: uppercase;
+}
+
+.bay-details {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.detail-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #64748b;
+}
+
+.door-val { padding: 1px 6px; border-radius: 3px; font-weight: 900; font-size: 0.55rem; }
+.door-val.open { background: #f0fdf4; color: #10b981; }
+.door-val.closed { background: #fef2f2; color: #ef4444; }
+
+.bay-status-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+}
+
+/* Sidebar Cards */
+.som-ramp-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    padding-right: 5px;
+    padding-bottom: 1rem;
+}
+
+.som-ramp-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+}
+
+.som-ramp-card-body {
+    padding: 1.25rem;
+}
+
+.card-label {
+    font-size: 0.7rem;
+    font-weight: 900;
+    color: #0f172a;
+    background: #ffdb3b;
+    padding: 10px 16px;
+    letter-spacing: 0.05em;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+.ramp-cctv-view {
+    height: 160px;
+    background: #000;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cctv-timestamp {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    color: #fff;
+    z-index: 2;
+}
+
+.cctv-noise-overlay {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, rgba(255,255,255,0.03), rgba(255,255,255,0.03) 1px, transparent 1px, transparent 2px);
+    pointer-events: none;
+}
+
+.ramp-data-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.data-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.data-item .label { font-size: 0.7rem; color: #64748b; font-weight: 600; }
+.data-item .value { font-size: 0.75rem; font-weight: 900; color: #0f172a; }
+
+.hyd-status-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.hyd-status-row .label { font-size: 0.7rem; color: #64748b; font-weight: 600; }
+.hyd-status-row .value { font-size: 0.75rem; font-weight: 900; }
+
+.val-green { color: #4ade80; }
+.val-orange { color: #f59e0b; }
+
+.progress-bar-container {
+    height: 6px;
+    background: #f1f5f9;
+    border-radius: 3px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #ffdb3b;
+    border-radius: 3px;
+    box-shadow: none;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1400px) {
+    .som-bays-layout {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .som-ramp-grid-container {
+        grid-template-columns: 1fr;
+        overflow-y: auto;
+    }
+    .som-bays-layout {
+        grid-template-columns: repeat(4, 1fr);
+        overflow-y: visible;
+    }
+    .som-ramp-sidebar {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .som-ramp-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .som-bays-layout {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .som-ramp-sidebar {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .som-bays-layout {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .som-bays-layout {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,61 @@
+import { Router } from 'express';
+import { dbPoolPlc } from '../config/db.js';
+import { requireAuth, authorize } from '../middleware/jwtMiddleware.js';
+
+const router = Router();
+router.use(requireAuth);
+
+// GET /api/{station}/plc-config/devices
+router.get('/devices', async (_req, res) => {
+  try {
+    const [rows] = await dbPoolPlc.query('SELECT * FROM plc_devices ORDER BY name ASC');
+    res.json({ success: true, data: rows });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// POST /api/{station}/plc-config/devices
+router.post('/devices', authorize(['developer', 'admin']), async (req, res) => {
+  const { name, ip_address, rack, slot, enabled } = req.body;
+  try {
+    const [result] = await dbPoolPlc.query(
+      `INSERT INTO plc_devices (name, ip_address, rack, slot, enabled)
+       VALUES (?,?,?,?,?)
+       ON DUPLICATE KEY UPDATE ip_address=?, rack=?, slot=?, enabled=?`,
+      [name, ip_address, rack, slot, enabled, ip_address, rack, slot, enabled]
+    );
+    res.json({ success: true, id: result.insertId });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// GET /api/{station}/plc-config/tags
+router.get('/tags', async (_req, res) => {
+  try {
+    const [rows] = await dbPoolPlc.query('SELECT * FROM plc_tags ORDER BY tag_name ASC');
+    res.json({ success: true, data: rows });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// POST /api/{station}/plc-config/tags
+router.post('/tags', authorize(['developer', 'admin']), async (req, res) => {
+  const { plc_id, db_number, byte_offset, bit_offset, data_type, tag_name, access, enabled } = req.body;
+  try {
+    const [result] = await dbPoolPlc.query(
+      `INSERT INTO plc_tags (plc_id, db_number, byte_offset, bit_offset, data_type, tag_name, access, enabled)
+       VALUES (?,?,?,?,?,?,?,?)
+       ON DUPLICATE KEY UPDATE db_number=?, byte_offset=?, bit_offset=?, data_type=?, access=?, enabled=?`,
+      [plc_id, db_number, byte_offset, bit_offset, data_type, tag_name, access, enabled,
+       db_number, byte_offset, bit_offset, data_type, access, enabled]
+    );
+    res.json({ success: true, id: result.insertId });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+export default router;

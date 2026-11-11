@@ -1,0 +1,421 @@
+/* Kernel Plant Station Logsheet CSS */
+.kernel-log-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 16px 20px;
+    background: #f8fafc;
+    color: #0f172a;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+}
+
+.kernel-log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #facc15;
+    padding-bottom: 10px;
+}
+
+.kernel-log-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.kernel-log-title h1 {
+    font-size: 1.15rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    color: #0f172a;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.kernel-station-badge {
+    background: #fefce8;
+    color: #a16207;
+    border: 1px solid #facc15;
+    padding: 3px 8px;
+    border-radius: 0px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+}
+
+.kernel-log-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 8px;
+    background: #ffffff;
+    padding: 6px 12px;
+    border-radius: 0px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    flex-wrap: wrap;
+}
+
+.kernel-input-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+}
+
+.kernel-input-group label {
+    font-size: 0.63rem;
+    font-weight: 800;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.kernel-input,
+.kernel-select {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: #0f172a;
+    padding: 3px 8px;
+    border-radius: 0px;
+    font-size: 0.75rem;
+    outline: none;
+    font-weight: 600;
+    height: 26px;
+    box-sizing: border-box;
+}
+
+.kernel-input:focus,
+.kernel-select:focus {
+    border-color: #facc15;
+    box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.3);
+}
+
+.kernel-log-content {
+    
+    overflow: hidden;
+    background: #ffffff;
+    border-radius: 0px;
+    
+    
+}
+
+.kernel-log-content::-webkit-scrollbar {
+    display: none;
+}
+
+.kernel-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.75rem;
+}
+
+.kernel-table th {
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+    background: #facc15;
+    color: #0f172a;
+    font-weight: 900;
+    padding: 6px 10px;
+    text-transform: uppercase;
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #ca8a04;
+    z-index: 10;
+}
+
+.kernel-table td {
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #0f172a;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.kernel-table tbody tr:hover {
+    background: rgba(250, 204, 21, 0.08);
+}
+
+.kernel-severity-info {
+    background: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #7dd3fc;
+    padding: 2px 8px;
+    border-radius: 0px;
+    font-size: 0.68rem;
+    font-weight: 800;
+    display: inline-block;
+}
+
+.kernel-severity-warning {
+    background: #fef9c3;
+    color: #a16207;
+    border: 1px solid #fde047;
+    padding: 2px 8px;
+    border-radius: 0px;
+    font-size: 0.68rem;
+    font-weight: 800;
+    display: inline-block;
+}
+
+.kernel-severity-alarm {
+    background: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fca5a5;
+    padding: 2px 8px;
+    border-radius: 0px;
+    font-size: 0.68rem;
+    font-weight: 900;
+    display: inline-block;
+}
+
+.kernel-cat-ai {
+    background: #fefce8;
+    color: #a16207;
+    border: 1px solid #facc15;
+    padding: 2px 6px;
+    border-radius: 0px;
+    font-size: 0.68rem;
+    font-weight: 800;
+}
+
+.kernel-cat-scada {
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+    padding: 2px 6px;
+    border-radius: 0px;
+    font-size: 0.68rem;
+    font-weight: 600;
+}
+
+.kernel-source-pill {
+    background: #f1f5f9;
+    color: #334155;
+    padding: 2px 6px;
+    border-radius: 0px;
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.kernel-btn-capture {
+    background: #ffffff;
+    border: 1px solid #facc15;
+    color: #a16207;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kernel-btn-capture:hover {
+    background: #facc15;
+    color: #0f172a;
+}
+
+.kernel-btn-export {
+    background: #facc15;
+    color: #0f172a;
+    border: 1px solid #eab308;
+    padding: 6px 14px;
+    border-radius: 0px;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+}
+
+.kernel-btn-export:hover {
+    background: #eab308;
+}
+
+.kernel-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 12px;
+    font-size: 0.72rem;
+    color: #64748b;
+    font-weight: 600;
+    background: #ffffff;
+    border-top: 1px solid #cbd5e1;
+    
+}
+
+.kernel-page-btn {
+    background: #ffffff;
+    color: #0f172a;
+    border: 1px solid #cbd5e1;
+    padding: 2px 8px;
+    border-radius: 0px;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 0.70rem;
+    height: 24px;
+}
+
+.kernel-page-btn:hover:not(:disabled) {
+    background: #facc15;
+    border-color: #eab308;
+    color: #0f172a;
+}
+
+.kernel-page-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.kernel-plant-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(8px);
+    z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+.kernel-plant-modal-card {
+    background: #ffffff;
+    border: 2px solid #0f172a;
+    border-radius: 2px;
+    width: 100%;
+    max-width: 1040px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    position: relative;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+}
+
+.kernel-plant-modal-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #0f172a;
+    width: 32px;
+    height: 32px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+}
+
+.kernel-plant-modal-close-btn:hover {
+    background: #ef4444;
+    color: #ffffff;
+    border-color: #dc2626;
+}
+
+.kernel-plant-modal-layout {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+    margin-top: 12px;
+}
+
+.kernel-plant-modal-image-frame {
+    width: 520px;
+    height: 350px;
+    min-width: 520px;
+    min-height: 350px;
+    border-radius: 2px;
+    border: 2px solid #334155;
+    background: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.kernel-plant-modal-image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.kernel-plant-modal-image-empty {
+    color: #64748b;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.kernel-plant-modal-details-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    justify-content: flex-start;
+}
+
+.kernel-plant-modal-headline {
+    margin: 0 0 6px 0;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #0f172a;
+    line-height: 1.35;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+.kernel-plant-modal-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.kernel-plant-modal-row {
+    display: flex;
+    align-items: flex-start;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.kernel-plant-modal-label {
+    width: 130px;
+    min-width: 130px;
+    color: #64748b;
+    font-weight: 700;
+}
+
+.kernel-plant-modal-value {
+    color: #1e293b;
+    font-weight: 700;
+    flex: 1;
+    word-break: break-word;
+}
+.kernel-log-card {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+
+.kernel-table th, .kernel-table td { white-space: nowrap; }

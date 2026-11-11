@@ -1,0 +1,160 @@
+.logsheet-container {
+    width: 100%;
+    height: calc(100vh - 80px);
+    background: #f8fafc;
+    color: #000000;
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Header & Station Selector Strip */
+.scada-log-header {
+    background: #ffffff;
+    border-bottom: 2px solid #e2e8f0;
+    padding: 8px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.scada-log-title h1 {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #10b981;
+    margin: 0;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* Shift Info Strip */
+.scada-shift-strip {
+    display: flex;
+    background: #f1f5f9;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 10px 24px;
+    gap: 30px;
+    align-items: center;
+}
+
+.shift-node {
+    display: flex;
+    flex-direction: column;
+}
+
+.shift-node label {
+    font-size: 0.6rem;
+    color: #64748b;
+    text-transform: uppercase;
+}
+
+.shift-node .val {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #000000;
+}
+
+/* Period Filters */
+.scada-filter-group {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    padding: 2px;
+    border-radius: 4px;
+    display: flex;
+}
+
+.filter-btn {
+    background: transparent;
+    border: none;
+    color: #64748b;
+    padding: 4px 12px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+.filter-btn.active {
+    background: #3b82f6;
+    color: #ffffff;
+    border-radius: 2px;
+}
+
+/* Data Sections - Grid Layout */
+.logsheet-data-area {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 12px;
+    padding: 12px;
+    overflow: hidden;
+}
+
+.log-section-box {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.log-section-title {
+    font-size: 0.7rem;
+    color: #3b82f6;
+    font-weight: 800;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.log-param-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px dashed #f1f5f9;
+}
+
+.log-param-row:last-child {
+    border-bottom: none;
+}
+
+.log-param-label {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+.log-param-val {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+/* Remarks & Footer */
+.scada-remarks-box {
+    grid-column: span 2;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.scada-btn-primary {
+    background: #10b981;
+    color: #fff;
+    border: none;
+    padding: 6px 16px;
+    font-weight: 800;
+    font-size: 0.75rem;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.scada-btn-primary:hover {
+    background: #059669;
+}

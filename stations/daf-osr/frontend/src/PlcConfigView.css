@@ -1,0 +1,423 @@
+:root {
+    --plc-primary: #0ea5e9;
+    --plc-primary-hover: #0284c7;
+    --plc-bg-surface: #ffffff;
+    --plc-border: rgba(0, 0, 0, 0.08);
+    --plc-text-muted: #64748b;
+    --plc-success: #10b981;
+    --plc-warning: #f59e0b;
+    --scada-bg-glass: rgba(255, 255, 255, 0.8);
+    --text-primary: #1e293b;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f8fafc;
+}
+
+.som-config-page {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 100vh;
+    overflow-y: auto;
+    display: block;
+}
+
+/* Header Section */
+.som-config-header-group {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.som-config-title-area h2 {
+    font-size: 1.875rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.som-config-subtitle {
+    color: var(--plc-text-muted);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+/* Modern Tab Switcher - Industrial Amber Active */
+.som-tab-container {
+    background: #e2e8f0;
+    padding: 4px;
+    border-radius: 10px;
+    display: flex;
+    gap: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.som-tab-btn {
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    background: transparent;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.som-tab-btn:hover {
+    color: #1e293b;
+}
+
+.som-tab-btn.active {
+    background: #fde047 !important; /* Kuning AgroVision */
+    color: #1e293b !important;
+    font-weight: 800 !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Main Dashboard Card */
+.som-config-main-card {
+    background: var(--plc-bg-surface);
+    border-radius: 16px;
+    border: 1px solid var(--plc-border);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+}
+
+.som-card-header {
+    padding: 1.25rem 2rem;
+    border-bottom: 1px solid var(--plc-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+}
+
+.som-card-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.som-card-title svg {
+    color: var(--plc-primary);
+}
+
+/* Table Styling - Kuning AgroVision Header Persis Gambar 2 & 3 */
+.som-table-wrapper {
+    overflow-x: auto;
+    max-height: 550px;
+    overflow-y: auto;
+}
+
+.som-modern-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.som-modern-table th {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 10 !important;
+    background: #fde047 !important; /* Kuning AgroVision */
+    text-align: left !important;
+    padding: 1.1rem 2rem !important;
+    color: #713f12 !important; /* Cokelat Gelap / Emas Tua */
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.05em !important;
+    border-bottom: 2px solid #eab308 !important;
+}
+
+.som-modern-table td {
+    padding: 1.1rem 2rem;
+    border-bottom: 1px solid var(--plc-border);
+    color: var(--text-primary);
+}
+
+.som-modern-table tr:last-child td {
+    border-bottom: none;
+}
+
+.som-modern-table tr:hover td {
+    background: rgba(2, 132, 199, 0.02);
+}
+
+/* Data Elements */
+.som-device-name {
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    color: #1e293b;
+}
+
+.som-device-meta {
+    font-size: 0.75rem;
+    color: var(--plc-text-muted);
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+.som-ip-badge {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    color: #0284c7;
+    background: rgba(2, 132, 199, 0.08);
+    border: 1px solid rgba(2, 132, 199, 0.2);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.8125rem;
+    font-weight: 700;
+}
+
+.som-topology-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #475569;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.som-status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+}
+
+.som-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.som-status-connected {
+    color: #10b981;
+}
+
+.som-status-connected .som-status-dot {
+    background: #10b981;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+    animation: som-pulse 2s infinite;
+}
+
+.som-status-disconnected {
+    color: #ef4444;
+}
+
+.som-status-disconnected .som-status-dot {
+    background: #ef4444;
+}
+
+.som-status-disabled {
+    color: var(--plc-text-muted);
+}
+
+.som-status-disabled .som-status-dot {
+    background: #64748b;
+}
+
+@keyframes som-pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.4); opacity: 0.4; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Buttons & Actions */
+.btn-premium {
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+}
+
+.btn-premium-primary {
+    background: #0ea5e9;
+    color: white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-premium-primary:hover {
+    background: #0284c7;
+    transform: translateY(-1px);
+}
+
+.action-icon-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--plc-border);
+    background: #ffffff;
+    color: var(--plc-text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.action-icon-btn:hover {
+    border-color: var(--plc-primary);
+    color: var(--plc-primary);
+    background: rgba(2, 132, 199, 0.05);
+}
+
+.action-icon-btn.delete:hover {
+    border-color: #ef4444;
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.05);
+}
+
+/* Modals */
+.som-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 1rem;
+}
+
+.som-premium-modal {
+    background: var(--plc-bg-surface);
+    width: 100%;
+    max-width: 600px;
+    border-radius: 20px;
+    border: 1px solid var(--plc-border);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    animation: modalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPop {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.som-modal-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--plc-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.som-modal-header h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+}
+
+.som-modal-body {
+    padding: 2rem;
+}
+
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.form-group-full {
+    grid-column: span 2;
+}
+
+.som-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--plc-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.som-input,
+.som-select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: #f8fafc;
+    border: 1.5px solid var(--plc-border);
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+    transition: all 0.2s;
+}
+
+.som-input:focus,
+.som-select:focus {
+    outline: none;
+    border-color: var(--plc-primary);
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.1);
+}
+
+.som-modal-footer {
+    padding: 1.25rem 2rem;
+    background: rgba(148, 163, 184, 0.05);
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    border-top: 1px solid var(--plc-border);
+}
+
+.btn-ghost {
+    background: #ffffff;
+    color: var(--plc-text-muted);
+    border: 1px solid #cbd5e1;
+}
+
+.btn-ghost:hover {
+    background: #f1f5f9;
+    color: var(--text-primary);
+}
+
+.som-loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(14, 165, 233, 0.15);
+    border-top-color: var(--plc-primary);
+    border-radius: 50%;
+    animation: som-spin 0.8s linear infinite;
+}
+
+@keyframes som-spin {
+    to { transform: rotate(360deg); }
+}

@@ -1,0 +1,163 @@
+.som-effluent-page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #f8fafc;
+}
+
+.som-eff-header {
+    padding: 0.5rem 1.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    border-bottom: 2px solid #ffdb3b;
+}
+
+.som-eff-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 950;
+    color: #0f172a;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #0f172a 0%, #ffdb3b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-right: 2px solid #e2e8f0;
+    padding-right: 1.5rem;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.som-eff-status .green { color: #39FF14; font-weight: 900; }
+
+.som-header-right {
+    display: flex;
+    gap: 2rem;
+}
+
+.eff-top-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.eff-top-stat .label { font-size: 9px; font-weight: 900; color: #64748b; text-transform: uppercase; }
+.eff-top-stat .value { font-size: 1.3rem; font-weight: 950; color: #f59e0b; }
+
+/* Main Content SVG Layout */
+.som-eff-content-main {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: #f8fafc;
+}
+
+.som-eff-scada-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.som-eff-full-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    opacity: 0.95;
+    filter: brightness(1.05);
+}
+
+.som-eff-svg-layer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: all;
+}
+
+/* SCADA Labels */
+.som-eff-label-svg {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    fill: #000000;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    pointer-events: none;
+    paint-order: stroke;
+    stroke-width: 4px;
+    stroke-linejoin: round;
+}
+
+/* SCADA Mini Cards */
+.som-eff-card-mini {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    user-select: none;
+    transition: all 0.3s ease;
+    min-width: 200px;
+}
+
+.som-eff-card-header {
+    background: #ffdb3b;
+    padding: 10px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(15, 23, 42, 0.05);
+}
+
+.som-eff-card-title {
+    font-size: 11px;
+    font-weight: 900;
+    color: #0f172a;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.som-eff-card-body {
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.som-eff-card-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.som-eff-card-label {
+    font-size: 10px;
+    font-weight: 800;
+    color: #64748b;
+    text-transform: uppercase;
+}
+
+.som-eff-card-value {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 950;
+    color: #0f172a;
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+}
+
+.som-eff-card-value::after {
+    content: attr(data-unit);
+    font-size: 10px;
+    color: #64748b;
+    font-weight: 700;
+}

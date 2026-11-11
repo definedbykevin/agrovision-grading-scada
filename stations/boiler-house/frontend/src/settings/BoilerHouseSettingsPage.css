@@ -1,0 +1,218 @@
+/* ============================================
+   BOILER HOUSE SETTINGS - AGROVISION LIGHT THEME
+   ============================================ */
+
+.som-bh-page {
+  width: 100%;
+  height: 100%;
+  background-color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  color: #0f172a;
+}
+
+.som-bh-slide {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 16px;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.som-bh-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  width: 100%;
+  max-width: 900px;
+  height: fit-content;
+}
+
+.som-bh-card-header {
+  background: #ffdb3b;
+  padding: 12px 16px;
+  border-bottom: 2px solid #e2e8f0;
+  text-align: center;
+}
+
+.som-bh-card-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 950;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.som-bh-card-body {
+  padding: 24px;
+}
+
+.som-bh-grid {
+  display: grid;
+  grid-template-columns: 120px repeat(5, 1fr);
+  gap: 16px 12px;
+  align-items: center;
+}
+
+/* Headers */
+.som-bh-col-header {
+  font-size: 10px;
+  font-weight: 900;
+  color: #64748b;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 8px;
+}
+
+.som-bh-row-header {
+  font-size: 11px;
+  font-weight: 900;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: right;
+  padding-right: 12px;
+}
+
+/* Value Boxes */
+.som-val-box {
+  background: #ffffff;
+  border: 1px solid #ffdb3b;
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 900;
+  color: #0f172a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.som-val-box:hover {
+  background: rgba(255, 219, 59, 0.1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+}
+
+.som-val-unit {
+  font-size: 10px;
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+/* Footer & Buttons */
+.som-bh-footer {
+  padding: 12px 24px;
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.som-bh-save-btn {
+  background: #f59e0b;
+  color: #ffffff;
+  border: none;
+  font-weight: 900;
+  padding: 12px 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 13px;
+}
+
+.som-bh-save-btn:hover:not(:disabled) {
+  background: #d97706;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(245, 158, 11, 0.4);
+}
+
+.som-bh-save-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Numeric Keypad */
+.som-numeric-keypad-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.3);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.som-numeric-keypad {
+  background: #ffffff;
+  border: 1px solid #ffdb3b;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  width: 320px;
+}
+
+.som-numeric-keypad-header {
+  background: #f8fafc;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.som-numeric-keypad-label {
+  color: #0f172a;
+  font-weight: 900;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.som-numeric-keypad-display {
+  background: #ffffff;
+  margin: 16px;
+  border: 2px solid #ffdb3b;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 8px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.som-numeric-keypad-value {
+  font-size: 32px;
+  font-weight: 950;
+  color: #0f172a;
+  font-family: 'Inter', sans-serif;
+}
+
+.som-numeric-keypad-unit {
+  font-size: 14px;
+  color: #94a3b8;
+  font-weight: 800;
+}
+

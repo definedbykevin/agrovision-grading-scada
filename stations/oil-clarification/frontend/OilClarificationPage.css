@@ -1,0 +1,519 @@
+/* ============================================
+   OIL CLARIFICATION - AGROVISION LIGHT THEME
+   ============================================ */
+
+.som-clarification-page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #f8fafc;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ==========================================
+   HEADER
+   ========================================== */
+.som-oc-header {
+    padding: 0.5rem 1.5rem;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border-bottom: 2px solid #ffdb3b;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+}
+
+.som-header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.som-oc-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 950;
+    color: #0f172a;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #0f172a 0%, #ffdb3b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-right: 2px solid #e2e8f0;
+    padding-right: 1.5rem;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.som-oc-sub-nav {
+    display: flex;
+    gap: 0.5rem;
+    background: #f1f5f9;
+    padding: 3px;
+    border-radius: 8px;
+}
+
+.som-oc-nav-btn {
+    background: transparent;
+    border: none;
+    color: #64748b;
+    padding: 6px 16px;
+    font-size: 10px;
+    font-weight: 800;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.som-oc-nav-btn:hover {
+    color: #0f172a;
+    background: rgba(15, 23, 42, 0.05);
+}
+
+.som-oc-nav-btn.active {
+    background: #ffffff;
+    color: #0f172a;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================
+   VIEW TOGGLE
+   ========================================== */
+.som-view-toggle-container {
+    display: flex;
+    background: #f1f5f9;
+    padding: 3px;
+    border-radius: 8px;
+    gap: 3px;
+}
+
+.som-view-btn {
+    padding: 6px 14px;
+    font-size: 10px;
+    font-weight: 800;
+    color: #64748b;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.som-view-btn.active {
+    background: #ffdb3b;
+    color: #0f172a;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.som-view-btn:hover:not(.active) {
+    color: #0f172a;
+    background: rgba(15, 23, 42, 0.05);
+}
+
+/* ==========================================
+   COORDINATE DISPLAY
+   ========================================== */
+.som-coord-display {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #64748b;
+    background: #f1f5f9;
+    padding: 4px 12px;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+}
+
+/* ==========================================
+   MAIN CONTENT AREA
+
+   STRATEGY: CSS transform scale()
+   - .som-oc-stage is fixed at 1920 x 1080px
+   - .som-oc-stage-wrapper centers it and clips overflow
+   - .som-oc-stage is scaled DOWN to fit the wrapper
+     via CSS custom property --scale (set by inline style in JSX)
+   - Image and SVG both fill the stage 100% → perfect alignment
+   - Works at ANY window size without JS size tracking
+   ========================================== */
+.som-oc-content-modern {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    background: #f8fafc;
+}
+
+/* Outer wrapper: fills all available height, clips overflow */
+.som-oc-scada-container {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+/*
+  Stage wrapper: provides the bounding box for the scaled stage.
+  We also use a container query / JS-set CSS variable approach:
+  The actual stage (1920×1080) is scaled via transform.
+  We use aspect-ratio + max-width/max-height to size this naturally.
+*/
+.som-oc-stage-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*
+  The stage is a fixed 1920×1080 block.
+  It will be scaled down via transform-origin: top left + CSS variable.
+  The scaling is handled by the SVG viewBox approach instead:
+  - Image: width 100%, height 100% inside the stage
+  - SVG: same, with viewBox="0 0 1920 1080" and preserveAspectRatio="xMidYMid meet"
+  Both will scale identically using the browser's native SVG scaling.
+  
+  Actually we use a simpler approach:
+  Both image and SVG sit inside .som-oc-stage-wrapper (the centering container).
+  The image uses max-width/max-height: 100% (auto sizing, no letterbox).
+  The SVG uses position:absolute with same bounding box as the image via CSS.
+
+  FINAL APPROACH - most robust:
+  Use a <svg> as the outer container that encompasses both the background image
+  and all overlays. The SVG scales uniformly.
+  
+  BUT since we can't put HTML in SVG directly for full layout,
+  we use the twin-div approach:
+  .som-oc-stage-wrapper is the relative container.
+  Inside: img with max dimensions (sets wrapper intrinsic size naturally),
+  and SVG absolute overlay with width/height = 100%.
+  The SVG uses preserveAspectRatio="xMidYMid meet" which mirrors img object-fit:contain.
+*/
+
+.som-oc-stage {
+    position: relative;
+    display: inline-block; /* shrinks to fit image natural size */
+    line-height: 0;         /* remove inline spacing */
+}
+
+/* Image: auto-sized so .som-oc-stage hugs it */
+.som-oc-scada-img {
+    display: block;
+    max-width: 95vw;
+    max-height: calc(100vh - 180px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+/*
+  SVG overlay: must be EXACTLY over the image.
+  Because .som-oc-stage uses display:inline-block and shrinks to the image,
+  width:100% / height:100% on the SVG = exactly the image dimensions.
+  preserveAspectRatio="none" maps SVG units 1:1 to rendered pixels.
+*/
+.station-svg-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+    overflow: visible;
+}
+
+/* ==========================================
+   SVG TEXT LABELS
+   ========================================== */
+.som-oc-label-svg-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 950;
+    fill: #0f172a;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ==========================================
+   PROCESS VIEW — MINI MONITORING CARDS
+   ========================================== */
+.som-oc-mini-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 130px;
+    overflow: hidden;
+    pointer-events: auto;
+}
+
+.som-oc-mini-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border-color: #ffdb3b;
+}
+
+.motor-on .som-oc-mini-card {
+    border-top: 3px solid #22c55e;
+}
+
+.motor-off .som-oc-mini-card {
+    border-top: 3px solid #94a3b8;
+    opacity: 0.85;
+}
+
+.som-oc-mini-header {
+    background: #ffdb3b;
+    padding: 4px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.som-oc-mini-label {
+    font-size: 9px;
+    font-weight: 900;
+    color: #0f172a;
+    text-transform: uppercase;
+    white-space: nowrap;
+    letter-spacing: 0.05em;
+}
+
+.som-oc-mini-body {
+    padding: 7px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    background: #ffffff;
+}
+
+.som-oc-param-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 3px;
+    margin-bottom: 1px;
+}
+
+.som-oc-param-row:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.som-oc-param-label {
+    font-size: 8.5px;
+    font-weight: 800;
+    color: #64748b;
+    text-transform: uppercase;
+}
+
+.som-oc-mini-value {
+    font-size: 13px;
+    font-weight: 950;
+    color: #0f172a;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.1;
+}
+
+.som-oc-mini-value.temp {
+    color: #ef4444;
+}
+
+.som-oc-mini-value[data-unit]::after {
+    content: attr(data-unit);
+    font-size: 9px;
+    font-weight: 700;
+    color: #94a3b8;
+    margin-left: 2px;
+}
+
+.som-oc-mini-status {
+    font-size: 8.5px;
+    font-weight: 950;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+    display: inline-block;
+    align-self: flex-start;
+    text-transform: uppercase;
+}
+
+.status-running {
+    background: #f59e0b;
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3);
+}
+
+.status-stop {
+    background: #f1f5f9;
+    color: #64748b;
+    border: 1px solid #e2e8f0;
+}
+
+.som-oc-gear-icon {
+    width: 12px;
+    height: 12px;
+    color: #0f172a;
+    opacity: 0.5;
+    flex-shrink: 0;
+}
+
+.som-oc-mini-card:hover .som-oc-gear-icon {
+    opacity: 1;
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+}
+
+.svg-equipment {
+    cursor: pointer;
+}
+
+/* ==========================================
+   MAINTENANCE VIEW
+   ========================================== */
+.som-mode-maintenance .som-oc-scada-img {
+    filter: grayscale(1) brightness(0.4) contrast(1.2);
+}
+
+.som-diagnostic-banner {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(15, 23, 42, 0.95);
+    color: #f59e0b;
+    padding: 8px 24px;
+    border: 1px solid #f59e0b;
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    z-index: 200;
+    box-shadow: 0 0 25px rgba(245, 158, 11, 0.2);
+    animation: pulse-border-amber 2s infinite;
+    white-space: nowrap;
+}
+
+@keyframes pulse-border-amber {
+    0%   { box-shadow: 0 0 15px rgba(245, 158, 11, 0.2); border-color: rgba(245, 158, 11, 0.4); }
+    50%  { box-shadow: 0 0 35px rgba(245, 158, 11, 0.5); border-color: rgba(245, 158, 11, 1); }
+    100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.2); border-color: rgba(245, 158, 11, 0.4); }
+}
+
+.som-maintenance-mini-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #f59e0b;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.som-maintenance-mini-header {
+    background: #f8fafc;
+    padding: 6px 12px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.som-maintenance-mini-title {
+    font-size: 9px;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.som-maintenance-mini-body {
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.som-maintenance-mini-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.som-maintenance-mini-row-label {
+    font-size: 8px;
+    color: #64748b;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.som-maintenance-mini-row-value {
+    font-size: 12px;
+    font-weight: 900;
+    color: #0f172a;
+}
+
+.som-maintenance-mini-row-value small {
+    font-size: 9px;
+    color: #f59e0b;
+    margin-left: 2px;
+}
+
+/* ==========================================
+   LIQUID FLOW ANIMATIONS
+   ========================================== */
+.oc-water-path-base {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.oc-water-path-stream {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: none;
+    animation: none;
+}
+
+.oc-water-path-highlight {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.7);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 3 50;
+    animation: oc-flow-highlight 1.5s linear infinite;
+}
+
+.oc-water-path-dotted {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.5);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 4 18;
+    animation: oc-flow-dotted 1s linear infinite;
+}
+
+@keyframes oc-flow-highlight {
+    from { stroke-dashoffset: 53; }
+    to   { stroke-dashoffset: 0; }
+}
+
+@keyframes oc-flow-dotted {
+    from { stroke-dashoffset: 22; }
+    to   { stroke-dashoffset: 0; }
+}

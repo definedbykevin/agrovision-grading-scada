@@ -1,0 +1,248 @@
+/* HomeOverviewPage.css - AGROVISION Corporate Light Theme Overhaul */
+
+.som-home-overview {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+.som-home-main {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+}
+
+.som-home-layout {
+  flex: 1;
+  display: flex;
+}
+
+.som-home-flow-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.som-home-flow-body {
+  position: relative;
+  flex: 1;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0;
+  height: 100%;
+}
+
+/* ── SVG CANVAS SCALING ── */
+.som-home-svg-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.som-home-ultra-fit-shell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.som-home-background-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.som-home-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 1;
+}
+
+.som-home-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.som-home-content-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.som-home-content-overlay > * {
+  pointer-events: all;
+}
+
+/* ── TITLE BADGE (LIGHT MODE) ── */
+.som-home-title-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border-left: 5px solid #ffdb3b;
+}
+
+.som-home-title-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+
+.som-home-title-main {
+  font-size: 1rem;
+  font-weight: 850;
+  color: #1e293b;
+  letter-spacing: -0.01em;
+}
+
+.som-home-title-score {
+  color: #10b981;
+  margin-left: 4px;
+}
+
+.som-home-title-sub {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+/* ── STATION MONITORING CARDS (LIGHT MODE STYLE) ── */
+.hov-card {
+  position: absolute;
+  min-width: 110px;
+  max-width: 145px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  z-index: 5;
+}
+
+.hov-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  border-color: #ffdb3b;
+  box-shadow: 0 12px 28px rgba(255, 219, 59, 0.25);
+  z-index: 20;
+}
+
+.hov-card-header {
+  padding: 6px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fafc;
+  border-bottom: 2px solid #ffdb3b;
+  position: relative;
+}
+
+.hov-card-title {
+  font-size: 8px;
+  font-weight: 850;
+  letter-spacing: 0.05em;
+  color: #1e293b;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hov-card-body {
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.hov-card-row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.hov-card-label {
+  font-size: 7.5px;
+  color: #64748b;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.hov-card-dots {
+  flex: 1;
+  border-bottom: 1px dashed #e2e8f0;
+  margin: 0 4px;
+  opacity: 0.6;
+}
+
+.hov-card-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 850;
+  color: #0f172a;
+  text-align: right;
+}
+
+@media (max-width: 1024px) {
+  .som-home-title-badge {
+    padding: 8px 15px;
+    top: 10px;
+    left: 10px;
+  }
+  .som-home-title-main { font-size: 0.85rem; }
+  .hov-card { min-width: 90px; }
+}
+
+.hov-card.hov-card--locked {
+  cursor: not-allowed !important;
+  opacity: 0.65 !important;
+  filter: grayscale(40%) !important;
+}
+
+.hov-card.hov-card--locked:hover {
+  transform: none !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+  z-index: 5 !important;
+}
+
+.hov-card.hov-card--locked .hov-card-header {
+  border-bottom: 2px solid #cbd5e1 !important;
+}
+
+.hov-card.hov-card--locked .hov-card-glow {
+  display: none !important;
+}

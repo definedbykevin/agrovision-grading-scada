@@ -1,0 +1,988 @@
+:root {
+  /* THEME: AGROVISION CORPORATE LIGHT */
+  --bg-primary: #f1f5f9;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #e2e8f0;
+
+  --card-bg: #ffffff;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+
+  --accent-gold: #ffdb3b;
+  --accent-gold-dark: #d4ac0d;
+  --accent-royal: #1e293b;
+
+  --border-color: #e2e8f0;
+  --gauge-bg: #e5e7eb;
+
+  /* Status Colors */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-info: #3b82f6;
+}
+
+.som-dashboard-shell {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.som-dashboard-header {
+  display: flex;
+  flex-direction: column;
+  background: #f3f4f6;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  position: relative;
+  z-index: 100;
+}
+
+.som-dashboard-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.25rem 1.75rem;
+  border-bottom: 1px solid #d4d4d8;
+  background: #ffffff;
+}
+
+.som-dashboard-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.som-dashboard-logos-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.5rem;
+}
+
+.som-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.08rem;
+}
+
+.som-brand-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #111827;
+}
+
+.som-brand-subtitle {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #6b7280;
+}
+
+.som-brand-logo-left {
+  height: 40px;
+  object-fit: contain;
+}
+
+.som-dashboard-nav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffdb3b;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 0.05rem 1.75rem;
+  z-index: 10;
+  height: auto;
+}
+
+.som-dashboard-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 0.35rem;
+}
+
+.som-dashboard-menu-item {
+  margin: 0;
+  position: relative;
+}
+
+.som-dashboard-menu-button {
+  border: none;
+  border-radius: 4px;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: transparent;
+  color: #111827;
+  cursor: pointer;
+  transition:
+    background-color 120ms ease-out,
+    color 120ms ease-out,
+    box-shadow 120ms ease-out;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 28px;
+  width: auto;
+}
+
+.som-dashboard-menu-button:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.som-dashboard-logout-button:hover {
+  background: rgba(239, 68, 68, 0.1) !important;
+  color: #ef4444 !important;
+}
+
+.som-dashboard-menu-button--active {
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.35);
+  color: #111827;
+}
+
+.som-dashboard-nav-placeholder {
+  flex: 1;
+}
+
+.som-dashboard-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding-top: 0.15rem;
+  display: block;
+  z-index: 100;
+}
+
+.som-dashboard-dropdown-inner {
+  background: #f9fafb;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow:
+    0 16px 45px rgba(15, 23, 42, 0.18),
+    0 0 0 1px rgba(148, 163, 184, 0.25);
+  padding: 0.4rem 0.6rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.1rem;
+  min-width: 220px;
+}
+
+.som-dashboard-dropdown-item {
+  border: none;
+  background: transparent;
+  text-align: left;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+  color: #111827;
+  cursor: pointer;
+}
+
+.som-dashboard-dropdown-item:hover,
+.som-dashboard-dropdown-item.nested-active {
+  background-color: #f1f5f9;
+  color: #1e293b;
+  font-weight: 700;
+}
+
+.som-dashboard-dropdown-item.som-dashboard-dropdown-item--locked {
+  color: #94a3b8 !important;
+  cursor: not-allowed !important;
+  background: transparent !important;
+  font-weight: normal !important;
+}
+
+.som-dashboard-dropdown-item.som-dashboard-dropdown-item--locked:hover {
+  background-color: transparent !important;
+  color: #94a3b8 !important;
+  font-weight: normal !important;
+}
+
+.som-dropdown-item-wrapper {
+  position: relative;
+}
+
+.som-dashboard-dropdown-item.has-nested {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nested-arrow {
+  font-size: 1.2rem;
+  font-weight: 400;
+  opacity: 0.6;
+}
+
+.som-nested-dropdown {
+  position: absolute;
+  top: -5px;
+  left: 100%;
+  padding-left: 12px;
+  z-index: 110;
+}
+
+.som-nested-dropdown .som-dashboard-dropdown-inner {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.som-nested-dropdown.level-4 {
+  left: 100%;
+  margin-left: 0;
+  padding-left: 12px;
+}
+
+.som-nested-dropdown.level-4 .som-dashboard-dropdown-inner {
+  height: fit-content !important;
+  width: 220px !important;
+  min-width: 220px !important;
+  max-width: 220px !important;
+}
+
+.som-nested-dropdown.level-5 {
+  padding-left: 12px;
+}
+
+.som-nested-dropdown.level-5 .som-dashboard-dropdown-inner {
+  height: fit-content !important;
+  width: 220px !important;
+  min-width: 220px !important;
+  max-width: 220px !important;
+}
+
+
+.som-add-machine-btn {
+  width: 100%;
+  border: 1px dashed #d4ac0d;
+  background: #fffbeb;
+  color: #92400e;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s;
+  margin-bottom: 0.2rem;
+}
+
+.som-add-machine-btn:hover {
+  background: #fde68a;
+  border-color: #92400e;
+}
+
+.som-add-machine-btn:hover {
+  background: rgba(57, 255, 20, 0.15);
+  border-style: solid;
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
+}
+
+.som-dropdown-divider {
+  height: 1px;
+  background: rgba(57, 255, 20, 0.2);
+  margin: 0.4rem 0;
+}
+
+.som-no-data {
+  padding: 0.5rem;
+  font-size: 0.7rem;
+  color: #64748b;
+  text-align: center;
+  font-style: italic;
+}
+
+@keyframes somNestedSlide {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.som-dashboard-nav-right {
+  position: absolute;
+  right: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.som-user-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.05rem;
+}
+
+.som-user-role {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+
+.som-user-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #e5e7eb;
+}
+
+.som-profile-wrapper {
+  position: relative;
+}
+
+.som-profile-button {
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: #ffdb3b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+}
+
+.som-profile-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  background: #fcd34d;
+}
+
+@media (orientation: landscape) {
+  .som-dashboard-nav-right {
+    position: relative;
+    z-index: 10001; /* ABOVE THE MENU LIST */
+    margin-left: auto;
+    flex-shrink: 0;
+    padding-left: 10px;
+    background: transparent;
+  }
+
+  .som-profile-menu {
+    position: fixed;
+    top: 40px; /* Below the nav bar */
+    right: 10px;
+    z-index: 110000 !important;
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    min-width: 150px;
+    border: 1px solid #e2e8f0;
+  }
+}
+
+.som-profile-menu {
+  position: absolute;
+  right: 0;
+  top: 130%;
+  min-width: 280px;
+  width: 320px;
+  max-width: 90vw;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  box-shadow:
+    0 12px 32px rgba(15, 23, 42, 0.25),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  z-index: 20;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.som-profile-avatar {
+  align-self: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  box-shadow:
+    0 0 0 3px #ffffff,
+    0 4px 12px rgba(245, 158, 11, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.som-profile-avatar-initial {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+}
+
+.som-profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-bottom: 1rem;
+  text-align: center;
+  align-items: center;
+}
+
+.som-profile-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.som-profile-meta {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.som-profile-company {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.som-profile-divider {
+  width: 100%;
+  height: 1px;
+  background: #e5e7eb;
+  margin: 1rem 0;
+}
+
+.som-profile-error {
+  margin: 0.5rem 0 0;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8125rem;
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.som-profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.som-profile-form-title {
+  margin: 0 0 1.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.som-profile-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.som-profile-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.som-profile-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #374151;
+  letter-spacing: 0.02em;
+}
+
+.som-profile-input {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  outline: none;
+  background: #ffffff;
+  color: #111827;
+  box-sizing: border-box;
+  transition:
+    border-color 150ms ease-out,
+    box-shadow 150ms ease-out,
+    background-color 150ms ease-out;
+}
+
+.som-profile-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  background: #ffffff;
+}
+
+.som-profile-input--disabled {
+  background: #f3f4f6;
+  color: #6b7280;
+  cursor: not-allowed;
+  border-color: #e5e7eb;
+}
+
+.som-profile-input--disabled:focus {
+  border-color: #e5e7eb;
+  box-shadow: none;
+  background: #f3f4f6;
+}
+
+.som-profile-actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  margin-top: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Make the last button full width if it's an odd one (e.g. Logout when admin has 3 buttons) */
+.som-profile-actions>button:last-child:nth-child(odd) {
+  grid-column: span 2;
+}
+
+
+.som-profile-primary,
+.som-profile-secondary {
+  border-radius: 6px;
+  padding: 0.625rem 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+  min-height: 40px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+}
+
+.som-btn-icon {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.som-profile-primary:hover .som-btn-icon,
+.som-profile-secondary:hover .som-btn-icon {
+  transform: scale(1.1);
+}
+
+
+.som-profile-primary {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: #ffffff;
+  border-color: #0f172a;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.15);
+}
+
+.som-profile-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+  border-color: #334155;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
+  transform: translateY(-1px);
+}
+
+.som-profile-primary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.2);
+}
+
+/* Specific button accents */
+.som-profile-btn-edit {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  border-color: #1e40af;
+}
+
+.som-profile-btn-edit:hover:not(:disabled) {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  border-color: #3b82f6;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+
+.som-profile-secondary {
+  background: #f8fafc;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.som-profile-secondary:hover:not(:disabled) {
+  background: #ffffff;
+  color: #1e293b;
+  border-color: #94a3b8;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+}
+
+.som-profile-btn-logout:hover:not(:disabled) {
+  background: #fff1f2;
+  color: #be123c;
+  border-color: #fca5a5;
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.1);
+}
+
+
+.som-profile-secondary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.som-profile-primary:disabled,
+.som-profile-secondary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.som-brand-logo-right {
+  height: 35px;
+  object-fit: contain;
+}
+
+.som-logout-button {
+  border-radius: 999px;
+  border: 1px solid rgba(248, 113, 113, 0.6);
+  padding: 0.45rem 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: radial-gradient(circle at 0% 0%, rgba(248, 113, 113, 0.1), transparent 55%);
+  color: #fecaca;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  transition:
+    background-color 120ms ease-out,
+    box-shadow 120ms ease-out,
+    transform 80ms ease-out;
+}
+
+.som-logout-button:hover {
+  background-color: rgba(248, 113, 113, 0.15);
+  box-shadow: 0 0 18px rgba(248, 113, 113, 0.65);
+  transform: translateY(-1px);
+}
+
+.som-logout-button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(15, 23, 42, 0.16);
+}
+
+.som-dashboard-main {
+  flex: 1;
+  padding: 0.5rem;
+  overflow: hidden;
+  /* Default: Locked for SCADA */
+  box-sizing: border-box;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 0;
+}
+
+/* Allow scrolling ONLY for Dashboards */
+.som-dashboard-main:has(.pd2-shell),
+.som-dashboard-main:has(.dod-shell) {
+  overflow-y: auto !important;
+}
+
+.som-dashboard-placeholder {
+  width: 100%;
+  height: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  background: radial-gradient(circle at top, rgba(15, 23, 42, 0.12), transparent 55%),
+    linear-gradient(180deg, #020617 0%, #020617 100%);
+  border-radius: 18px;
+  border: 1px solid rgba(15, 23, 42, 0.55);
+  box-shadow:
+    0 22px 55px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(15, 23, 42, 0.9);
+  padding: 1.75rem 1.9rem;
+  color: #e5e7eb;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.som-dashboard-section-title {
+  margin: 0 0 0.3rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.som-dashboard-section-subtitle {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #9ca3af;
+}
+
+.som-profile-menu {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.som-profile-avatar {
+  background: #ffdb3b;
+  box-shadow: 0 4px 12px rgba(255, 219, 59, 0.3);
+}
+
+.som-profile-avatar-initial {
+  color: #1e293b;
+}
+
+.som-profile-name {
+  color: #0f172a;
+}
+
+.som-profile-meta {
+  color: #64748b;
+}
+
+.som-profile-divider {
+  background: #f1f5f9;
+}
+
+.som-profile-label {
+  color: #475569;
+}
+
+.som-profile-input {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+.som-profile-input:focus {
+  border-color: #ffdb3b;
+  box-shadow: 0 0 0 3px rgba(255, 219, 59, 0.2);
+}
+
+.som-profile-secondary {
+  background: #f1f5f9;
+  color: #475569;
+  border-color: #e2e8f0;
+}
+
+.som-profile-secondary:hover:not(:disabled) {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+.som-profile-btn-logout:hover:not(:disabled) {
+  background: #fef2f2;
+  color: #ef4444;
+  border-color: #fecaca;
+}
+
+@media (max-width: 1024px) {
+  .som-dashboard-header {
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 2.8fr);
+    grid-auto-rows: auto;
+    row-gap: 0.5rem;
+  }
+
+  .som-dashboard-right {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .som-dashboard-header {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.6rem;
+  }
+
+  .som-dashboard-nav {
+    justify-content: flex-start;
+  }
+
+  .som-dashboard-menu {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
+/* ===== MOBILE LANDSCAPE: Compact header so menu stays visible ===== */
+@media (max-height: 500px) and (orientation: landscape) {
+  .som-dashboard-shell {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .som-dashboard-header {
+    flex-shrink: 0;
+    overflow: visible !important;
+    position: relative;
+    z-index: 9999;
+  }
+
+  .som-dashboard-header-top {
+    padding: 0.1rem 0.75rem;
+    min-height: 0;
+  }
+
+  .som-brand-logo-left {
+    height: 20px;
+  }
+
+  .som-brand-title {
+    font-size: 0.6rem;
+  }
+
+  .som-brand-subtitle {
+    display: none;
+  }
+
+  .som-brand-logo-right {
+    height: 18px;
+  }
+
+  .som-dashboard-nav {
+    padding: 0;
+    overflow: visible !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 0;
+    position: relative;
+    z-index: 1000;
+    height: 24px;
+    background: var(--accent-gold);
+  }
+
+  .som-dashboard-dropdown {
+    position: fixed; /* BYPASS PARENT OVERFLOW CLIPPING */
+    top: auto;
+    left: auto;
+    z-index: 100000 !important;
+    display: block !important;
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    min-width: 180px;
+    border: 1px solid #e2e8f0;
+    margin-top: 5px;
+  }
+
+  .som-nested-dropdown {
+    position: fixed;
+    left: 200px; /* Offset from main dropdown */
+    z-index: 100001 !important;
+  }
+
+  .som-dashboard-menu {
+    flex: 1;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.15rem;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 0.5rem;
+  }
+
+  .som-dashboard-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .som-dashboard-menu-button {
+    font-size: 0.58rem;
+    padding: 0.05rem 0.4rem;
+    height: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .som-dashboard-nav-right {
+    position: relative;
+    z-index: 10001;
+    margin-left: auto;
+    flex-shrink: 0;
+    padding-left: 10px;
+    padding-right: 5px;
+    background: var(--accent-gold);
+  }
+
+  .som-profile-button {
+    width: 20px;
+    height: 20px;
+  }
+
+  .som-profile-initial {
+    font-size: 0.6rem;
+  }
+
+  .som-dashboard-main {
+    padding: 0.15rem;
+    flex: 1;
+    min-height: 0;
+  }
+}
+
+/* GLOBAL SETTINGS BUTTON LOCK */
+.som-station-container.no-setting-permission .som-view-toggle-container button:last-child {
+  pointer-events: none !important;
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+  color: #1e293b !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.som-station-container.no-setting-permission .som-view-toggle-container button:last-child::after {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' fill='%231e293b'%3E%3Cpath d='M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}

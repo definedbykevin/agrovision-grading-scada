@@ -1,0 +1,217 @@
+.som-ai-cam-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.som-ai-cam-modal {
+  width: 100%;
+  max-width: 680px;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.som-ai-cam-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  color: #ffffff;
+}
+
+.som-ai-cam-modal-header .header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.som-ai-cam-modal-header h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.som-ai-cam-modal-header .close-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.modal-banner-message {
+  padding: 10px 16px;
+  background: #f0fdf4;
+  border-bottom: 1px solid #bbf7d0;
+  color: #166534;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.som-ai-cam-modal-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cam-config-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-group-row {
+  display: flex;
+  gap: 14px;
+  align-items: flex-end;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group.flex-1 {
+  flex: 1;
+}
+
+.form-group label {
+  font-size: 11px;
+  font-weight: 800;
+  color: #475569;
+  text-transform: uppercase;
+}
+
+.form-group input[type="text"] {
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #0f172a;
+}
+
+.form-group input.readonly-input {
+  background: #f1f5f9;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.roi-section-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.roi-section-box h4 {
+  margin: 0 0 10px;
+  font-size: 11px;
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: 0.05em;
+}
+
+.roi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.roi-card {
+  border-radius: 6px;
+  padding: 12px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+
+.roi-card.red-card {
+  border-left: 4px solid #ef4444;
+}
+
+.roi-card.green-card {
+  border-left: 4px solid #10b981;
+}
+
+.roi-card h5 {
+  margin: 0 0 8px;
+  font-size: 10px;
+  font-weight: 900;
+  color: #334155;
+}
+
+.coord-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.coord-inputs label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.coord-inputs input {
+  width: 60px;
+  height: 28px;
+  padding: 0 6px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.som-ai-cam-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-cancel {
+  padding: 8px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-save {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.btn-save:hover {
+  opacity: 0.92;
+}

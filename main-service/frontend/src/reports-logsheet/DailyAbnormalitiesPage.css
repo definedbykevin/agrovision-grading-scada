@@ -1,0 +1,143 @@
+.abnormalities-container {
+    width: 100%;
+    height: calc(100vh - 80px);
+    background: #f8fafc;
+    color: #000000;
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* Zero scroll */
+}
+
+.scada-report-header {
+    background: #ffffff;
+    border-bottom: 2px solid #e2e8f0;
+    padding: 8px 24px;
+    /* Shrunk */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.scada-report-title h1 {
+    font-size: 0.9rem;
+    /* Shrunk */
+    font-weight: 800;
+    color: #ef4444;
+    margin: 0;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.scada-stats-strip {
+    display: flex;
+    background: #f1f5f9;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 10px 24px;
+    /* Shrunk */
+    gap: 30px;
+}
+
+.scada-stat-node {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.scada-stat-node label {
+    font-size: 0.6rem;
+    color: #64748b;
+}
+
+.scada-stat-node .val {
+    font-size: 1rem;
+    /* Shrunk */
+    font-weight: 800;
+    color: #b91c1c;
+}
+
+.table-scroll-area {
+    flex: 1;
+    overflow: hidden;
+    /* Removed scroll */
+    padding: 10px 20px;
+}
+
+.abnormality-grid {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 2px;
+}
+
+.abnormality-grid th {
+    background: #f8fafc;
+    padding: 8px 16px;
+    text-align: left;
+    font-size: 0.65rem;
+    color: #64748b;
+}
+
+.abnormality-grid td {
+    background: #ffffff;
+    padding: 8px 16px;
+    font-size: 0.75rem;
+    color: #000000 !important;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Severity Badges */
+.sev-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 800;
+}
+
+.sev-high {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border: 1px solid #ef4444;
+}
+
+.sev-med {
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+    border: 1px solid #f59e0b;
+}
+
+.sev-low {
+    background: rgba(59, 130, 246, 0.2);
+    color: #3b82f6;
+    border: 1px solid #3b82f6;
+}
+
+.status-text {
+    font-weight: bold;
+    font-size: 0.75rem;
+}
+
+.status-open {
+    color: #f87171;
+}
+
+.status-resolved {
+    color: #34d399;
+}
+
+.btn-scada-action {
+    background: transparent;
+    border: 1px solid #3b82f6;
+    color: #3b82f6;
+    padding: 6px 16px;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-scada-action:hover {
+    background: #3b82f6;
+    color: #fff;
+}

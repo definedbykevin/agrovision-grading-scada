@@ -1,0 +1,851 @@
+.som-press-station {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #f8fafc;
+}
+
+.som-press-station-header {
+  padding: 0.4rem 1.75rem;
+  background: #ffffff;
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid #ffdb3b;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.som-press-station-header .som-header-left {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 1.5rem !important;
+}
+
+.som-press-station-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 950;
+  color: #0f172a;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #0f172a 0%, #ffdb3b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-right: 2px solid #e2e8f0;
+  padding-right: 1.5rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.som-station-tabs {
+  display: flex;
+  gap: 4px;
+  background: #f1f5f9;
+  padding: 3px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.som-station-tab {
+  padding: 5px 14px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+body .som-press-station .som-station-tabs button.som-station-tab:hover {
+  background: #ffdb3b !important;
+  color: #0f172a !important;
+}
+
+.som-station-tab.active {
+  background: #ffdb3b !important;
+  color: #0f172a !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  font-weight: 900 !important;
+}
+
+/* ==========================================
+   VIEW TOGGLE (AGROVISION)
+   ========================================== */
+.som-view-toggle-container {
+    display: flex;
+    background: #f1f5f9;
+    padding: 4px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.som-view-btn {
+    padding: 6px 14px;
+    font-size: 10px;
+    font-weight: 800;
+    color: #64748b;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.som-view-btn.active {
+    background: #ffdb3b;
+    color: #0f172a;
+    box-shadow: 0 4px 10px rgba(255, 219, 59, 0.3);
+}
+
+.som-view-btn:hover:not(.active) {
+    color: #0f172a;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.som-press-main {
+  flex: 1;
+  padding: 0.5rem;
+  overflow: hidden;
+  display: flex;
+}
+
+.som-press-layout {
+  flex: 1;
+  display: flex;
+  gap: 1rem;
+}
+
+.som-press-flow-card {
+  flex: 3;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.som-press-flow-body {
+  position: relative;
+  flex: 1;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* ==========================================
+   GOLDEN PREMIUM MONITORING CARDS
+   ========================================== */
+.som-dig-card, .som-motor-mini-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow: visible;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  pointer-events: auto;
+  min-width: 160px;
+  width: fit-content;
+}
+
+.som-dig-card:hover, .som-motor-mini-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border-color: #ffdb3b;
+}
+
+.som-dig-card-header, .som-motor-mini-header {
+  background: #ffdb3b;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 900;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.som-dig-card-body, .som-motor-mini-body {
+  padding: 6px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: #ffffff;
+}
+
+.som-dig-row, .som-motor-param-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.som-dig-row:last-child, .som-motor-param-row:last-child {
+  border-bottom: none;
+}
+
+.som-dig-label, .som-motor-param-label {
+  font-size: 9px;
+  font-weight: 800;
+  color: #000000;
+  flex: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.som-dig-value, .som-motor-mini-value {
+  font-size: 13.5px;
+  font-weight: 950;
+  color: #0f172a;
+  font-family: 'Inter', sans-serif;
+  text-align: right;
+}
+
+.som-dig-unit, .som-motor-mini-value[data-unit]::after {
+  font-size: 10px;
+  font-weight: 700;
+  color: #94a3b8;
+  min-width: 16px;
+}
+
+.som-motor-mini-value[data-unit]::after {
+    content: attr(data-unit);
+    margin-left: 3px;
+}
+
+/* Card CV variant - vertical centered */
+.som-dig-card--cv {
+  text-align: center;
+}
+
+.som-dig-cv-header {
+  padding: 4px 5px;
+  background: #ffdb3b;
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.som-dig-cv-title {
+  font-size: 10px;
+  font-weight: 950;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.som-dig-cv-body {
+  padding: 6px 8px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.som-dig-cv-val-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 3px;
+}
+
+.som-dig-cv-val-row .som-dig-value {
+  font-size: 16px;
+}
+
+/* Auto/Manual badge - Premium AGROVISION version */
+.som-dig-mode {
+  font-size: 9px;
+  font-weight: 950;
+  padding: 2px 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  color: #0f172a;
+}
+
+.som-dig-mode--green {
+  background: #ffdb3b;
+  color: #0f172a;
+  box-shadow: 0 2px 5px rgba(255, 219, 59, 0.2);
+  border: 1px solid #e2e8f0;
+}
+
+.som-dig-mode--red {
+  background: #64748b;
+  color: #fff;
+}
+
+/* --- HYPER-REALISTIC WATER FLOW --- */
+.water-path-base {
+  stroke-width: 20px;
+  stroke-linecap: round;
+  fill: none;
+  opacity: 0.15;
+  filter: blur(2px);
+}
+
+.water-path-stream {
+  stroke-width: 12px;
+  stroke-linecap: round;
+  fill: none;
+  opacity: 0.8;
+}
+
+.water-path-highlight {
+  stroke-width: 2px;
+  stroke-linecap: round;
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.4);
+  animation: water-glide 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* --- NEW STEAM FLOW KEMBANG KEMPIS (PULSE) --- */
+.steam-flow-glow {
+  stroke-linecap: round;
+  filter: blur(var(--base-blur));
+}
+
+.steam-flow-aura {
+  stroke-linecap: round;
+  filter: blur(var(--base-blur));
+}
+
+.steam-flow--flowing .steam-flow-glow,
+.steam-flow--standby .steam-flow-glow {
+  animation: steam-pulse-glow 2.5s ease-in-out infinite;
+}
+
+.steam-flow--flowing .steam-flow-aura,
+.steam-flow--standby .steam-flow-aura {
+  animation: steam-pulse-aura 2.5s ease-in-out infinite;
+}
+
+@keyframes steam-pulse-glow {
+  0%, 100% {
+    opacity: 0.8;
+    stroke-width: calc(var(--base-thickness) * 2);
+  }
+  50% {
+    opacity: 0.2;
+    stroke-width: calc(var(--base-thickness) * 3.5);
+  }
+}
+
+@keyframes steam-pulse-aura {
+  0%, 100% {
+    opacity: 0.9;
+    stroke-width: var(--base-thickness);
+  }
+  50% {
+    opacity: 0.4;
+    stroke-width: calc(var(--base-thickness) * 1.5);
+  }
+}
+
+@keyframes water-glide {
+  from { stroke-dashoffset: 600; }
+  to { stroke-dashoffset: 0; }
+}
+
+.water-path-dotted {
+  stroke-width: 4px;
+  stroke-linecap: round;
+  fill: none;
+  stroke: #ffffff;
+  /* Shorter dots and tighter gaps as requested */
+  stroke-dasharray: 2, 60;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.9));
+  animation: water-glide-dotted 2s linear infinite;
+}
+
+@keyframes water-glide-dotted {
+  from {
+    stroke-dashoffset: 128; /* Multiple of (4+28)=32 */
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.som-coord-display {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 3px 12px;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+}
+
+/* ==========================================
+   MAINTENANCE MODE & HUD (AGROVISION)
+   ========================================== */
+
+
+/* "Faded" look in maintenance mode (Reverted to preferred visibility) */
+.som-mode-maintenance .som-station-bg-image {
+    filter: saturate(0.85) brightness(1.02);
+    opacity: 0.72;
+    transition: all 0.5s ease;
+}
+
+.som-diagnostic-banner {
+  background: rgba(255, 219, 59, 0.1);
+  border: 2px solid #ffdb3b;
+  color: #0f172a;
+  font-weight: 900;
+  text-align: center;
+  padding: 12px 30px;
+  border-radius: 4px; /* More squared like Thresher */
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 28px;
+  box-shadow: 0 0 20px rgba(255, 219, 59, 0.2);
+  animation: banner-glow 2s infinite alternate;
+  font-family: 'Inter', sans-serif;
+  display: block; /* Thresher uses block/text-align center */
+  width: fit-content;
+  margin: 0 auto;
+}
+
+@keyframes banner-glow {
+  from { box-shadow: 0 0 10px rgba(255, 219, 59, 0.1); }
+  to { box-shadow: 0 0 25px rgba(255, 219, 59, 0.3); }
+}
+
+/* Remove LEDs to match Thresher */
+.som-diagnostic-banner::before,
+.som-diagnostic-banner::after {
+    display: none;
+}
+
+@keyframes led-blink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+@keyframes banner-pulse-green {
+    from { box-shadow: 0 0 15px rgba(16, 185, 129, 0.2); border-color: rgba(16, 185, 129, 0.6); }
+    to { box-shadow: 0 0 35px rgba(16, 185, 129, 0.5); border-color: rgba(16, 185, 129, 1); }
+}
+
+/* Diagnostic Grid Overlay */
+.som-diag-grid {
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+.som-diag-scanline {
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(
+        to right, 
+        transparent 0%, 
+        rgba(255, 219, 59, 0.2) 15%, 
+        rgba(255, 219, 59, 0.9) 50%, 
+        rgba(255, 219, 59, 0.2) 85%, 
+        transparent 100%
+    );
+    position: absolute;
+    left: 0;
+    z-index: 10;
+    animation: scanline-move 8s linear infinite;
+    box-shadow: 
+        0 0 20px rgba(255, 219, 59, 0.8), 
+        0 0 10px rgba(255, 219, 59, 0.4);
+    pointer-events: none;
+}
+
+/* Ensure the line has a sharp core */
+.som-diag-scanline::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-50%);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes scanline-move {
+    0% { top: 0%; }
+    100% { top: 100%; }
+}
+
+/* Maintenance Cards - High Tech Dark Look */
+.maintenance-card {
+    background: rgba(15, 23, 42, 0.9) !important;
+    border: 1px solid #10b981 !important;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.15) !important;
+    backdrop-filter: blur(5px);
+}
+
+.maintenance-card .som-motor-mini-header {
+    background: #10b981 !important;
+    color: #020617 !important;
+}
+
+.maintenance-card .som-motor-mini-label {
+    color: #020617 !important;
+    font-weight: 950 !important;
+}
+
+.maintenance-card .som-motor-mini-body {
+    background: transparent !important;
+}
+
+.maintenance-card .som-motor-param-label {
+    color: #94a3b8 !important;
+}
+
+.maintenance-card .som-motor-mini-value {
+    color: #10b981 !important;
+    text-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+}
+
+.maintenance-card .som-motor-mini-value[data-unit]::after {
+    color: #64748b !important;
+}
+
+.maintenance-card-group:hover .som-motor-mini-card {
+    border-color: #10b981 !important;
+    box-shadow: 0 0 35px rgba(16, 185, 129, 0.4) !important;
+    transform: translateY(-2px) scale(1.02);
+}
+
+.som-maintenance-mini-icon {
+    color: #020617;
+    display: flex;
+    align-items: center;
+}
+
+/* --- STATUS LED INDICATOR --- */
+.som-status-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  flex-shrink: 0;
+}
+
+.som-status-indicator.running {
+  background: #10b981;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
+  animation: led-pulse-green 2s infinite;
+}
+
+.som-status-indicator.stop {
+  background: #ef4444;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.8);
+  animation: led-pulse-red 2s infinite;
+}
+
+@keyframes led-pulse-green {
+  0% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.5); }
+  50% { box-shadow: 0 0 15px rgba(16, 185, 129, 1); }
+  100% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.5); }
+}
+
+@keyframes led-pulse-red {
+
+  0% { box-shadow: 0 0 5px rgba(239, 68, 68, 0.5); }
+  50% { box-shadow: 0 0 15px rgba(239, 68, 68, 1); }
+  100% { box-shadow: 0 0 5px rgba(239, 68, 68, 0.5); }
+}
+
+/* ==========================================
+   DEVELOPER/CONFIG MAPPING MODE OUTLINES
+   ========================================== */
+.som-config-active .som-motor-mini-card,
+.som-config-active .agrovision-monitor-card,
+.som-config-active .maintenance-card,
+.som-config-active .som-station-card {
+  outline: 1.5px dashed #3b82f6 !important;
+  outline-offset: 3px;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.4) !important;
+  cursor: pointer !important;
+}
+
+.som-config-active .som-motor-mini-card:hover,
+.som-config-active .agrovision-monitor-card:hover,
+.som-config-active .maintenance-card:hover,
+.som-config-active .som-station-card:hover {
+  outline: 1.8px solid #3b82f6 !important;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.7) !important;
+}
+
+/* ============================================================
+   BOILER HOUSE - LIQUID FLOW & STEAM FLOW STYLES
+   ============================================================ */
+
+/* â”€â”€ WATER PATH FLOW STYLES (Realistic Blue, adapted from Oil Clarification) â”€â”€ */
+
+/* Base path - tidak ada animasi, hanya glow */
+.oc-water-path-base {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Stream - animasi aliran utama (mode: liquid) */
+.oc-water-path-stream {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: none; /* solid */
+  animation: none;
+}
+
+/* Highlight - kilatan permukaan cairan (mode: liquid) */
+.oc-water-path-highlight {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.75);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 3 50; /* titik kecil, jarak jauh */
+  animation: oc-flow-highlight 1.5s linear infinite;
+}
+
+/* Dotted - aliran titik-titik bergerak (mode: dotted) */
+.oc-water-path-dotted {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.5);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 4 18;
+  animation: oc-flow-dotted 1s linear infinite;
+}
+
+@keyframes oc-flow-highlight {
+  from {
+    stroke-dashoffset: 53;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes oc-flow-dotted {
+  from {
+    stroke-dashoffset: 22;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+/* â”€â”€ STEAM PATH FLOW STYLES (Aura/Glow, adapted from Sterilizer Station) â”€â”€ */
+
+.liquid-flow-glow {
+  stroke-width: 14px;
+  stroke-linecap: round;
+  filter: blur(8px);
+  opacity: 0.2;
+}
+
+.liquid-flow-aura {
+  stroke-width: 8px;
+  stroke-linecap: round;
+  filter: blur(3px);
+  opacity: 0.6;
+}
+
+/* MODE 1: FLOWING */
+.liquid-flow--flowing .liquid-flow-glow {
+  stroke-dasharray: 20, 40;
+  animation: move-liquid 0.6s linear infinite;
+}
+
+.liquid-flow--flowing .liquid-flow-aura {
+  stroke-dasharray: 15, 45;
+  animation: move-liquid 0.6s linear infinite;
+}
+
+/* MODE 2: STANDBY */
+.liquid-flow--standby .liquid-flow-glow {
+  stroke-dasharray: none;
+  animation: pulse-glow-steam 2.5s ease-in-out infinite;
+}
+
+.liquid-flow--standby .liquid-flow-aura {
+  stroke-dasharray: none;
+  animation: pulse-glow-steam 2.5s ease-in-out infinite;
+}
+
+/* MODE 3: LIQUID (Condensate) */
+.liquid-flow--liquid .liquid-flow-glow {
+  stroke-dasharray: 20, 40;
+  opacity: 0.25;
+}
+
+.liquid-flow--liquid .liquid-flow-aura {
+  stroke-dasharray: 15, 45;
+  opacity: 0.8;
+  animation: move-liquid 0.6s linear infinite;
+}
+
+@keyframes move-liquid {
+  from { stroke-dashoffset: 300; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes pulse-glow-steam {
+  0%, 100% { opacity: 0.6; stroke-width: 8px; }
+  50% { opacity: 1.0; stroke-width: 12px; }
+}
+
+
+
+
+
+.som-station-card {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    width: 140px;
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.2);
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    z-index: 100;
+}
+
+.som-station-header {
+    background: #ffdb3b;
+    padding: 6px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #e2e8f0;
+    user-select: none;
+}
+
+.som-station-header:active {
+    cursor: grabbing !important;
+}
+
+.som-station-title {
+    color: #0f172a;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.som-station-status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #22c55e;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 4px rgba(34, 197, 94, 0.8);
+}
+
+.som-station-body {
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: #ffffff;
+}
+
+.som-station-badge-container {
+    display: none; /* Hide manual badge for this style */
+}
+
+.som-station-data-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.som-station-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 4px;
+}
+
+.som-station-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.som-station-label {
+    color: #000000;
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.som-station-value-group {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.som-station-value {
+    font-size: 15px;
+    font-weight: 950;
+    color: #0f172a;
+    font-family: 'Inter', sans-serif;
+}
+
+.som-station-unit {
+    color: #64748b;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+/* --- NEW STEAM FLOW (MOVING DASHES) --- */
+/* --- NEW STEAM FLOW (PUFFS) --- */
+.steam-flow-glow {
+  display: none;
+}
+
+.steam-flow-aura {
+  stroke-linecap: round;
+  filter: blur(2.5px);
+  stroke-dasharray: 40 60;
+  opacity: 0.95;
+  stroke-width: calc(var(--base-thickness) * 1.8);
+}
+
+.steam-flow--flowing .steam-flow-aura {
+  animation: steam-dash-move 0.15s linear infinite;
+}
+
+@keyframes steam-dash-move {
+  to {
+    stroke-dashoffset: -100;
+  }
+}

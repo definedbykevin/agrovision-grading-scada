@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.som-login-shell {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.75rem;
+  background: #f1f5f9;
+  color: #1e293b;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.som-login-panel {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.05),
+    0 0 0 1px rgba(0, 0, 0, 0.01);
+  padding: 2.5rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  box-sizing: border-box;
+}
+
+.som-login-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.som-login-logo-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.som-login-agrovision-logo {
+  height: 65px;
+  object-fit: contain;
+}
+
+.som-login-divider {
+  width: 100px;
+  height: 2px;
+  background: #f1f5f9;
+  border-radius: 2px;
+}
+
+.som-login-agrovision-logo {
+  height: 45px;
+  object-fit: contain;
+}
+
+.som-login-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.som-login-badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffdb3b;
+  box-shadow: 0 0 8px rgba(255, 219, 59, 0.6);
+}
+
+.som-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.som-login-input-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.som-login-icon {
+  position: absolute;
+  left: 1rem;
+  color: #94a3b8;
+  transition: all 0.2s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.som-login-field input {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  padding: 0.85rem 1rem 0.85rem 2.8rem;
+  font-size: 0.95rem;
+  color: #0f172a;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.som-login-field input:focus {
+  border-color: #ffdb3b;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(255, 219, 59, 0.15);
+}
+
+.som-login-input-wrapper:focus-within .som-login-icon {
+  color: #ccaf2f;
+}
+
+.som-login-button {
+  margin-top: 0.5rem;
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+  padding: 1rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: #ffdb3b;
+  color: #1e293b;
+  box-shadow: 0 10px 20px rgba(30, 41, 59, 0.15);
+  transition: all 0.2s;
+}
+
+.som-login-button:hover:not(:disabled) {
+  background: #fde047;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 25px rgba(255, 219, 59, 0.4);
+}
+
+.som-login-footer {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.premier-brand, .smart-brand {
+    color: #FF0000;
+    font-weight: 850;
+}

@@ -1,0 +1,1 @@
+"""MPD persistence package."""

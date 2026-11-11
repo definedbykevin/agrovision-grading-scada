@@ -1,0 +1,144 @@
+# ═══════════════════════════════════════════════════════════════════════
+# AGROVISION (INDUSTRIAL AI SCADA SUITE) - GITIGNORE
+# Comprehensive Rules for Enterprise Multi-Station Industrial Platform
+# ═══════════════════════════════════════════════════════════════════════
+
+# --- Environment & Credentials (CRITICAL SECURITY) ---
+.env
+.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.bak
+*.backup
+*.pem
+*.key
+*.crt
+*.pfx
+
+# Preserved examples
+!.env.example
+
+# --- User Uploads & Media ---
+uploads/
+*/uploads/
+*/*/uploads/
+*/*/*/uploads/
+**/uploads/**
+
+# --- NPM Local Config ---
+.npmrc
+
+node_modules/
+*/node_modules/
+*/*/node_modules/
+*/*/*/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.turbo/
+.vite/
+.cache/
+dist/
+build/
+
+# --- Python & AI Virtual Environments ---
+venv/
+.venv/
+*/venv/
+*/.venv/
+env/
+ENV/
+__pycache__/
+*/__pycache__/
+*/*/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+eggs/
+.eggs/
+parts/
+var/
+sdist/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+
+# --- AI Deep Learning Models & Weights (>100MB Exceeds GitHub Limit) ---
+*.pt
+*.pth
+*.bin
+*.onnx
+*.engine
+*.tflite
+*.weights
+*.h5
+*.ckpt
+captures/
+*/captures/
+static/captures/
+*/static/captures/
+
+# --- Raw Video Streams & Recordings ---
+*.mp4
+*.avi
+*.mkv
+*.mov
+*.flv
+*.wmv
+*.h264
+*.h265
+*.ts
+recordings/
+*/recordings/
+
+# --- Database Dumps, Backups & Large Archives (>100MB) ---
+backups/
+*/backups/
+*/*/backups/
+*.dump
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.7z
+*.rar
+mappings_result.json
+
+# Ignore loose/wildcard SQL dumps, BUT whitelist structured schema files in database folders
+*.sql
+!**/database/*.sql
+!**/database/**/*.sql
+
+# --- PM2, System Logs & Process State ---
+logs/
+*/logs/
+*/*/logs/
+*.log
+*.pid
+.pm2/
+dump.pm2
+ecosystem.config.cjs
+
+# --- OS & Editor Specific Files ---
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.Rhistory
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+.gemini/

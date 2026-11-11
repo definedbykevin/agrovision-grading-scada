@@ -1,0 +1,467 @@
+:root {
+    --som-bg: #f1f5f9;
+    --som-panel: #ffffff;
+    --som-border: #e2e8f0;
+    --som-accent: #f59e0b;
+    --som-text-main: #0f172a;
+    --som-text-muted: #64748b;
+    --som-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --som-glass: none;
+}
+
+.som-user-management {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--som-bg) !important;
+    color: var(--som-text-main);
+    overflow: hidden;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Header */
+.som-management-header {
+    padding: 0.6rem 2rem;
+    background: #ffffff;
+    border-bottom: 2px solid #ffdb3b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.som-management-header::after {
+    display: none;
+}
+
+.som-management-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 950;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #0f172a 0%, #ffdb3b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Tab System */
+.som-management-tabs {
+    display: flex;
+    gap: 2px;
+    background: #f1f5f9;
+    padding: 3px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+.som-tab-btn {
+    padding: 4px 12px;
+    border: none;
+    background: transparent;
+    color: #64748b;
+    font-size: 0.65rem;
+    font-weight: 800;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+}
+
+.som-tab-btn:hover {
+    background: #fde047 !important;
+    color: #0f172a !important;
+}
+
+.som-tab-btn.active {
+    background: #ffdb3b !important;
+    color: #0f172a !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    font-weight: 900 !important;
+}
+
+/* Content Area */
+.som-management-content {
+    flex: 1;
+    padding: 1.5rem 2rem;
+    background: var(--som-bg) !important;
+    overflow-y: auto;
+}
+
+.som-users-section,
+.som-roles-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.som-section-header h3 {
+    font-size: 1rem;
+    font-weight: 950;
+    margin: 0;
+    color: #0f172a;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.som-section-subtitle {
+    font-size: 0.7rem;
+    color: var(--som-text-muted);
+    margin-top: 0.2rem;
+}
+
+/* Table Design */
+.som-table-container {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.som-management-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.som-management-table th {
+    background: #ffdb3b;
+    padding: 0.6rem 1rem;
+    text-align: left;
+    font-size: 0.65rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #0f172a;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.som-table-row {
+    border-bottom: 1px solid var(--som-border);
+    transition: all 0.2s;
+}
+
+.som-table-row:hover {
+    background: #f8fafc !important;
+}
+
+.som-management-table td {
+    padding: 0.6rem 1rem;
+    font-size: 0.75rem;
+    color: var(--som-text-main);
+}
+
+/* Avatar Sm */
+.som-user-avatar-sm {
+    width: 28px;
+    height: 28px;
+    background: #fffbeb;
+    color: var(--som-accent);
+    border: 1px solid var(--som-accent);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+}
+
+.som-user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.som-username-text {
+    font-weight: 800;
+    font-size: 0.75rem;
+    display: block;
+}
+
+.som-user-id-text {
+    font-size: 0.65rem;
+    color: var(--som-text-muted);
+    font-family: monospace;
+}
+
+/* Role Pill Styling */
+.som-role-pill {
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+    font-size: 0.55rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.som-pill-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 8px currentColor;
+}
+
+.som-role-pill.admin {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.som-role-pill.supervisor {
+    background: rgba(6, 182, 212, 0.1);
+    color: #06b6d4;
+    border: 1px solid rgba(6, 182, 212, 0.2);
+}
+
+.som-role-pill.operator {
+    background: rgba(148, 163, 184, 0.1);
+    color: #cbd5e1;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.som-role-pill.mill_manager {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.som-role-pill.electrical_automation {
+    background: rgba(139, 92, 246, 0.1);
+    color: #8b5cf6;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.som-role-pill.developer {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+
+/* Buttons */
+.som-btn-primary {
+    background: #ffdb3b !important;
+    color: #0f172a !important;
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    font-weight: 900;
+    font-size: 0.65rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 6px rgba(255, 219, 59, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.som-btn-primary:hover {
+    box-shadow: 0 8px 15px rgba(255, 219, 59, 0.4);
+    transform: translateY(-2px);
+}
+
+.som-btn-secondary {
+    background: #ffffff !important;
+    border: 1px solid var(--som-border);
+    color: var(--som-text-muted) !important;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.som-action-btn {
+    background: #ffffff;
+    border: 1px solid var(--som-border);
+    color: var(--som-text-muted);
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.som-btn-edit:hover {
+    background: var(--som-accent);
+    color: #0f172a;
+    border-color: var(--som-accent);
+}
+
+.som-btn-delete:hover {
+    background: #ff4444;
+    color: #fff;
+    border-color: #ff4444;
+}
+
+/* Roles Grid */
+.som-roles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.som-role-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.som-role-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border-color: #ffdb3b;
+}
+
+.som-role-card-header {
+    padding: 0.8rem 1rem;
+    border-bottom: 2px solid #e2e8f0;
+    background: #ffdb3b;
+    border-radius: 7px 7px 0 0;
+}
+
+.som-role-card-header h4 {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: #0f172a;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Modals */
+
+.agrovision-role-name {
+    margin: 0;
+    color: #0f172a;
+    font-size: 0.85rem;
+    font-weight: 900;
+}
+
+.agrovision-role-desc {
+    margin: 0.2rem 0 0;
+    font-size: 0.65rem;
+    color: #64748b;
+}
+
+.agrovision-perms-list {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 250px;
+    overflow-y: auto;
+    border: 1px solid #e2e8f0;
+    padding: 8px;
+    border-radius: 6px;
+    background: #f8fafc;
+}
+
+.agrovision-perm-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.agrovision-perm-item.assigned {
+    background: rgba(255, 219, 59, 0.1);
+}
+
+/* Added Modal Styles */
+.som-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 150px 20px;
+    z-index: 99999;
+}
+
+.som-management-modal {
+    background: var(--som-panel);
+    border: 1px solid var(--som-border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    width: 320px;
+    max-width: 90vw;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+.som-management-modal h3 {
+    margin: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--som-accent);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.som-form-group {
+    margin-bottom: 1rem;
+}
+
+.som-form-group label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--som-text-muted);
+    text-transform: uppercase;
+}
+
+.som-form-group input,
+.som-form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    background: #ffffff;
+    border: 1px solid var(--som-border);
+    border-radius: 4px;
+    color: var(--som-text-main);
+    font-family: inherit;
+    font-size: 0.75rem;
+    transition: all 0.3s;
+}
+
+.som-form-group input:focus,
+.som-form-group select:focus {
+    outline: none;
+    border-color: var(--som-accent);
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+.som-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}

@@ -1,0 +1,364 @@
+.som-wtp-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f8fafc;
+    overflow: hidden;
+}
+
+.som-station-header {
+    padding: 0.5rem 2rem;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid #ffdb3b;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+
+.som-wtp-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 950;
+    background: linear-gradient(135deg, #0f172a 0%, #ffdb3b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    text-shadow: none;
+    margin-right: 30px;
+    border-right: 2px solid #e2e8f0;
+    padding-right: 1.5rem;
+    white-space: nowrap;
+}
+
+.som-station-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 950;
+    background: linear-gradient(135deg, #0f172a 0%, #ffdb3b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.som-header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+/* --- VIEW TOGGLE --- */
+.som-view-toggle-container {
+    display: flex;
+    background: #f1f5f9;
+    padding: 4px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.som-view-btn {
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #64748b;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+    letter-spacing: 0.05em;
+}
+
+.som-view-btn.active {
+    background: #ffdb3b;
+    color: #0f172a;
+    box-shadow: 0 2px 5px rgba(255, 219, 59, 0.4);
+}
+
+.som-view-btn:hover:not(.active):not(.locked) {
+    color: #0f172a;
+    background: #ffffff;
+}
+
+/* Main Content Layout */
+.som-wtp-content {
+    flex: 1;
+    padding: 0;
+    display: flex;
+    overflow: hidden;
+}
+
+.station-svg-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.som-wtp-visual-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #f8fafc;
+}
+
+.pulsate { animation: pulsate-glow 2s infinite ease-in-out; }
+
+/* --- SHARED MINI CARD STYLING --- */
+.som-boiler-mini-card {
+  background: #ffffff !important;
+  backdrop-filter: blur(8px);
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 10px !important;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05) !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 140px;
+  width: fit-content;
+  pointer-events: auto;
+  user-select: none;
+  overflow: hidden;
+}
+
+.som-boiler-mini-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important;
+  border-color: #ffdb3b !important;
+}
+
+.som-boiler-mini-header {
+  background: #ffdb3b !important;
+  padding: 4px 10px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  border-bottom: 2px solid #e2e8f0 !important;
+}
+
+.som-boiler-mini-tag {
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.05em;
+  color: #0f172a !important;
+  text-transform: uppercase;
+}
+
+.som-boiler-mini-body {
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.som-boiler-mini-param {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.som-boiler-mini-label {
+  font-size: 9px !important;
+  color: #64748b !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  flex: 1;
+}
+
+.som-boiler-mini-value {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 900 !important;
+  color: #0f172a !important;
+  text-align: right;
+  line-height: 1;
+  text-shadow: none !important;
+}
+
+.som-boiler-mini-unit {
+  font-size: 10px !important;
+  color: #94a3b8 !important;
+  font-weight: 600 !important;
+  margin-left: 2px;
+}
+
+.som-boiler-status-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #e2e8f0;
+}
+
+.som-boiler-status-indicator.active {
+  background: #f59e0b;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.4);
+}
+
+/* Editable Mode Badge */
+.tag-config-badge {
+    background: rgba(15, 23, 42, 0.1);
+    color: #0f172a;
+    border: 1px dashed rgba(15, 23, 42, 0.4);
+    font-size: 8px;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.som-editable {
+    border: 1px dashed #3b82f6 !important;
+}
+.som-editable:hover {
+    border: 1px solid #3b82f6 !important;
+    background: rgba(59, 130, 246, 0.05) !important;
+}
+
+@keyframes pulsate-glow {
+  0% { filter: drop-shadow(0 0 5px rgba(16, 185, 129, 0.2)); }
+  50% { filter: drop-shadow(0 0 15px rgba(16, 185, 129, 0.5)); }
+  100% { filter: drop-shadow(0 0 5px rgba(16, 185, 129, 0.2)); }
+}
+
+/* ── DASHBOARD SUMMARY CARD INNER STYLES ── */
+
+.som-summary-section {
+    margin-bottom: 10px;
+}
+
+.som-section-label {
+    font-size: 8px;
+    font-weight: 900;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 3px 0 5px;
+    border-bottom: 1px solid #ffdb3b;
+    margin-bottom: 6px;
+    display: block;
+}
+
+/* Level monitoring rows */
+.som-level-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.som-level-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 2px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.som-level-item:last-child {
+    border-bottom: none;
+}
+
+.som-level-label {
+    font-size: 9px;
+    font-weight: 700;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    flex: 1;
+}
+
+.som-level-value {
+    font-size: 13px;
+    font-weight: 900;
+    color: #0f172a;
+    font-family: 'Inter', sans-serif;
+}
+
+.som-level-value small {
+    font-size: 9px;
+    font-weight: 600;
+    color: #94a3b8;
+    margin-left: 2px;
+}
+
+/* Dosing/flow list rows */
+.som-dosing-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.som-dosing-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 3px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.som-dosing-item:last-child {
+    border-bottom: none;
+}
+
+.som-dosing-label {
+    font-size: 9px;
+    font-weight: 700;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    flex: 1;
+}
+
+.som-dosing-value {
+    font-size: 12px;
+    font-weight: 900;
+    color: #0f172a;
+    font-family: 'Inter', sans-serif;
+    text-align: right;
+}
+
+.som-dosing-unit {
+    font-size: 9px;
+    font-weight: 600;
+    color: #94a3b8;
+    margin-left: 2px;
+}
+
+
+
+/* Highlighted Red Stats - overrides */
+.som-boiler-mini-card[style*="border: 1px solid #ef4444"] {
+    background: #ffffff !important;
+    border-color: #ef4444 !important;
+}
+.som-boiler-mini-card[style*="border: 1px solid #ef4444"] .som-boiler-mini-header {
+    background: #fee2e2 !important;
+    border-bottom: 2px solid #ef4444 !important;
+}
+.som-boiler-mini-card[style*="border: 1px solid #ef4444"] .som-boiler-mini-tag {
+    color: #ef4444 !important;
+}
+
+/* Highlighted Green Stats - overrides */
+.som-boiler-mini-card[style*="border: 2px solid #10b981"] {
+    background: #ffffff !important;
+    border-color: #10b981 !important;
+}
+.som-boiler-mini-card[style*="border: 2px solid #10b981"] .som-boiler-mini-header {
+    background: #dcfce7 !important;
+    border-bottom: 2px solid #10b981 !important;
+}
+.som-boiler-mini-card[style*="border: 2px solid #10b981"] .som-boiler-mini-tag {
+    color: #10b981 !important;
+}

@@ -1,0 +1,162 @@
+/* ── Reuse base design system from Sterilizer PlcConfigView ── */
+@import "../../../sterilizer/frontend/PlcConfigView.css";
+
+/* ── Camera count badge next to title ── */
+.ccam-count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: rgba(14, 165, 233, 0.15);
+  color: var(--plc-primary);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  border: 1px solid rgba(14, 165, 233, 0.3);
+}
+
+/* ── RTSP URL cell: truncate long URLs ── */
+.ccam-rtsp-badge {
+  display: inline-block;
+  max-width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.78rem;
+}
+
+/* ─────────────────────────────────────
+   STATUS PILL  (Active / Inactive)
+───────────────────────────────────── */
+.ccam-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.ccam-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Active */
+.ccam-status-active {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border-color: rgba(16, 185, 129, 0.35);
+}
+.ccam-status-active .ccam-status-dot {
+  background: #10b981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.5);
+  animation: ccam-pulse 2s infinite;
+}
+.ccam-status-active:hover {
+  background: rgba(16, 185, 129, 0.18);
+  border-color: rgba(16, 185, 129, 0.6);
+  transform: translateY(-1px);
+}
+
+/* Inactive */
+.ccam-status-inactive {
+  background: rgba(239, 68, 68, 0.08);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+.ccam-status-inactive .ccam-status-dot {
+  background: #ef4444;
+}
+.ccam-status-inactive:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.5);
+  transform: translateY(-1px);
+}
+
+@keyframes ccam-pulse {
+  0%   { transform: scale(1);   opacity: 1; }
+  50%  { transform: scale(1.5); opacity: 0.4; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+/* ─────────────────────────────────────
+   TOGGLE SWITCH  (in modal form)
+───────────────────────────────────── */
+.ccam-toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.ccam-toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.ccam-toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.ccam-toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: #cbd5e1;
+  border-radius: 999px;
+  transition: background 0.25s;
+}
+
+.ccam-toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 4px;
+  bottom: 4px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+}
+
+.ccam-toggle-switch input:checked + .ccam-toggle-slider {
+  background: #10b981;
+}
+
+.ccam-toggle-switch input:checked + .ccam-toggle-slider::before {
+  transform: translateX(20px);
+}
+
+.ccam-toggle-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.ccam-toggle-label-active {
+  color: #10b981;
+}
+
+.ccam-toggle-label-inactive {
+  color: #94a3b8;
+}

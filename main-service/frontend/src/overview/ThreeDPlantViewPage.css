@@ -1,0 +1,324 @@
+/* ══════════════════════════════════════════════════════════
+   AGROVISION PREMIUM MONITORING - FIXED VIEWPORT SCALING
+   Technology inspired by AgroVision Dashboard Fix
+   ══════════════════════════════════════════════════════════ */
+
+.som-overview-immersive-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  /* Changed to white */
+  overflow: hidden;
+}
+
+.som-immersive-main {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.som-immersive-layout {
+  flex: 1;
+  display: flex;
+}
+
+.som-immersive-canvas-body {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #ffffff;
+  padding: 5px 0;
+}
+
+/* ── SVG CANVAS SCALING ── */
+.som-immersive-svg-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.som-immersive-ultra-fit-shell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  /* Smooth corners */
+}
+
+.som-immersive-bg-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.som-immersive-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Switched to cover for scaling effect */
+  transform: scale(1.02);
+  /* Slight scale/zoom as requested */
+  transition: transform 0.5s ease;
+}
+
+.som-immersive-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+.som-immersive-content-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.som-immersive-content-overlay>* {
+  pointer-events: all;
+}
+
+/* ── Modern Monitoring Cards (AgroVision Premium) ── */
+
+.som-monitor-card {
+  position: absolute;
+  width: auto;
+  min-width: 240px;
+  max-width: 280px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  z-index: 10;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 2px solid rgba(255, 219, 59, 0.5); /* Subtle yellow outline initially */
+  white-space: nowrap;
+}
+
+/* Glass glare effect setup */
+.som-monitor-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg);
+  transition: all 0.6s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.som-monitor-card:hover::after {
+  left: 150%;
+  transition: all 0.6s ease;
+}
+
+.som-monitor-card:hover {
+  transform: translateY(-8px) scale(1.04); /* More zoom on hover */
+  box-shadow: 0 20px 40px rgba(255, 219, 59, 0.2), 0 0 15px rgba(255, 219, 59, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: #ffdb3b; /* Solid yellow on hover */
+}
+
+.som-monitor-card.is-station {
+  cursor: pointer;
+}
+
+.som-monitor-card.is-station:hover {
+  border-color: #ffdb3b;
+  box-shadow: 0 24px 50px rgba(255, 219, 59, 0.3), 0 0 25px rgba(255, 219, 59, 0.6), inset 0 0 0 2px #ffdb3b; /* Stronger glow for interactive cards */
+}
+
+.som-card-header {
+  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  margin-bottom: 0px;
+  border-bottom: 4px solid #ffdb3b;
+}
+
+.som-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.8);
+  animation: som-pulse-green 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes som-pulse-green {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+  50% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.som-card-title {
+  font-size: 14px;
+  font-weight: 900;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.som-card-body {
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: transparent;
+}
+
+.som-data-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 1;
+  padding: 0px;
+  margin: 0px;
+  gap: 16px;
+  border-bottom: 2px dotted rgba(0, 0, 0, 0.1);
+  padding-bottom: 4px;
+}
+.som-data-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.som-label,
+.som-value {
+  white-space: nowrap;
+}
+
+.som-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+}
+
+.som-value {
+  font-size: 15px;
+  font-weight: 900;
+  color: #0f172a;
+  font-family: 'Inter', sans-serif;
+}
+
+.som-value.orange {
+  color: #ea580c;
+}
+
+/* ── Main Performance Score Card (Unified & Clean Style) ── */
+
+.som-main-score-card {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: auto;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 0;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  z-index: 20;
+  overflow: hidden;
+  border: 4px solid #ffdb3b;
+  white-space: nowrap;
+}
+
+.som-score-header {
+  background: transparent;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 2px dashed rgba(0, 0, 0, 0.1);
+  gap: 32px;
+}
+
+.som-score-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1e293b;
+  line-height: 1;
+}
+
+.som-score-value {
+  font-size: 28px;
+  font-weight: 900;
+  color: #059669;
+  line-height: 1;
+}
+
+.som-score-footer {
+  padding: 12px 24px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  background: transparent;
+  gap: 32px;
+}
+
+.som-score-footer .som-label {
+  font-size: 18px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.som-score-footer .som-value {
+  font-size: 22px;
+  font-weight: 900;
+  color: #ea580c;
+  line-height: 1;
+}
+
+/* Dashboard shell override to ensure full immersive fix */
+body:has(.som-overview-immersive-wrapper) .som-dashboard-main {
+  padding: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+body:has(.som-overview-immersive-wrapper) .som-station-page-shell {
+  padding: 0 !important;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.som-monitor-card.is-locked {
+  cursor: not-allowed !important;
+  opacity: 0.65 !important;
+  filter: grayscale(40%) !important;
+}
+
+.som-monitor-card.is-locked:hover {
+  transform: none !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+.som-monitor-card.is-locked .som-card-header {
+  background: #cbd5e1 !important;
+}

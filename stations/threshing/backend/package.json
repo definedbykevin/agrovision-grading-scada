@@ -1,0 +1,35 @@
+{
+  "name": "@kip/station-threshing-backend",
+  "version": "1.0.0",
+  "description": "Station Backend — Threshing — AgroVision Industrial SCADA",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "db:init": "node setup-db.js",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.45.4",
+    "exceljs": "^4.4.0",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.2.0",
+    "node-opcua-client": "^2.175.2",
+    "node-snap7": "^1.0.9",
+    "pg": "^8.13.1",
+    "redis": "^4.7.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.11",
+    "nodemon": "^3.1.0"
+  },
+  "overrides": {
+    "hexy": "0.3.3"
+  }
+}

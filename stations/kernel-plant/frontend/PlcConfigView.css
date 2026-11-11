@@ -1,0 +1,422 @@
+:root {
+    --plc-primary: #0ea5e9;
+    --plc-primary-hover: #0284c7;
+    --plc-bg-surface: #ffffff;
+    --plc-border: rgba(0, 0, 0, 0.08);
+    --plc-text-muted: #64748b;
+    --plc-success: #10b981;
+    --plc-warning: #f59e0b;
+    --scada-bg-glass: rgba(255, 255, 255, 0.8);
+    --text-primary: #1e293b;
+}
+
+.som-config-page {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 100vh;
+    overflow-y: auto;
+    /* Allow Scrolling */
+    display: block;
+    /* Ensure block layout for scrolling */
+}
+
+/* Ensure global layout doesn't clip this page */
+#root,
+.app-container,
+.main-content {
+    overflow: auto !important;
+}
+
+/* Header Section */
+.som-config-header-group {
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.som-config-title-area h2 {
+    font-size: 1.875rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+
+.som-config-subtitle {
+    color: var(--plc-text-muted);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+
+/* Modern Tab Switcher */
+.som-tab-container {
+    background: var(--bg-tertiary);
+    padding: 4px;
+    border-radius: 10px;
+    display: flex;
+    gap: 2px;
+    border: 1px solid var(--plc-border);
+}
+
+.som-tab-btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    background: transparent;
+    color: var(--plc-text-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.som-tab-btn.active {
+    background: var(--bg-secondary);
+    color: var(--plc-primary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+/* Main Dashboard Card */
+.som-config-main-card {
+    background: var(--plc-bg-surface);
+    border-radius: 16px;
+    border: 1px solid var(--plc-border);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.som-card-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--plc-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(148, 163, 184, 0.02);
+}
+
+.som-card-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+
+.som-card-title svg {
+    color: var(--plc-primary);
+}
+
+/* Premium Table Styling */
+.som-table-wrapper {
+    overflow-x: auto;
+}
+
+.som-modern-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.som-modern-table th {
+    text-align: left;
+    padding: 1rem 2rem;
+    background: rgba(148, 163, 184, 0.05);
+    color: var(--plc-text-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.6875rem;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--plc-border);
+}
+
+.som-modern-table td {
+    padding: 1.25rem 2rem;
+    border-bottom: 1px solid var(--plc-border);
+    color: var(--text-primary);
+}
+
+
+.som-modern-table tr:last-child td {
+    border-bottom: none;
+}
+
+.som-modern-table tr:hover td {
+    background: rgba(2, 132, 199, 0.02);
+}
+
+/* Data Elements */
+.som-device-name {
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.som-device-meta {
+    font-size: 0.75rem;
+    color: var(--plc-text-muted);
+    font-weight: 400;
+    margin-top: 2px;
+}
+
+.som-ip-badge {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    color: var(--plc-primary);
+    background: rgba(2, 132, 199, 0.08);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.8125rem;
+}
+
+.som-topology-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-tertiary);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+.som-status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+}
+
+.som-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.som-status-connected {
+    color: #10b981;
+    /* Green */
+}
+
+.som-status-connected .som-status-dot {
+    background: #10b981;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+    animation: som-pulse 2s infinite;
+}
+
+.som-status-disconnected {
+    color: #ef4444;
+    /* Red */
+}
+
+.som-status-disconnected .som-status-dot {
+    background: #ef4444;
+}
+
+.som-status-disabled {
+    color: var(--plc-text-muted);
+    /* Gray */
+}
+
+.som-status-disabled .som-status-dot {
+    background: #64748b;
+}
+
+@keyframes som-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.4);
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Buttons & Actions */
+.btn-premium {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+}
+
+.btn-premium-primary {
+    background: var(--plc-primary);
+    color: white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-premium-primary:hover {
+    background: var(--plc-primary-hover);
+    transform: translateY(-1px);
+}
+
+.action-icon-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--plc-border);
+    background: transparent;
+    color: var(--plc-text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.action-icon-btn:hover {
+    border-color: var(--plc-primary);
+    color: var(--plc-primary);
+    background: rgba(2, 132, 199, 0.05);
+}
+
+.action-icon-btn.delete:hover {
+    border-color: #ef4444;
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.05);
+}
+
+/* Modals */
+.som-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.som-premium-modal {
+    background: var(--plc-bg-surface);
+    width: 100%;
+    max-width: 600px;
+    border-radius: 20px;
+    border: 1px solid var(--plc-border);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    animation: modalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+@keyframes modalPop {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.som-modal-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--plc-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.som-modal-header h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+}
+
+
+.som-modal-body {
+    padding: 2rem;
+    max-height: 65vh;
+    overflow-y: auto;
+}
+
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.form-group-full {
+    grid-column: span 2;
+}
+
+.som-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--plc-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+}
+
+.som-input,
+.som-select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: var(--bg-tertiary);
+    border: 1.5px solid var(--plc-border);
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+    transition: all 0.2s;
+}
+
+
+.som-input:focus,
+.som-select:focus {
+    outline: none;
+    border-color: var(--plc-primary);
+    background: var(--bg-secondary);
+    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.1);
+}
+
+.som-modal-footer {
+    padding: 1.25rem 2rem;
+    background: rgba(148, 163, 184, 0.05);
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    border-top: 1px solid var(--plc-border);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--plc-text-muted);
+    border: 1px solid var(--plc-border);
+}
+
+.btn-ghost:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}

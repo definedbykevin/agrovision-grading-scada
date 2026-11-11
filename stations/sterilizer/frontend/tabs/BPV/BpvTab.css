@@ -1,0 +1,24 @@
+/* ==========================================
+   BPV SPECIFIC STYLES (AGROVISION)
+   ========================================== */
+.bpv-modern-control-group:hover foreignObject > div,
+g[onClick*="bpv_status"]:hover foreignObject > div {
+  border-color: #ffdb3b !important;
+  box-shadow: 0 0 30px rgba(255, 219, 59, 0.3) !important;
+  transform: translateY(-2px);
+}
+
+/* Override AgroVision defaults for AGROVISION BPV */
+.bpv-modern-control-group foreignObject > div {
+  transition: all 0.3s ease;
+}
+
+@keyframes pulse-opacity-glow {
+  0% { opacity: 0.2; }
+  50% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+.pulsing-flow-anim {
+  animation: pulse-opacity-glow 2.5s ease-in-out infinite;
+}

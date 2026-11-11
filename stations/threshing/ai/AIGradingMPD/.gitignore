@@ -1,0 +1,7 @@
+.env
+config/classification_config.runtime.json
+models/*.pt
+models/*.onnx
+__pycache__/
+*.py[cod]
+.pytest_cache/

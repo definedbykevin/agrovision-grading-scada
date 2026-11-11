@@ -1,0 +1,130 @@
+.stability-container {
+    width: 100%;
+    height: calc(100vh - 80px);
+    background: #f8fafc;
+    color: #000000;
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* No scroll */
+}
+
+.scada-report-header {
+    background: #ffffff;
+    border-bottom: 2px solid #e2e8f0;
+    padding: 8px 24px;
+    /* Reduced */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.scada-report-title h1 {
+    font-size: 0.9rem;
+    /* Smaller */
+    font-weight: 800;
+    color: #3b82f6;
+    margin: 0;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.scada-stats-strip {
+    display: flex;
+    background: #f1f5f9;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 10px 24px;
+    /* Reduced */
+    gap: 30px;
+}
+
+.scada-stat-node label {
+    font-size: 0.6rem;
+    color: #64748b;
+}
+
+.scada-stat-node .val {
+    font-size: 1rem;
+    /* Smaller */
+    font-weight: 800;
+    color: #000000;
+}
+
+.table-scroll-area {
+    flex: 1;
+    overflow: hidden;
+    /* No scroll */
+    padding: 10px 20px;
+}
+
+.stability-grid {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 2px;
+}
+
+.stability-grid th {
+    background: #f8fafc;
+    padding: 8px 16px;
+    font-size: 0.65rem;
+    color: #64748b;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.stability-grid td {
+    background: #ffffff;
+    padding: 8px 16px;
+    font-size: 0.75rem;
+    color: #000000 !important;
+    border-top: 1px solid #f1f5f9;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+/* Stability Indicator */
+.stability-meter {
+    width: 100px;
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.stability-fill {
+    height: 100%;
+    transition: width 1s ease-in-out;
+}
+
+.stable-green {
+    background: #10b981;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+
+.stable-yellow {
+    background: #f59e0b;
+}
+
+.stable-red {
+    background: #ef4444;
+}
+
+.trend-arrow {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.btn-scada-action {
+    background: transparent;
+    border: 1px solid #3b82f6;
+    color: #3b82f6;
+    padding: 6px 16px;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-scada-action:hover {
+    background: #3b82f6;
+    color: #fff;
+}

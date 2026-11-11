@@ -1,0 +1,444 @@
+/* ==========================================================================
+   DAF / OSR STATION SETTINGS — AGROVISION PREMIUM THEME (LIGHT)
+   Matching Sterilizer, Kernel, Press, Threshing Settings style
+   ========================================================================== */
+
+/* Main page container */
+.som-daf-settings-page {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  min-height: 0;
+  background-color: #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+  color: #0f172a;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Canvas / Scrollable area */
+.som-daf-settings-canvas {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  box-sizing: border-box;
+}
+
+/* Custom scrollbar */
+.som-daf-settings-canvas::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.som-daf-settings-canvas::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+
+.som-daf-settings-canvas::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.som-daf-settings-canvas::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* 2 Large Cards Grid (Each 50% screen width) */
+.som-daf-settings-grid-2col {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Individual Card (AgroVision White Card) */
+.som-daf-card {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Frame Kiri-Kanan di dalam AE Tank (Water level Control & Surplus Valve Setting) */
+.som-daf-subgrid-2col {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  border-top: 1px solid #e2e8f0;
+  width: 100%;
+}
+
+.som-daf-subcard {
+  display: flex;
+  flex-direction: column;
+}
+
+.som-daf-subcard:first-child {
+  border-right: 1px solid #e2e8f0;
+}
+
+/* Card Main Header (AgroVision Gold Bar) */
+.som-daf-card-header {
+  background: #ffdb3b;
+  border-bottom: 1px solid #cbd5e1;
+  padding: 5px 12px;
+  text-align: center;
+}
+
+.som-daf-card-title {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 950;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Section Sub-Header */
+.som-daf-section-header {
+  background: #f8fafc;
+  padding: 5px 10px;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Table */
+.som-daf-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.som-daf-table th {
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 9.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 5px 6px;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+}
+
+.som-daf-table td {
+  padding: 4px 8px;
+  border: 1px solid #e2e8f0;
+  color: #1e293b;
+  font-size: 11px;
+  vertical-align: middle;
+  background: #ffffff;
+}
+
+.som-daf-label-cell {
+  color: #334155;
+  font-weight: 700;
+  white-space: nowrap;
+  text-align: left;
+  padding-left: 10px !important;
+}
+
+.som-daf-val-cell {
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Wrapper agar nilai angka dan satuan berdampingan rapat tanpa void */
+.som-daf-val-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  min-width: 80px;
+}
+
+.som-daf-pos-cell {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.som-daf-empty-pos {
+  background: #f8fafc;
+}
+
+/* Standard/Plain Value (Tanpa background kuning) */
+.som-daf-highlight-val,
+.som-daf-plain-val {
+  background: transparent;
+  color: #0f172a;
+  font-weight: 850;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 11.5px;
+  letter-spacing: 0.01em;
+  display: inline-block;
+  min-width: 44px;
+  min-height: 18px;
+  line-height: 18px;
+  text-align: right;
+  border: none;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.som-daf-pos-cell .som-daf-highlight-val,
+.som-daf-pos-cell .som-daf-plain-val {
+  text-align: center;
+}
+
+.som-daf-unit {
+  color: #64748b;
+  font-size: 9.5px;
+  font-weight: 700;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ==========================================================================
+   FOOTER ACTIONS TOOLBAR (Standard AgroVision Theme - matching Sterilizer/Kernel)
+   ========================================================================== */
+.som-settings-footer-actions {
+  background-color: #ffffff;
+  border-top: 1px solid #cbd5e1;
+  padding: 4px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.03);
+  z-index: 10;
+}
+
+.som-footer-left-group,
+.som-footer-right-group {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* Unified Footer Button Base */
+.som-footer-btn {
+  height: 24px;
+  padding: 0 12px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  box-sizing: border-box;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  user-select: none;
+}
+
+.som-footer-btn svg {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+}
+
+/* Primary Action: Save Settings (AgroVision Amber) */
+.som-btn-save-settings {
+  background-color: #f59e0b;
+  border: 1px solid #f59e0b;
+  color: #ffffff;
+}
+
+.som-btn-save-settings:hover:not(:disabled) {
+  background-color: #d97706;
+  border-color: #d97706;
+}
+
+.som-btn-save-settings:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Secondary Action: Cancel */
+.som-btn-cancel-settings {
+  background-color: #475569;
+  border: 1px solid #475569;
+  color: #ffffff;
+}
+
+.som-btn-cancel-settings:hover {
+  background-color: #334155;
+}
+
+/* Warning Action: Restore Default */
+.som-btn-restore-settings {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+}
+
+.som-btn-restore-settings:hover {
+  background-color: #f1f5f9;
+}
+
+/* Green Action: Export Settings */
+.som-btn-export-settings {
+  background-color: #15803d;
+  border: 1px solid #15803d;
+  color: #ffffff;
+}
+
+.som-btn-export-settings:hover {
+  background-color: #166534;
+}
+
+/* Purple Action: Import Settings */
+.som-btn-import-settings {
+  background-color: #6d28d9;
+  border: 1px solid #6d28d9;
+  color: #ffffff;
+}
+
+.som-btn-import-settings:hover {
+  background-color: #5b21b6;
+}
+
+/* ==========================================================================
+   EDITABLE & STAGED SETTINGS CELL STYLES
+   ========================================================================== */
+.som-daf-plain-val,
+.som-daf-highlight-val {
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border-radius: 4px;
+}
+
+.som-daf-plain-val:hover:not([style*="outline"]),
+.som-daf-highlight-val:hover:not([style*="outline"]) {
+  background: #fef9c3 !important;
+  color: #854d0e !important;
+}
+
+.som-daf-plain-val.is-staged,
+.som-daf-highlight-val.is-staged {
+  background: #fef08a !important;
+  color: #854d0e !important;
+  font-weight: 900 !important;
+  box-shadow: 0 0 0 1.5px #eab308 !important;
+  padding: 1px 5px !important;
+}
+
+/* Badge count on Save button */
+.som-btn-save-badge {
+  background: #ffffff;
+  color: #d97706;
+  font-size: 9px;
+  font-weight: 900;
+  padding: 1px 5px;
+  border-radius: 9999px;
+  margin-left: 4px;
+}
+
+/* ==========================================================================
+   NUMERIC KEYPAD (PORTAL OVERLAY) — AGROVISION GOLDEN THEME
+   ========================================================================== */
+.som-numeric-keypad-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(3px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.som-numeric-keypad {
+  background: #ffffff;
+  border: 1.5px solid #ffdb3b;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  width: 320px;
+  overflow: hidden;
+  animation: somKeypadPop 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@keyframes somKeypadPop {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.som-numeric-keypad-header {
+  background: #ffdb3b;
+  padding: 12px 16px;
+  border-bottom: 1.5px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.som-numeric-keypad-label {
+  color: #0f172a;
+  font-weight: 900;
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 8px;
+}
+
+.som-numeric-keypad-display {
+  background: #fffdf5;
+  margin: 12px 14px 6px 14px;
+  border: 1.5px solid #ffdb3b;
+  border-radius: 10px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 8px;
+  min-height: 48px;
+  box-sizing: border-box;
+}
+
+.som-numeric-keypad-value {
+  font-size: 28px;
+  font-weight: 950;
+  color: #0f172a;
+  letter-spacing: 0.02em;
+}
+
+.som-numeric-keypad-unit {
+  font-size: 13px;
+  font-weight: 800;
+  color: #64748b;
+}

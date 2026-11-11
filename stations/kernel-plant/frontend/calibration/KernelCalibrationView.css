@@ -1,0 +1,121 @@
+/* ==========================================================================
+   KERNEL CALIBRATION VIEW - AGROVISION PREMIUM THEME
+   ========================================================================== */
+
+.kernel-calib-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Base Card using AGROVISION style */
+.kernel-calib-card {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.kernel-calib-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 12px 12px;
+  padding: 12px;
+}
+
+.kernel-calib-table th {
+  padding: 0;
+  vertical-align: bottom;
+}
+
+/* AgroVision Premium Header Badge */
+.calib-header-badge {
+  background-color: #ffdb3b; /* Industrial Amber */
+  color: #0f172a; /* Slate 900 */
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  border: 1px solid #cbd5e1;
+}
+
+.calib-sub-header {
+  font-size: 10px;
+  font-weight: 800;
+  color: #475569;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.pv-header {
+  font-size: 11px;
+  font-weight: 800;
+  color: #0f172a;
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 10px !important;
+}
+
+.kernel-calib-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: #0f172a;
+  white-space: nowrap;
+}
+
+/* Value Display Box matching AGROVISION setting style */
+.kernel-calib-valbox {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  padding: 6px 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 70px;
+  cursor: default;
+  transition: all 0.2s ease;
+}
+
+.kernel-calib-valbox.editable {
+  cursor: pointer;
+  border-color: #ffe082;
+}
+
+.kernel-calib-valbox.editable:hover {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.15);
+}
+
+.kernel-calib-valbox.edited {
+  background-color: #fffbeb;
+  border-color: #f59e0b;
+}
+
+.kernel-calib-valbox .val {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: #0f172a; /* Slate 900 (Black) */
+  flex: 1;
+  text-align: right;
+}
+
+.kernel-calib-valbox .unit {
+  font-size: 10px;
+  color: #64748b;
+  font-weight: 700;
+  width: 25px;
+  text-align: left;
+}

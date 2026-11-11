@@ -1,0 +1,3 @@
+/* AgroVision Core Theme — import this in main.jsx or App.jsx */
+@import './global.css';
+@import './theme.css';

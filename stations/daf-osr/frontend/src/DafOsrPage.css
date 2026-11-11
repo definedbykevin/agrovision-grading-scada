@@ -1,0 +1,190 @@
+/* ==========================================================================
+   DAF / OSR STATION — AGROVISION PREMIUM THEME (LIGHT)
+   Matches Sterilizer, Threshing, Press, Kernel style
+   ========================================================================== */
+
+.som-daf-page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #f8fafc;
+}
+
+.som-daf-header {
+    padding: 0.4rem 1.75rem;
+    background: #ffffff;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid #ffdb3b;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    min-height: 48px;
+}
+
+.som-daf-header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.som-daf-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-right: 2px solid #e2e8f0;
+    padding-right: 1.5rem;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.som-daf-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 950;
+    color: #0f172a;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #0f172a 0%, #ffdb3b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+}
+
+/* AgroVision Standard Station Tabs */
+.som-daf-page .som-station-tabs,
+.som-station-tabs {
+    display: flex;
+    gap: 4px;
+    background: #f1f5f9;
+    padding: 3px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.som-daf-page .som-station-tab,
+.som-station-tab {
+    padding: 5px 14px;
+    border: none;
+    background: transparent;
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+body .som-daf-page .som-station-tabs button.som-station-tab:hover {
+    background: #ffdb3b !important;
+    color: #0f172a !important;
+}
+
+body .som-daf-page .som-station-tab.active {
+    background: #ffdb3b !important;
+    color: #0f172a !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    font-weight: 900 !important;
+}
+
+/* View mode toggle buttons (Process View / Maintenance View / Settings) */
+.som-daf-page .som-view-toggle-container,
+.som-view-toggle-container {
+    display: flex;
+    background: #f1f5f9;
+    padding: 4px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    align-items: center;
+    gap: 2px;
+}
+
+.som-daf-page .som-view-btn,
+.som-view-btn {
+    padding: 6px 14px;
+    font-size: 10px;
+    font-weight: 800;
+    color: #64748b;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.som-daf-page .som-view-btn:hover:not(.active):not(:disabled),
+.som-view-btn:hover:not(.active):not(:disabled) {
+    color: #0f172a;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+body .som-daf-page .som-view-btn.active {
+    background: #ffdb3b !important;
+    color: #0f172a !important;
+    box-shadow: 0 4px 10px rgba(255, 219, 59, 0.3);
+    border: none !important;
+    font-weight: 900 !important;
+}
+
+.som-daf-body-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.som-daf-placeholder-view {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    color: #64748b;
+    gap: 16px;
+    padding: 2rem;
+}
+
+.som-daf-placeholder-box {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 2.5rem 3rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.som-daf-placeholder-icon {
+    font-size: 2.5rem;
+}
+
+.som-daf-placeholder-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.som-daf-placeholder-desc {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin: 0;
+    max-width: 400px;
+}

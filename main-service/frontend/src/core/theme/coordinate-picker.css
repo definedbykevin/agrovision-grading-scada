@@ -1,0 +1,176 @@
+/* Coordinate Picker Shell Styles */
+.som-coord-picker-panel {
+    position: fixed;
+    top: 100px;
+    z-index: 9999;
+    width: 340px;
+    background: rgba(13, 17, 23, 0.85);
+    backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(57, 255, 20, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 15px rgba(57, 255, 20, 0.1);
+    color: #e6edf3;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    max-height: 70vh;
+}
+
+.som-coord-picker-panel.side-left { left: 30px; }
+.som-coord-picker-panel.side-right { right: 30px; }
+
+.som-coord-picker-panel.minimized {
+    width: 180px;
+    height: 48px;
+    overflow: hidden;
+}
+
+/* Header */
+.som-coord-header {
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(57, 255, 20, 0.05);
+    border-bottom: 1px solid rgba(57, 255, 20, 0.1);
+}
+
+.som-coord-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #39FF14;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.som-coord-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.som-coord-btn-icon {
+    background: transparent;
+    border: none;
+    color: #8b949e;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.som-coord-btn-icon:hover {
+    color: #39FF14;
+    background: rgba(57, 255, 20, 0.1);
+}
+
+/* Content */
+.som-coord-content {
+    padding: 18px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.som-coord-instruction {
+    font-size: 12px;
+    color: #8b949e;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    border-left: 3px solid #39FF14;
+}
+
+.som-coord-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.som-coord-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    font-size: 13px;
+    border: 1px solid transparent;
+}
+
+.som-coord-item:hover { border-color: rgba(57, 255, 20, 0.2); }
+
+.som-coord-index { color: #39FF14; font-weight: bold; width: 20px; }
+.som-coord-val { font-family: monospace; color: #e6edf3; }
+
+/* Path Output */
+.som-path-output {
+    background: #0d1117;
+    border-radius: 10px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.som-path-label {
+    font-size: 11px;
+    color: #8b949e;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.som-path-string {
+    font-family: monospace;
+    font-size: 12px;
+    color: #39FF14;
+    word-break: break-all;
+    display: block;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.som-copy-btn {
+    width: 100%;
+    padding: 10px;
+    background: #39FF14;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.som-copy-btn:hover {
+    background: #32e112;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(57, 255, 20, 0.3);
+}
+
+.som-copy-btn.copied { background: #fff; }
+
+/* SVG Markers */
+.som-coord-marker circle {
+    filter: drop-shadow(0 0 5px #39FF14);
+}
+
+.som-coord-label {
+    fill: #39FF14;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 0 0 5px #000;
+}
+
+.som-coord-guide-line {
+    stroke: rgba(57, 255, 20, 0.4);
+    stroke-width: 1.5;
+    stroke-dasharray: 4 4;
+}

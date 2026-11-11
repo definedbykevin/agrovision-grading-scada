@@ -1,0 +1,172 @@
+.running-hours-container {
+    width: 100%;
+    height: calc(100vh - 80px);
+    /* Fit to parent without page scroll */
+    background: #f8fafc;
+    color: #000000;
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* No scroll on main container */
+}
+
+/* Industrial Header KPI Strip */
+.scada-report-header {
+    background: #ffffff;
+    border-bottom: 3px solid #ffdb3b;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.scada-report-title h1 {
+    font-size: 0.95rem;
+    font-weight: 950;
+    color: #0f172a;
+    margin: 0;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* Compact Stats Row */
+.scada-stats-strip {
+    display: flex;
+    background: #f1f5f9;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 10px 24px;
+    /* Reduced padding */
+    gap: 30px;
+}
+
+.scada-stat-node {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.scada-stat-node label {
+    font-size: 0.6rem;
+    color: #64748b;
+    text-transform: uppercase;
+}
+
+.scada-stat-node .val {
+    font-size: 1.1rem;
+    font-weight: 950;
+    color: #f59e0b;
+}
+
+/* SCADA Table - No Internal Scroll */
+.scada-table-wrapper {
+    flex: 1;
+    overflow: hidden;
+    /* No scroll */
+    padding: 10px 20px;
+    /* Reduced padding */
+}
+
+.scada-grid-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 2px;
+}
+
+.scada-grid-table th {
+    position: sticky;
+    top: -20px;
+    background: #ffdb3b;
+    padding: 10px 16px;
+    text-align: left;
+    font-size: 0.65rem;
+    color: #0f172a;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    z-index: 5;
+    font-weight: 900;
+}
+
+.scada-grid-table td {
+    background: #ffffff;
+    padding: 10px 16px;
+    font-size: 0.75rem;
+    color: #0f172a !important;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.scada-tag-name {
+    font-weight: 800;
+    letter-spacing: 0.02em;
+}
+
+/* Modern Hover Color */
+.scada-grid-table tr:hover td {
+    background: #f1f5f9;
+    border-top-color: #3b82f6;
+    border-bottom-color: #3b82f6;
+}
+
+/* Industrial Status */
+.scada-pill {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    border: 1px solid transparent;
+}
+
+.scada-pill.running {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border-color: #10b981;
+}
+
+.scada-pill.stop {
+    background: rgba(71, 85, 105, 0.1);
+    color: #94a3b8;
+    border-color: #475569;
+}
+
+/* Sharp Gauge */
+.scada-gauge-track {
+    width: 100%;
+    max-width: 150px;
+    height: 12px;
+    background: #e2e8f0;
+    border: 1px solid #cbd5e1;
+    position: relative;
+    overflow: hidden;
+}
+
+.scada-gauge-bar {
+    height: 100%;
+    background: #3b82f6;
+}
+
+.scada-gauge-bar.critical {
+    background: #ef4444;
+}
+
+.btn-scada-export {
+    background: #f59e0b;
+    border: none;
+    color: #ffffff;
+    padding: 8px 20px;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 950;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 6px;
+    box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.2);
+    text-transform: uppercase;
+}
+
+.btn-scada-export:hover {
+    background: #0f172a;
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.2);
+}

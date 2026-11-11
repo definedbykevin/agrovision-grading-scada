@@ -1,0 +1,383 @@
+/* PatrolMapModern.css — Clean map + Replay controls */
+
+/* ===== Guard Marker ===== */
+.pm-guard-tag {
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.pm-guard-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50% !important;
+    border: 3px solid #fbbf24;
+    overflow: hidden;
+    background: #1e293b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+}
+
+.pm-guard-pulse {
+    position: absolute;
+    top: -4px; left: -4px; right: -4px; bottom: -4px;
+    border-radius: 50% !important;
+    border: 2px solid #fbbf24;
+    animation: guardPulse 2s ease-out infinite;
+    pointer-events: none;
+}
+@keyframes guardPulse {
+    0% { transform: scale(0.9); opacity: 0.8; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* ===== Checkpoint Marker ===== */
+.pm-cp-marker { position: relative; display: flex; align-items: center; justify-content: center; }
+.pm-cp-dot {
+    width: 14px; height: 14px; border-radius: 50% !important;
+    background: #facc15; border: 2px solid #ffffff;
+    box-shadow: 0 0 10px rgba(250,204,21,0.8), 0 2px 4px rgba(0,0,0,0.4);
+    box-sizing: border-box !important;
+}
+.pm-cp-label {
+    position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
+    white-space: nowrap; background: rgba(0,0,0,0.75); backdrop-filter: blur(4px);
+    color: #facc15; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700;
+}
+
+/* ===== Hover Tooltip ===== */
+.pm-hover-tooltip {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+.pm-hover-tooltip::before {
+    display: none !important;
+}
+.pm-tooltip-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.5);
+    min-width: 180px;
+    text-align: center;
+}
+.pm-tooltip-title {
+    font-weight: 800;
+    font-size: 14px;
+    color: #0f172a;
+    margin-bottom: 2px;
+}
+.pm-tooltip-meta {
+    font-size: 10px;
+    color: #64748b;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.pm-tooltip-photo {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 120px;
+    background: #e2e8f0;
+    margin-top: 6px;
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.1);
+}
+.pm-tooltip-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+.pm-tooltip-card:hover .pm-tooltip-photo img {
+    transform: scale(1.05);
+}
+.pm-click-hint {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 4px;
+    backdrop-filter: blur(2px);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+}
+
+/* ===== HUD (ACTIVE & CHECKPOINTS BADGE) ===== */
+/* Diposisikan rapat di pojok kanan bawah menutupi watermark / attribution Leaflet JS */
+.pm-hud {
+    position: absolute; 
+    bottom: 14px !important; 
+    right: 14px !important; 
+    z-index: 1000 !important;
+    background: rgba(15, 23, 42, 0.92) !important; 
+    backdrop-filter: blur(8px);
+    border-radius: 10px !important;
+    padding: 8px 16px !important; 
+    display: flex; 
+    align-items: center; 
+    gap: 16px; 
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+}
+.pm-hud-item { display: flex; flex-direction: column; align-items: center; }
+.pm-hud-value { font-size: 18px; font-weight: 900; color: #fff; font-family: 'JetBrains Mono', monospace; line-height: 1; }
+.pm-hud-label { font-size: 9px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 3px; }
+.pm-hud-divider { width: 1px; height: 28px; background: rgba(255,255,255,0.2); }
+
+/* Sembunyikan attribution watermark Leaflet bawaan secara menyeluruh */
+.leaflet-control-attribution,
+.som-patrol-map-container .leaflet-control-attribution,
+.leaflet-container .leaflet-control-attribution {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* ===== Replay Banner ===== */
+.pm-replay-banner {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 1000;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #fff; text-align: center; padding: 8px 16px;
+    font-size: 12px; font-weight: 800; letter-spacing: 0.03em;
+}
+
+/* ===== Replay Controls ===== */
+.pm-replay-controls {
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+    border-top: 1px solid #e2e8f0; padding: 10px 16px;
+    display: flex; align-items: center; gap: 10px;
+}
+
+.pm-ctrl-btn {
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid #e2e8f0; background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 12px; color: #0f172a;
+    transition: all 0.15s; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.pm-ctrl-btn:hover { background: #f1f5f9; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+.pm-ctrl-btn.stop { color: #ef4444; border-color: #fecaca; }
+.pm-ctrl-btn.stop:hover { background: #fef2f2; }
+
+.pm-progress-bar { flex: 1; display: flex; align-items: center; }
+.pm-slider {
+    width: 100%; height: 4px; -webkit-appearance: none; appearance: none;
+    background: #e2e8f0; border-radius: 2px; outline: none; cursor: pointer;
+}
+.pm-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: #f59e0b; border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2); cursor: pointer;
+}
+.pm-slider::-moz-range-thumb {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: #f59e0b; border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2); cursor: pointer;
+}
+
+.pm-speed-selector {
+    display: flex; align-items: center; gap: 4px;
+    color: #64748b; font-size: 11px; font-weight: 700;
+}
+.pm-speed-btn {
+    padding: 3px 8px; border-radius: 4px; border: 1px solid #e2e8f0;
+    background: #fff; font-size: 11px; font-weight: 700; color: #475569;
+    cursor: pointer; transition: all 0.15s;
+}
+.pm-speed-btn.active { background: #f59e0b; color: #fff; border-color: #f59e0b; }
+.pm-speed-btn:hover { background: #f8fafc; }
+
+.pm-replay-progress-text {
+    font-size: 11px; font-weight: 700; color: #64748b;
+    font-family: 'JetBrains Mono', monospace; white-space: nowrap;
+}
+
+/* ===== Stop Replay Button (Header) ===== */
+.pm-stop-replay-btn {
+    display: flex; align-items: center; gap: 4px;
+    padding: 4px 12px; border-radius: 6px; border: 1px solid #fecaca;
+    background: #fef2f2; color: #ef4444; font-size: 11px; font-weight: 700;
+    cursor: pointer; transition: all 0.15s;
+}
+.pm-stop-replay-btn:hover { background: #fee2e2; }
+
+/* ===== Settings Modal ===== */
+.pm-settings-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+    z-index: 9999; display: flex; align-items: center; justify-content: center;
+}
+.pm-settings-modal { background: #fff; border-radius: 12px; padding: 24px; width: 320px; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+.pm-settings-title { font-size: 15px; font-weight: 800; color: #0f172a; margin: 0 0 20px 0; padding-bottom: 12px; border-bottom: 2px solid #f1f5f9; }
+.pm-field { margin-bottom: 14px; }
+.pm-field label { display: block; font-size: 12px; font-weight: 700; color: #475569; margin-bottom: 6px; }
+.pm-field input {
+    width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid #cbd5e1;
+    background: #f8fafc; color: #0f172a; font-size: 13px; outline: none; transition: all 0.2s; box-sizing: border-box;
+}
+.pm-field input:focus { border-color: #ffdb3b; box-shadow: 0 0 0 3px rgba(255,219,59,0.15); }
+.pm-settings-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+.pm-btn-cancel { padding: 9px 18px; border-radius: 8px; border: 1px solid #cbd5e1; background: transparent; color: #475569; font-weight: 700; font-size: 13px; cursor: pointer; }
+.pm-btn-cancel:hover { background: #f1f5f9; }
+.pm-btn-save { padding: 9px 18px; border-radius: 8px; border: none; background: #ffdb3b; color: #0f172a; font-weight: 800; font-size: 13px; cursor: pointer; box-shadow: 0 2px 8px rgba(255,219,59,0.3); }
+.pm-btn-save:hover { box-shadow: 0 4px 12px rgba(255,219,59,0.5); transform: translateY(-1px); }
+
+/* ===== Sidebar History Items ===== */
+.som-history-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 12px 10px 16px; border-bottom: 1px solid #f1f5f9;
+    transition: all 0.15s;
+}
+.som-history-item:hover { background: #f8fafc; }
+.som-history-item.replaying { background: #fffbeb; border-color: #fde68a; }
+.som-history-item:last-child { border-bottom: none; }
+
+.history-left { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+.history-status-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.history-status-dot.active { background: #10b981; box-shadow: 0 0 6px rgba(16,185,129,0.5); }
+.history-status-dot.completed { background: #cbd5e1; }
+
+.history-info { flex: 1; min-width: 0; }
+.history-name { font-size: 12px; font-weight: 800; color: #0f172a; }
+.history-meta { font-size: 10px; color: #64748b; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.history-cp-count { display: flex; align-items: center; gap: 3px; color: #f59e0b; font-weight: 700; }
+
+.history-replay-btn {
+    width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+    border: 1px solid #e2e8f0; background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 10px; color: #0f172a;
+    transition: all 0.15s; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.history-replay-btn:hover { background: #f59e0b; color: #fff; border-color: #f59e0b; }
+.history-replay-btn.stop { background: #ef4444; color: #fff; border-color: #ef4444; }
+
+.history-live-badge {
+    font-size: 9px; font-weight: 800; color: #10b981;
+    background: #ecfdf5; padding: 2px 8px; border-radius: 4px;
+    letter-spacing: 0.05em;
+}
+
+/* ===== Modern Animated Map Tracks ===== */
+.pm-track-halo {
+    filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.6));
+    animation: pm-pulse-glow 2s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+.pm-track-core {
+    stroke-dasharray: 1, 14;
+    stroke-linecap: round;
+    animation: pm-flow-track 1.5s linear infinite;
+    pointer-events: none;
+}
+
+.pm-track-replay-glow {
+    filter: drop-shadow(0 0 5px rgba(239, 68, 68, 0.8));
+    pointer-events: none;
+}
+
+@keyframes pm-pulse-glow {
+    from { opacity: 0.2; }
+    to { opacity: 0.6; }
+}
+
+@keyframes pm-flow-track {
+    to { stroke-dashoffset: -24; }
+}
+
+/* ===== Map Zoom Control & Rotation Offset ===== */
+/* Pastikan tombol zoom in & out (+ / -) tidak pernah terpotong di monitor lebar/standar */
+.som-patrol-map-container .leaflet-top.leaflet-left {
+    top: 36px !important;
+    left: 24px !important;
+    z-index: 500 !important;
+}
+
+.pm-fullscreen-mode .leaflet-top.leaflet-left {
+    top: 48px !important;
+    left: 28px !important;
+}
+
+.som-patrol-map-container .leaflet-control-zoom {
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
+    border-radius: 8px !important;
+    overflow: hidden;
+}
+
+.som-patrol-map-container .leaflet-control-zoom a {
+    background-color: #0f172a !important;
+    color: #f8fafc !important;
+    border-bottom: 1px solid #334155 !important;
+    width: 36px !important;
+    height: 36px !important;
+    line-height: 36px !important;
+    font-size: 18px !important;
+    transition: background 0.15s, color 0.15s;
+}
+
+.som-patrol-map-container .leaflet-control-zoom a:hover {
+    background-color: #ffdb3b !important;
+    color: #0f172a !important;
+}
+
+/* Kompas rotasi leaflet-rotate */
+.som-patrol-map-container .leaflet-control-rotate {
+    margin-top: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
+    border-radius: 8px !important;
+    overflow: hidden;
+}
+
+.som-patrol-map-container .leaflet-control-rotate a {
+    background-color: #0f172a !important;
+    color: #f8fafc !important;
+    width: 36px !important;
+    height: 36px !important;
+    line-height: 36px !important;
+}
+
+/* Fullscreen mode container override */
+.pm-fullscreen-wrapper {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 9999999 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.pm-fullscreen-mode {
+    box-shadow: none !important;
+    border-radius: 0px !important;
+}
+
+

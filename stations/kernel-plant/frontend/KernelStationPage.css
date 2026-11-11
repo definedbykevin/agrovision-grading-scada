@@ -1,0 +1,561 @@
+.som-kernel-station {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #f8fafc;
+  min-height: 0;
+}
+
+/* ==========================================
+   HEADER AGROVISION
+   ========================================== */
+.som-kernel-station-header {
+  padding: 0.4rem 1.75rem;
+  background: #ffffff;
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid #ffdb3b;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.som-kernel-station-header .som-header-left {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 1.5rem !important;
+}
+
+.som-kernel-station-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 950;
+  color: #0f172a;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #0f172a 0%, #ffdb3b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-right: 2px solid #e2e8f0;
+  padding-right: 1.5rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.som-station-tabs {
+  display: flex;
+  gap: 4px;
+  background: #f1f5f9;
+  padding: 3px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.som-station-tab {
+  padding: 5px 14px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+body .som-kernel-station .som-station-tabs button.som-station-tab:hover {
+  background: #ffdb3b !important;
+  color: #0f172a !important;
+}
+
+.som-station-tab.active {
+  background: #ffdb3b !important;
+  color: #0f172a !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  font-weight: 900 !important;
+}
+
+/* ==========================================
+   VIEW TOGGLE (AGROVISION)
+   ========================================== */
+.som-view-toggle-container {
+    display: flex;
+    background: #f1f5f9;
+    padding: 4px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-left: auto;
+}
+
+.som-view-btn {
+    padding: 6px 12px;
+    font-size: 9px;
+    font-weight: 800;
+    color: #64748b;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.som-view-btn.active {
+    background: #ffdb3b;
+    color: #0f172a;
+    box-shadow: 0 4px 10px rgba(255, 219, 59, 0.3);
+}
+
+.som-view-btn:hover:not(.active) {
+    color: #0f172a;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================
+   MAIN CONTENT
+   ========================================== */
+.som-kernel-main-modern {
+  flex: 1;
+  padding: 0.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.som-kernel-layout {
+  flex: 1;
+  display: flex;
+  gap: 0.5rem;
+  min-height: 0;
+}
+
+.som-kernel-flow-card {
+  flex: 1;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.som-kernel-flow-body {
+  position: relative;
+  flex: 1;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.station-svg-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* SCADA Container for specialized tabs */
+.som-kernel-scada-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+}
+
+.som-full-tab-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.som-kernel-svg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ==========================================
+   GOLDEN PREMIUM MONITORING CARDS
+   ========================================== */
+.som-motor-mini-card, .som-kernel-card-mini {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 160px;
+  width: fit-content;
+  overflow: visible;
+  pointer-events: auto;
+}
+
+.som-motor-mini-card:hover, .som-kernel-card-mini:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border-color: #ffdb3b;
+}
+
+.som-motor-mini-header, .som-kernel-card-header {
+  background: #ffdb3b;
+  padding: 4px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.som-motor-mini-label, .som-kernel-card-title {
+  font-size: 11px;
+  font-weight: 900;
+  color: #0f172a;
+  text-transform: uppercase;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+}
+
+.som-motor-mini-body, .som-kernel-card-body {
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: #ffffff;
+}
+
+.som-motor-param-row, .som-kernel-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 3px;
+  margin-bottom: 2px;
+}
+
+.som-motor-param-row:last-child, .som-kernel-card-row:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.som-motor-param-label, .som-kernel-card-label {
+  font-size: 9.5px;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.som-motor-mini-value, .som-kernel-card-value {
+  font-size: 13.5px;
+  font-weight: 950;
+  color: #0f172a;
+  font-family: 'Inter', sans-serif;
+  line-height: 1;
+}
+
+.som-motor-mini-value[data-unit]::after, .som-kernel-card-value[data-unit]::after {
+  content: attr(data-unit);
+  font-size: 10px;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-left: 3px;
+}
+
+.som-motor-mini-status, .som-kernel-card-status {
+  font-size: 9px;
+  font-weight: 950;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.status-running {
+  background: #ffdb3b;
+  color: #0f172a;
+  box-shadow: 0 2px 4px rgba(255, 219, 59, 0.3);
+  border: 1px solid #e2e8f0;
+}
+
+.status-stop {
+  background: #94a3b8;
+  color: #ffffff;
+}
+
+/* Fan Animation */
+.som-kernel-fan-blades {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.som-kernel-fan-blades--running {
+  animation: fan-spin 0.5s linear infinite;
+}
+
+@keyframes fan-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* SVG Labels */
+.som-kernel-label-svg {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  fill: #1e293b;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  paint-order: stroke;
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Gear Icon Animation */
+.som-oc-gear-icon {
+  transition: transform 0.5s ease;
+}
+
+.som-motor-mini-card:hover .som-oc-gear-icon {
+  transform: rotate(90deg);
+  color: #0f172a !important;
+}
+
+/* Table Styling for Silo Temp */
+.som-kernel-card-body table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.som-kernel-card-body th {
+  padding: 8px;
+  font-size: 9px;
+  text-transform: uppercase;
+  color: #64748b;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.som-kernel-card-body td {
+  padding: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #0f172a;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.som-coord-display {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #64748b !important;
+  background: #f1f5f9 !important;
+  padding: 4px 12px !important;
+  border-radius: 4px !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* ==========================================
+   MAINTENANCE MODE & HUD (AGROVISION)
+   ========================================== */
+
+/* --- HUD DIAGNOSTIC BANNER --- */
+.som-diagnostic-banner {
+  background: rgba(255, 219, 59, 0.1);
+  border: 1px solid #ffdb3b;
+  color: #0f172a;
+  font-weight: 900;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  box-shadow: 0 0 20px rgba(255, 219, 59, 0.2);
+  animation: banner-glow 2s infinite alternate;
+}
+
+@keyframes banner-glow {
+  from { box-shadow: 0 0 10px rgba(255, 219, 59, 0.1); }
+  to { box-shadow: 0 0 25px rgba(255, 219, 59, 0.3); }
+}
+
+/* --- MAINTENANCE CARD SVG --- */
+.maintenance-card-group:hover .som-motor-mini-card {
+  border-color: #0f172a !important;
+  box-shadow: 0 0 30px rgba(15, 23, 42, 0.2) !important;
+  transform: translateY(-2px);
+}
+
+.maintenance-card .som-motor-mini-header {
+  background: #0f172a !important;
+}
+
+.maintenance-card .som-motor-mini-label {
+  color: #ffffff !important;
+}
+
+.som-maintenance-mini-icon {
+  color: #ffdb3b;
+  display: flex;
+  align-items: center;
+}
+
+/* Diagnostic Grid Overlay */
+.som-diag-grid {
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+.som-diag-scanline {
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(
+        to right, 
+        transparent 0%, 
+        rgba(255, 219, 59, 0.2) 15%, 
+        rgba(255, 219, 59, 0.9) 50%, 
+        rgba(255, 219, 59, 0.2) 85%, 
+        transparent 100%
+    );
+    position: absolute;
+    left: 0;
+    z-index: 10;
+    animation: scanline-move 8s linear infinite;
+    box-shadow: 
+        0 0 20px rgba(255, 219, 59, 0.8), 
+        0 0 10px rgba(255, 219, 59, 0.4);
+    pointer-events: none;
+}
+
+/* Ensure the line has a sharp core */
+.som-diag-scanline::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-50%);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes scanline-move {
+    0% { top: 0%; }
+    100% { top: 100%; }
+}
+
+/* --- VIEW MODE CLASSES --- */
+.som-mode-maintenance .som-full-tab-image,
+.som-mode-maintenance .station-svg-canvas image {
+    filter: saturate(0.85) brightness(0.6) grayscale(0.5);
+    opacity: 0.8;
+    transition: all 0.5s ease;
+}
+
+.som-mode-maintenance .som-motor-mini-card:not(.maintenance-card) {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* --- MOTOR HOVER EFFECTS (AGROVISION) --- */
+.motor-group:hover foreignObject > div {
+  border-color: #ffdb3b !important;
+  box-shadow: 0 0 30px rgba(255, 219, 59, 0.3) !important;
+  transform: translateY(-2px);
+}
+
+.motor-group foreignObject > div {
+  transition: all 0.3s ease;
+}
+
+/* Trend Popup Overrides (AGROVISION) */
+.som-amp-popup {
+  position: fixed;
+  z-index: 5000;
+  width: 450px;
+  max-width: 95vw;
+  border-radius: 12px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+  border: 1px solid #ffdb3b;
+  overflow: hidden;
+}
+
+.som-amp-popup-header {
+  padding: 12px 18px;
+  background: #ffdb3b;
+  border-bottom: 1px solid #ffdb3b;
+}
+
+.som-amp-popup-title {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 950;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #0f172a;
+}
+
+.som-amp-popup-subtitle {
+  margin-top: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  font-size: 0.7rem;
+  color: #475569;
+  font-weight: 800;
+}
+
+/* --- STATUS LED INDICATOR --- */
+.som-status-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  flex-shrink: 0;
+}
+
+.som-status-indicator.running {
+  background: #10b981;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
+  animation: led-pulse-green 2s infinite;
+}
+
+.som-status-indicator.stop {
+  background: #ef4444;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.8);
+  animation: led-pulse-red 2s infinite;
+}
+
+@keyframes led-pulse-green {
+  0% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.5); }
+  50% { box-shadow: 0 0 15px rgba(16, 185, 129, 1); }
+  100% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.5); }
+}
+
+@keyframes led-pulse-red {
+  0% { box-shadow: 0 0 5px rgba(239, 68, 68, 0.5); }
+  50% { box-shadow: 0 0 15px rgba(239, 68, 68, 1); }
+  100% { box-shadow: 0 0 5px rgba(239, 68, 68, 0.5); }
+}

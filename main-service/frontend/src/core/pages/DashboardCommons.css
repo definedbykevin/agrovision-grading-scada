@@ -1,0 +1,563 @@
+/* DashboardCommons.css - Shared styles for specialized dashboards */
+:root {
+    --dash-bg: #f8fafc;
+    --dash-card-bg: #ffffff;
+    --dash-border: #e2e8f0;
+    --dash-text-pri: #1e293b;
+    --dash-text-sec: #64748b;
+    --dash-accent: #2563eb;
+    --dash-success: #10b981;
+    --dash-warning: #f59e0b;
+    --dash-danger: #ef4444;
+    --dash-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --dash-radius: 12px;
+}
+
+
+.dash-container {
+    padding: clamp(10px, 2vw, 20px);
+    background: var(--dash-bg);
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 2vw, 20px);
+    color: var(--dash-text-pri);
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+/* ── ORIENTATION OVERLAY ── */
+@media screen and (max-width: 1024px) and (orientation: portrait) {
+  /* This targets the top-level container of almost every page */
+  .som-dashboard-container-v2,
+  .som-sterilizer-station,
+  .som-press-station,
+  .som-kernel-station,
+  .som-thresher-station,
+  .som-grading-station,
+  .som-config-page,
+  .som-user-management,
+  .som-activity-log-page,
+  .scada-container,
+  .stability-container,
+  .running-hours-container,
+  .abnormalities-container,
+  .logsheet-container,
+  .pd2-shell {
+    position: relative !important;
+  }
+
+  .som-dashboard-container-v2::before,
+  .som-sterilizer-station::before,
+  .som-press-station::before,
+  .som-kernel-station::before,
+  .som-thresher-station::before,
+  .som-grading-station::before,
+  .som-config-page::before,
+  .som-user-management::before,
+  .som-activity-log-page::before,
+  .scada-container::before,
+  .stability-container::before,
+  .running-hours-container::before,
+  .abnormalities-container::before,
+  .logsheet-container::before,
+  .pd2-shell::before {
+    content: "🔄\A Please Rotate Your Device\A\A Dashboard is optimized for Landscape mode";
+    white-space: pre-wrap;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #ffffff;
+    color: #0f172a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 9999999;
+    padding: 2rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    line-height: 1.4;
+  }
+}
+
+.dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4px;
+}
+
+.dash-title-group h1 {
+    margin: 0;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.dash-title-group p {
+    margin: 2px 0 0;
+    font-size: 0.8rem;
+    color: var(--dash-text-sec);
+}
+
+.dash-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+    gap: 16px;
+}
+
+.dash-card {
+    background: var(--dash-card-bg);
+    border: 1px solid var(--dash-border);
+    border-radius: var(--dash-radius);
+    padding: 16px;
+    box-shadow: var(--dash-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    animation: slideUp 0.4s ease-out forwards;
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+}
+
+.dash-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dash-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--dash-text-sec);
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.dash-value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--dash-text-pri);
+    letter-spacing: -0.02em;
+}
+
+.dash-trend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.dash-trend.up {
+    color: var(--dash-success);
+}
+
+.dash-trend.down {
+    color: var(--dash-danger);
+}
+
+.dash-section {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+    gap: 16px;
+}
+
+@media (max-width: 1024px) {
+    .dash-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+.dash-main-chart,
+.dash-side-panel {
+    background: var(--dash-card-bg);
+    border: 1px solid var(--dash-border);
+    border-radius: var(--dash-radius);
+    padding: 20px;
+    box-shadow: var(--dash-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.dash-main-chart h2,
+.dash-side-panel h2 {
+    margin: 0 0 20px;
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+/* PKS Specific Styles */
+.dash-card.highlight {
+    border-left: 4px solid var(--dash-accent);
+}
+
+.dash-value small {
+    font-size: 1rem;
+    color: var(--dash-text-sec);
+    margin-left: 4px;
+}
+
+.qc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.qc-box {
+    background: var(--dash-bg);
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--dash-border);
+}
+
+.qc-box label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--dash-text-sec);
+    margin-bottom: 8px;
+}
+
+.qc-val {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--dash-text-pri);
+}
+
+.qc-limit {
+    font-size: 0.7rem;
+    color: var(--dash-text-sec);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.qc-bar {
+    height: 6px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.fill.green {
+    background: #10b981;
+}
+
+.fill.blue {
+    background: #3b82f6;
+}
+
+.pks-loss-section,
+.pks-byproduct {
+    padding-top: 16px;
+    border-top: 1px solid var(--dash-border);
+}
+
+/* Specialized Header Status Pill */
+.dash-status-pill {
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    padding: 6px 14px;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--dash-text-sec);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 0.02em;
+}
+
+.dash-status-pill strong {
+    color: #10b981;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dash-status-pill strong::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #10b981;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 8px #10b981;
+    animation: pulse-status 2s infinite;
+}
+
+@keyframes pulse-status {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* By-Product Inventory List Refinement */
+.pks-byproduct h3 {
+    font-size: 0.8rem;
+    color: var(--dash-text-sec);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 800;
+}
+
+.inventory-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.inv-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background: var(--dash-bg);
+    border: 1px solid var(--dash-border);
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.inv-item:hover {
+    transform: translateX(2px);
+    border-color: var(--dash-accent);
+    background: var(--dash-card-bg);
+}
+
+.inv-item span {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--dash-text-sec);
+}
+
+.inv-item .inv-val {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.inv-item strong {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    color: var(--dash-text-pri);
+    font-weight: 700;
+}
+
+.inv-item small {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--dash-text-muted);
+}
+
+.loss-item {
+    background: var(--dash-bg);
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.loss-item span {
+    color: var(--dash-text-sec);
+}
+
+.util-row {
+    margin-bottom: 16px;
+}
+
+.u-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+}
+
+.res-bar {
+    height: 8px;
+    background: var(--dash-bg);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.res-bar .fill {
+    height: 100%;
+    border-radius: 4px;
+}
+
+.grading-summary {
+    margin-bottom: 24px;
+}
+
+.grading-row {
+    margin-bottom: 12px;
+}
+
+.g-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+}
+
+.g-info strong {
+    color: var(--dash-text-pri);
+}
+
+.pks-log-mini {
+    margin-top: 20px;
+    border-top: 1px solid var(--dash-border);
+    padding-top: 16px;
+}
+
+.mini-log-item {
+    font-size: 0.75rem;
+    color: var(--dash-text-sec);
+    margin-bottom: 8px;
+    line-height: 1.4;
+    border-left: 2px solid var(--dash-border);
+    padding-left: 10px;
+}
+
+/* Visualization Placeholders */
+.chart-placeholder {
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(37, 99, 235, 0.1));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.chart-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    height: 60%;
+}
+
+.bar {
+    width: 32px;
+    background: var(--dash-accent);
+    border-radius: 4px 4px 0 0;
+    opacity: 0.7;
+}
+
+.dash-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.dash-table th {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 2px solid var(--dash-border);
+    color: var(--dash-text-sec);
+    font-weight: 700;
+}
+
+.dash-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--dash-border);
+}
+
+.status-pilled {
+    padding: 4px 8px;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* Base Responsive Scaling */
+@media (max-width: 1440px) {
+    .dash-container { font-size: 14px; }
+    .dash-value { font-size: 1.4rem; }
+}
+
+@media (max-width: 768px) {
+    .dash-header { flex-direction: column; gap: 1rem; }
+    .dash-title-group h1 { font-size: 1.2rem; }
+    .dash-value { font-size: 1.25rem; }
+    .dash-main-chart, .dash-side-panel { padding: 12px; }
+}
+
+@media (max-width: 480px) {
+    .dash-container { padding: 10px; }
+    .dash-grid { grid-template-columns: 1fr; }
+}
+
+.status-pilled.green {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.status-pilled.blue {
+    background: rgba(37, 99, 235, 0.1);
+    color: #3b82f6;
+}
+
+.status-pilled.orange {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+
+
+/* SCADA Ultra-Fit logic moved to individual page CSS or handled via conditional classes to allow dashboard scrolling */
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+  .som-dashboard-header, [class*="header"] {
+    height: auto !important;
+    padding: 0 10px !important;
+    min-height: unset !important;
+  }
+  .som-dashboard-nav {
+    display: flex !important;
+    padding: 0 0.5rem !important;
+    overflow-x: auto;
+    overflow-y: visible !important;
+    min-height: 0 !important;
+    height: auto !important;
+    z-index: 100 !important;
+  }
+}
+
+
+

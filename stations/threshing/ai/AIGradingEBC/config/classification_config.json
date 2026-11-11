@@ -1,0 +1,59 @@
+{
+  "categories": {
+    "usb": {
+      "display_name": "USB",
+      "model_labels": ["usb", "unstripped_bunch", "unstripped bunch"],
+      "minimum_confidence": 0.55,
+      "color_bgr": [68, 68, 239]
+    },
+    "psb": {
+      "display_name": "PSB",
+      "model_labels": ["psb", "partially_stripped_bunch", "partially stripped bunch"],
+      "minimum_confidence": 0.55,
+      "color_bgr": [11, 158, 245]
+    },
+    "eb": {
+      "display_name": "EB",
+      "model_labels": ["eb", "empty_bunch", "empty bunch"],
+      "minimum_confidence": 0.55,
+      "color_bgr": [129, 185, 16]
+    }
+  },
+  "decision": {
+    "window_seconds": 60,
+    "minimum_detections": 10,
+    "publish_interval_seconds": 5,
+    "tie_break_priority": ["usb", "psb", "eb"]
+  },
+  "inference": {"target_fps": 5, "image_size": 640},
+  "lines": [
+    {
+      "line_no": 1,
+      "name": "EBC Conveyor",
+      "enabled": false,
+      "camera": {
+        "camera_code": "THR-EBC-CAM-01",
+        "camera_name": "Empty Bunch Conveyor Camera",
+        "rtsp_url": "",
+        "transport": "tcp"
+      }
+    }
+  ],
+  "actions": {
+    "usb": {
+      "action_code": "EBC_REVIEW_USB",
+      "action_name": "Review unstripped bunch handling",
+      "parameters": {"review_required": true, "target": "thresher"}
+    },
+    "psb": {
+      "action_code": "EBC_REVIEW_PSB",
+      "action_name": "Review thresher and feed settings",
+      "parameters": {"review_required": true, "target": "thresher_feed"}
+    },
+    "eb": {
+      "action_code": "EBC_STANDARD_FLOW",
+      "action_name": "Maintain standard empty bunch flow",
+      "parameters": {"review_required": false}
+    }
+  }
+}

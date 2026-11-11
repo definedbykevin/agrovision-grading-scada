@@ -1,0 +1,2912 @@
+.som-boiler-house {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.som-boiler-station-header {
+  padding: 0.4rem 1.75rem;
+  background: #ffffff;
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid #ffdb3b;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  gap: 1rem;
+}
+
+.som-boiler-station-header .som-header-left {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 1.5rem !important;
+}
+
+.som-boiler-station-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #0f172a 0%, #ffdb3b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  border-right: 2px solid #e2e8f0;
+  padding-right: 1.5rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+
+.som-station-tabs {
+  display: flex;
+  gap: 4px;
+  background: #f1f5f9;
+  padding: 3px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.som-station-tab {
+  padding: 5px 14px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.som-station-tab:hover {
+  background: #ffdb3b !important;
+  color: #0f172a !important;
+}
+
+.som-station-tab.active {
+  background: #ffdb3b !important;
+  color: #0f172a !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  font-weight: 900 !important;
+}
+
+
+.som-header-left {
+  display: flex;
+  align-items: center;
+}
+
+.som-boiler-house .som-view-toggle-container {
+  margin-left: auto;
+  display: flex;
+  gap: 4px;
+  background: #f1f5f9;
+  padding: 4px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.som-boiler-house .som-view-btn {
+  padding: 5px 12px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748b;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+  letter-spacing: 0.05em;
+}
+
+.som-boiler-house .som-view-btn.active {
+  background: #ffdb3b !important;
+  color: #0f172a !important;
+  box-shadow: 0 4px 12px rgba(255, 219, 59, 0.4);
+  font-weight: 900;
+}
+
+.som-boiler-house .som-view-btn:hover:not(.active) {
+  color: #0f172a;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+
+.som-boiler-main {
+  flex: 1;
+  padding: 0;
+  /* Remove padding */
+  overflow: hidden;
+  display: flex;
+}
+
+.som-boiler-layout {
+  flex: 1;
+  display: flex;
+  position: relative;
+}
+
+.station-page-container {
+  flex: 1;
+  display: flex;
+  background: #f8fafc;
+  overflow: hidden;
+}
+
+.station-subpage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  overflow-y: auto;
+  position: relative;
+}
+
+.station-subpage.waterlevel-page {
+  padding: 0;
+  /* Full SCADA needs no padding */
+}
+
+.subpage-body-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.subpage-body-full-scada {
+  flex: 1;
+  display: flex;
+  background: #000;
+  position: relative;
+}
+
+.wl-schematic-full {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.5) 0%, transparent 70%),
+    linear-gradient(rgba(245, 158, 11, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 158, 11, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+}
+
+.wl-canvas-wrap {
+  position: relative;
+  width: 1400px;
+  height: 900px;
+  max-width: 95%;
+  max-height: 95%;
+}
+
+.wl-main-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 30px rgba(0, 0, 0, 0.8));
+}
+
+.som-boiler-flow-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  border: none;
+  /* Remove border */
+  border-radius: 0;
+  /* Remove radius */
+  box-shadow: none;
+  /* Remove shadow */
+}
+
+.som-boiler-flow-body {
+  position: relative;
+  flex: 1;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.station-svg-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* --- MINI CARD STYLING --- */
+.som-boiler-mini-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 280px;
+  overflow: visible; /* Let content breathe */
+}
+
+.som-boiler-mini-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(245, 158, 11, 0.25);
+  border-color: #ffdb3b;
+}
+
+.som-boiler-mini-header {
+  background: #ffdb3b !important;
+  padding: 8px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgba(15, 23, 42, 0.08);
+  border-radius: 10px 10px 0 0;
+}
+
+.som-boiler-mini-tag {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.07em;
+  color: #0f172a !important;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.som-boiler-status-indicator {
+  width: 8px;
+  height: 8px;
+  min-width: 8px; /* Prevent shrinking */
+  border-radius: 50%;
+  background: #64748b;
+  margin-left: 8px;
+}
+
+.som-boiler-status-indicator.active {
+  background: #f59e0b;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.6);
+}
+
+.som-boiler-mini-body {
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Each param row: label on left, value+unit on right */
+.som-boiler-mini-param {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.som-boiler-mini-label {
+  font-size: 9px;
+  color: #64748b;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+/* Wrapper for value + unit side by side */
+.som-boiler-mini-value-row {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 5px;
+}
+
+/* Main numeric value */
+.som-boiler-mini-value {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Unit text */
+.som-boiler-mini-unit {
+  font-size: 9px;
+  color: #475569;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* NAVIGATION BUTTONS (Top Left) */
+.som-boiler-nav-btn {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.som-boiler-nav-btn:hover {
+  background: #f59e0b;
+  color: #000000;
+  border-color: #f59e0b;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+}
+
+/* EMERGENCY BUTTON (Bottom Left) */
+.som-boiler-emergency-btn {
+  background: #ef4444;
+  color: #ffffff;
+  border: 3px solid #7f1d1d;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+.som-boiler-emergency-btn:hover {
+  background: #dc2626;
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.9);
+}
+
+.som-boiler-emergency-btn:active {
+  transform: scale(0.95);
+  box-shadow: none;
+}
+
+/* MAINTENANCE DIAGNOSTIC MODE AESTHETIC */
+.som-mode-maintenance .station-svg-canvas image {
+  filter: saturate(0.85) brightness(1.02);
+  opacity: 0.72;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Diagnostic Grid Overlay */
+.som-diag-grid {
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+/* Standardized HUD Scanline */
+.som-diag-scanline {
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 219, 59, 0.2) 15%,
+    rgba(255, 219, 59, 0.9) 50%,
+    rgba(255, 219, 59, 0.2) 85%,
+    transparent 100%
+  );
+  box-shadow: 0 0 15px rgba(255, 219, 59, 0.8), 0 0 10px rgba(255, 219, 59, 0.4);
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  animation: hud-scanline 5s linear infinite;
+  pointer-events: none;
+}
+
+/* Sharp core for the scanline */
+.som-diag-scanline::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(-50%);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes hud-scanline {
+  0% { transform: translateY(-100px); }
+  100% { transform: translateY(1200px); }
+}
+
+.som-mode-maintenance .som-boiler-header {
+  border-bottom: 2px solid #ffdb3b;
+}
+
+.som-diag-grid {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+@keyframes hologram-floating {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes hologram-flicker {
+
+  0%,
+  19.99%,
+  22%,
+  62.99%,
+  64%,
+  64.99%,
+  70%,
+  100% {
+    opacity: 1;
+  }
+
+  20%,
+  21.99%,
+  63%,
+  63.99%,
+  65%,
+  69.99% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes hologram-swipe {
+  0% {
+    transform: translate(-100%, -100%) rotate(45deg);
+  }
+
+  100% {
+    transform: translate(100%, 100%) rotate(45deg);
+  }
+}
+
+.som-boiler-mini-card.maintenance-card {
+  min-width: 120px;
+  background: rgba(15, 23, 42, 0.9) !important;
+  border: 1px solid #10b981 !important;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.15) !important;
+  backdrop-filter: blur(8px);
+  animation: hologram-floating 3s ease-in-out infinite;
+  overflow: hidden;
+}
+
+.som-boiler-mini-card.maintenance-card .som-boiler-mini-header {
+  background: #10b981 !important;
+  color: #020617 !important;
+  padding: 4px 12px;
+}
+
+.som-boiler-mini-card.maintenance-card .som-boiler-mini-tag {
+  color: #020617 !important;
+  font-weight: 950 !important;
+  text-shadow: none !important;
+}
+
+.som-boiler-mini-card.maintenance-card .som-boiler-mini-body {
+  background: transparent !important;
+  padding: 8px 12px;
+}
+
+.som-boiler-mini-card.maintenance-card .som-boiler-mini-label {
+  color: #94a3b8 !important;
+  font-size: 10px;
+}
+
+.som-boiler-mini-card.maintenance-card .som-boiler-mini-value {
+  color: #10b981 !important;
+  text-shadow: 0 0 8px rgba(16, 185, 129, 0.4) !important;
+  font-size: 16px !important;
+}
+
+.som-boiler-mini-card.maintenance-card .som-boiler-mini-unit {
+  color: #64748b !important;
+}
+
+.som-boiler-mini-card.maintenance-card .som-boiler-status-indicator.active {
+  background: #10b981;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+}
+
+.som-boiler-mini-card.maintenance-card:hover {
+  border-color: #10b981 !important;
+  box-shadow: 0 0 35px rgba(16, 185, 129, 0.4) !important;
+  transform: translateY(-2px) scale(1.02);
+}
+
+.som-diagnostic-banner {
+  background: #ffdb3b;
+  border: 2px solid #ffdb3b;
+  color: #0f172a;
+  font-weight: 950;
+  text-align: center;
+  padding: 12px 30px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 28px;
+  box-shadow: 0 0 20px rgba(255, 219, 59, 0.2);
+  animation: diag-pulse 2s infinite alternate;
+}
+
+@keyframes diag-pulse {
+  from { box-shadow: 0 0 10px rgba(255, 219, 59, 0.1); transform: scale(1); }
+  to { box-shadow: 0 0 25px rgba(255, 219, 59, 0.3); transform: scale(1.02); }
+}
+
+/* SCANNER ANIMATION */
+.som-mode-maintenance .station-svg-canvas::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #f59e0b, transparent);
+  box-shadow: 0 0 15px #f59e0b;
+  animation: hud-scan 4s linear infinite;
+  opacity: 0.4;
+}
+
+@keyframes hud-scan {
+  0% {
+    top: 0;
+  }
+
+  100% {
+    top: 100%;
+  }
+}
+
+/* FAN ANIMATION (Matching Kernel Station) */
+.som-boiler-fan-blades--running {
+  animation: som-fan-spin 0.5s linear infinite;
+}
+
+@keyframes som-fan-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ⚡ FAN SPIN — Fixed for SVG <image> elements
+   transform-box: fill-box  → rotates around element's OWN center (not SVG origin)
+   transform-origin: center → pivot at middle of element  */
+.fan-spin {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: fan-spin 0.6s linear infinite;
+}
+
+@keyframes fan-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Pulse glow animation for running fans - AgroVision amber theme */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+
+.som-boiler-video {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  /* Use fill to cover the foreignObject area precisely */
+  pointer-events: none;
+  background-color: transparent !important;
+  display: block;
+}
+
+/* FIX: Ensure these blend modes work correctly to hide black backgrounds */
+.fire-fx {
+  mix-blend-mode: screen !important;
+  filter: contrast(1.5) brightness(1.2);
+  /* Higher contrast makes the blacks darker so they disappear in 'screen' mode */
+}
+
+.water-fx {
+  mix-blend-mode: screen !important;
+  /* Screen hides black background */
+  filter: invert(1) hue-rotate(180deg) brightness(1.2) contrast(1.3);
+  /* Invert white to black + Color correction */
+  opacity: 0.9;
+  border-radius: 50%;
+  /* Make it OVAL */
+  overflow: hidden;
+}
+
+/* Drum Bawah Full Air */
+.water-fx.water-full .som-boiler-video {
+  transform: scale(5);
+  /* Lakukan zoom besar dari arah bawah ke atas */
+  transform-origin: bottom;
+  object-fit: cover;
+}
+
+.smoke-fx {
+  mix-blend-mode: multiply !important;
+  filter: invert(1) brightness(0.7) contrast(1.5);
+  opacity: 0.6;
+}
+
+/* Status Lamps (Individual Panels Style) */
+.som-boiler-status-lamps {
+  display: flex;
+  gap: 15px;
+  /* More space between panels */
+  background: transparent;
+  padding: 0;
+  border: none;
+}
+
+.status-lamp-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 23, 42, 0.8);
+  padding: 10px 18px;
+  /* Slightly more side padding */
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  min-width: 95px;
+  /* Adjust to fit HIGH HIGH */
+  width: max-content;
+  transition: all 0.3s ease;
+}
+
+/* Highlight the whole panel when active */
+.status-lamp-item:has(.lamp-indicator.active) {
+  border-color: currentColor;
+  /* Will inherit from shadow logic if set */
+  background: rgba(15, 23, 42, 0.9);
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.lamp-label {
+  font-size: 10px;
+  font-weight: 850;
+  color: #94a3b8;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  /* Force single line */
+  transition: all 0.3s ease;
+}
+
+.status-lamp-item:has(.lamp-indicator.active) .lamp-label {
+  color: #ffffff;
+}
+
+.lamp-indicator {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #1e293b;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.lamp-indicator::after {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 40%;
+  height: 40%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  filter: blur(1px);
+}
+
+.lamp-indicator.active {
+  box-shadow:
+    0 0 15px currentColor,
+    0 0 30px currentColor,
+    inset 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Small Label variant for Mini Cards - DIPERBESAR */
+.som-boiler-mini-card.small-label {
+  padding: 0;
+  border-radius: 8px;           /* ← dari 4px */
+  width: auto;        
+  min-width: unset;
+  max-width: 180px !important;   /* ← dari 130px jadi 180px */
+  border: 1.5px solid #0f172a;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.som-boiler-mini-card.small-label .som-boiler-mini-header {
+  padding: 12px 16px !important;  /* ← dari 6px 16px jadi lebih besar */
+  background: linear-gradient(180deg, #ffdb3b 0%, #f59e0b 100%) !important;
+  border-radius: 0;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  min-height: 42px !important;    /* ← dari 32px */
+}
+
+.som-boiler-mini-card.small-label .som-boiler-mini-tag {
+  font-size: 12px !important;     /* ← dari 13px */
+  font-weight: 1000;
+  color: #0f172a !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+  line-height: 1.3;
+  display: block;
+  width: 100%;
+  white-space: normal !important;  /* biar bisa 2 baris jika perlu */
+  word-break: keep-all;
+}
+
+/* Interactive label hover effect */
+.som-boiler-mini-card.interactive-label {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.som-boiler-mini-card.interactive-label::after {
+  content: "CONTROLS";
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #f59e0b;
+  color: #000;
+  font-size: 7px;          /* ← dari 7px */
+  font-weight: 900;
+  padding: 1px 5px;        /* ← dari 1px 4px */
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  border-bottom-left-radius: 4px;
+}
+
+.som-boiler-mini-card.interactive-label:hover::after {
+  opacity: 1;
+}
+
+.som-boiler-mini-card.interactive-label {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.som-boiler-mini-card.interactive-label::after {
+  content: "CONTROLS";
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #f59e0b;
+  color: #000;
+  font-size: 7px;
+  font-weight: 900;
+  padding: 1px 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  border-bottom-left-radius: 4px;
+}
+
+.som-boiler-mini-card.interactive-label:hover::after {
+  opacity: 1;
+}
+
+.som-boiler-mini-card.interactive-label:hover {
+  border-color: #f59e0b;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.som-boiler-mini-card.config-active {
+  border: 1px dashed #3b82f6 !important;
+  background: rgba(30, 58, 138, 0.4) !important;
+}
+
+.som-boiler-mini-card.config-active:hover {
+  border: 1px solid #60a5fa !important;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.5) !important;
+}
+
+.tag-config-badge {
+  position: absolute;
+  top: -15px;
+  right: -10px;
+  background: #3b82f6;
+  color: #fff;
+  font-size: 8px;
+  font-weight: 900;
+  padding: 2px 6px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  pointer-events: none;
+}
+
+.tag-config-badge.mini {
+  top: -5px;
+  right: -5px;
+}
+
+.som-dev-config-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(59, 130, 246, 0.1);
+  padding: 6px 12px;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 20px;
+  margin-left: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.som-dev-config-toggle.active {
+  background: #3b82f6;
+  border-color: #60a5fa;
+}
+
+.som-dev-config-toggle.active .toggle-text {
+  color: #fff;
+}
+
+.toggle-text {
+  font-size: 10px;
+  font-weight: 800;
+  color: #60a5fa;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.som-tag-edit-popup-inner {
+  width: 250px;
+  padding: 5px;
+}
+
+.som-tag-input {
+  width: 100%;
+  padding: 8px;
+  background: #0f172a;
+  border: 1px solid #3b82f6;
+  border-radius: 4px;
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  margin-top: 10px;
+}
+
+/* Equipment Control Popup - Compact version */
+.som-equipment-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  z-index: 9999;
+}
+
+.som-equipment-control-popup {
+  position: fixed;
+  width: 280px;
+  background: #0f172a;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 15px rgba(245, 158, 11, 0.2);
+  overflow: hidden;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.som-control-popup-header {
+  padding: 8px 12px;
+  background: #1e293b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #f59e0b;
+}
+
+.som-control-popup-title {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: #f59e0b;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.som-control-close-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.som-control-popup-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.som-control-item-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.som-control-item-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #cbd5e1;
+  text-transform: uppercase;
+}
+
+.som-equipment-control-popup.config-border {
+  border: 1px dashed #3b82f6;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.tag-map-btn {
+  background: rgba(59, 130, 246, 0.2);
+  border: 1px solid #3b82f6;
+  color: #60a5fa;
+  font-size: 8px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tag-map-btn:hover {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.som-btn-start.btn-tag-mode,
+.som-btn-stop.btn-tag-mode {
+  position: relative;
+  border-style: dashed;
+  min-height: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tag-id-hint {
+  font-size: 7px;
+  font-weight: 400;
+  opacity: 0.8;
+  margin-top: 2px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1px 3px;
+  border-radius: 2px;
+}
+
+.som-control-button-group {
+  display: flex;
+  gap: 8px;
+}
+
+.som-btn-start,
+.som-btn-stop {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 900;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.som-btn-start {
+  background: #065f46;
+  color: #34d399;
+  border: 1px solid #059669;
+}
+
+.som-btn-stop {
+  background: #7f1d1d;
+  color: #f87171;
+  border: 1px solid #dc2626;
+}
+
+/* Responsivity */
+@media (max-width: 1366px) {
+  .som-boiler-mini-card {
+    min-width: 100px;
+    max-width: 100px;
+  }
+}
+
+/* --- HYPER-REALISTIC FLUID FLOWS (Water & Steam) --- */
+.water-path-base {
+  stroke-width: 18px;
+  stroke-linecap: round;
+  fill: none;
+  stroke: #0ea5e9;
+  opacity: 0.25;
+}
+
+.water-path-stream {
+  stroke-width: 12px;
+  stroke-linecap: round;
+  fill: none;
+  stroke: url(#waterGradientRealistic);
+  opacity: 0.9;
+}
+
+.water-path-highlight {
+  stroke-width: 3px;
+  stroke-linecap: round;
+  fill: none;
+  stroke: #ffffff;
+  stroke-dasharray: 10, 40;
+  opacity: 1;
+  animation: water-glide 1s linear infinite;
+}
+
+/* Steam Variant */
+.steam-path-base {
+  stroke-width: 14px;
+  stroke-linecap: round;
+  fill: none;
+  stroke: #e2e8f0;
+  opacity: 0.15;
+}
+
+.steam-path-stream {
+  stroke-width: 8px;
+  stroke-linecap: round;
+  fill: none;
+  stroke: url(#steamGradientRealistic);
+  opacity: 0.7;
+}
+
+.steam-path-highlight {
+  stroke-width: 4px;
+  stroke-linecap: round;
+  fill: none;
+  stroke: #ffffff;
+  stroke-dasharray: 12, 20;
+  opacity: 1;
+  animation: water-glide 1s linear infinite;
+}
+
+@keyframes water-glide {
+  from {
+    stroke-dashoffset: 50;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* --- FURNACE CONTROL POPUP V2 (Dashboard Matrix) --- */
+.som-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(2, 6, 23, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.som-furnace-popup {
+  width: 90%;
+  max-width: 1100px;
+  max-height: 90vh;
+  background: #0a0f1e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header V2 */
+.som-popup-header {
+  padding: 1.25rem 2rem;
+  background: #0f172a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-dot {
+  width: 8px;
+  height: 8px;
+  background: #f59e0b;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #f59e0b;
+}
+
+.som-popup-header h2 {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* CONTENT V2 */
+.som-popup-content-v2 {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  overflow: hidden;
+  /* No scroll */
+}
+
+/* Section PID */
+.som-section-pid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.som-pid-panel {
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.25rem;
+  border-radius: 10px;
+}
+
+.som-pid-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.pid-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+}
+
+.pid-mode-btn {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid #f59e0b;
+  color: #f59e0b;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 10px;
+  border-radius: 4px;
+}
+
+.som-pid-values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.pid-field label {
+  display: block;
+  font-size: 0.6rem;
+  color: #64748b;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.pid-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.pid-num.highlight {
+  color: #f59e0b;
+}
+
+.pid-num.secondary {
+  color: #0ea5e9;
+}
+
+.pid-slider-minimal {
+  width: 100%;
+  appearance: none;
+  height: 3px;
+  background: #334155;
+  outline: none;
+}
+
+.pid-slider-minimal::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* --- FURNACE CONTROL POPUP V4 (PRECISION INDUSTRIAL DESIGN) --- */
+.som-furnace-popup-v4 {
+  width: 95%;
+  max-width: 1400px;
+  background: #0a0b14;
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+.som-popup-header-v4 {
+  background: #111422;
+  padding: 1rem 2.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-badge {
+  background: #f59e0b;
+  color: #000;
+  font-size: 0.6rem;
+  font-weight: 900;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.som-popup-header-v4 h2 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #fff;
+  flex: 1;
+}
+
+.som-close-btn-v4 {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #64748b;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.som-popup-body-v4 {
+  padding: 1.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* MOTOR HUB (KEEPING AS IS) */
+.som-motor-hub-v4 {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+
+.som-motor-pod {
+  background: #161a2d;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.motor-pod-header {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #64748b;
+}
+
+.motor-pod-visual {
+  width: 50px;
+  height: 50px;
+  background: #0a0b14;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fan-unit img {
+  width: 73px;
+  height: 73px;
+  opacity: 0.8;
+}
+
+.fan-unit.spinning img {
+  animation: fan-spin 0.6s linear infinite;
+}
+
+.motor-pod-actions {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
+.pod-btn {
+  flex: 1;
+  padding: 6px 0;
+  font-size: 0.6rem;
+  font-weight: 900;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.pod-btn.start {
+  border: 1px solid #f59e0b;
+  background: transparent;
+  color: #f59e0b;
+}
+
+.pod-btn.stop {
+  border: 1px solid #ef4444;
+  background: transparent;
+  color: #ef4444;
+}
+
+/* --- DUAL ZONE LAYOUT V5 (NARROW CONTROLS + SIDEBAR MON) --- */
+.som-dual-zone-v4 {
+  display: flex;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.som-left-controls {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.som-pid-card-premium {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.pid-card-head {
+  padding: 10px 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.pid-card-title {
+  font-size: 0.65rem;
+  font-weight: 900;
+  color: #64748b;
+  letter-spacing: 0.05em;
+}
+
+.pid-card-data-hub {
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pid-data-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fafc;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+}
+
+.pid-data-row.locked {
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.p-label {
+  font-size: 0.55rem;
+  font-weight: 800;
+  color: #475569;
+}
+
+.pv-num {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.p-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.p-value.orange {
+  color: #f59e0b;
+}
+
+.p-input-wrap input {
+  background: #0a0b14;
+  border: 1px solid rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.15rem;
+  font-weight: 800;
+  width: 90px;
+  text-align: right;
+}
+
+.pid-manual-zone {
+  padding: 0.75rem 1.25rem;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slider-label-v6 {
+  font-size: 0.5rem;
+  font-weight: 900;
+  color: #64748b;
+}
+
+.slider-val-v6 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: #f59e0b;
+  font-weight: 800;
+}
+
+.h-range-v6 {
+  width: 100%;
+  height: 6px;
+  background: #0a0b14;
+  border-radius: 10px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.h-range-v6::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #f59e0b;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
+}
+
+.h-range-v6.disabled {
+  opacity: 0.1;
+}
+
+.pid-card-footer {
+  padding: 1rem 1.25rem;
+  margin-top: auto;
+}
+
+.v7-mode-toggle {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 950;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  outline: none;
+}
+
+.v7-mode-toggle.auto {
+  background: linear-gradient(180deg, #f59e0b 0%, #16a34a 100%);
+  color: #000;
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.v7-mode-toggle.auto:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 6px 25px rgba(245, 158, 11, 0.4);
+}
+
+.v7-mode-toggle.manual {
+  background: #1e293b;
+  color: #ef4444;
+  border: 1.5px solid rgba(239, 68, 68, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.v7-mode-toggle.manual:hover {
+  background: #334155;
+  border-color: #ef4444;
+}
+
+.mode-toggle-btn-v6:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
+
+/* REFINED SIDEBAR V6 */
+.som-monitoring-sidebar-v6 {
+  width: 300px;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.mon-v6-header {
+  padding: 12px;
+  background: #ffdb3b;
+  color: #0f172a;
+  font-weight: 900;
+  font-size: 0.6rem;
+  text-align: center;
+  letter-spacing: 0.15em;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.mon-v6-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.mon-v6-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mon-v6-card label {
+  font-size: 0.55rem;
+  font-weight: 800;
+  color: #475569;
+}
+
+.v6-status-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #0a0b14;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-weight: 900;
+  color: #f59e0b;
+  font-size: 0.75rem;
+}
+
+.v6-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f59e0b;
+}
+
+.v6-dot.pulsing {
+  animation: dot-pulse 1.5s infinite;
+}
+
+.v6-data-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  background: #0a0b14;
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+
+.v6-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.v6-data-wrap.flow .v6-num {
+  color: #38bdf8;
+}
+
+.v6-unit {
+  font-size: 0.6rem;
+  color: #475569;
+  font-weight: 800;
+}
+
+.v6-status-wrap.normal-state {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.05);
+}
+
+.v6-status-wrap.low-state {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.05);
+}
+
+.v6-status-wrap.high-state {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.v6-level-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.level-seg {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+}
+
+.level-seg.active.l {
+  background: #f59e0b;
+  box-shadow: 0 0 8px #f59e0b;
+}
+
+.level-seg.active.n {
+  background: #f59e0b;
+  box-shadow: 0 0 8px #f59e0b;
+}
+
+.level-seg.active.h {
+  background: #ef4444;
+  box-shadow: 0 0 8px #ef4444;
+}
+
+.level-seg.active.hh {
+  background: #ef4444;
+  animation: hh-blink 0.5s infinite;
+}
+
+@keyframes hh-blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.mon-v6-footer {
+  padding: 10px;
+  background: #0a0b14;
+  font-size: 0.55rem;
+  color: #334155;
+  font-weight: 800;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+@keyframes dot-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.6);
+  }
+
+  70% {
+    box-shadow: 0 0 0 8px rgba(245, 158, 11, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+  }
+}
+
+/* --- WATER LEVEL SCADA PRECISION V3 (Final Micro-Sync) --- */
+.som-furnace-popup-v4.wl-wide {
+  width: 95%;
+  max-width: 1400px;
+  height: auto;
+  max-height: 92vh;
+  margin: auto;
+}
+
+.wl-header-bar {
+  background: #111422;
+  padding: 4px 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.wl-close-x {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.wl-body-full {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  min-height: 500px;
+}
+
+.wl-schematic-full {
+  flex: 1;
+  background: #f8fafc;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wl-canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wl-main-bg {
+  max-width: 98%;
+  max-height: 98%;
+  opacity: 0.98;
+  filter: contrast(1.1);
+}
+
+/* Absolute Schematic Tags */
+.wl-node-tag {
+  position: absolute;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  pointer-events: none;
+  min-width: 100px;
+}
+
+.wl-node-tag .tag-label {
+  font-size: 0.5rem;
+  color: #64748b;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+}
+
+.wl-node-tag .tag-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #0f172a;
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.wl-node-tag .tag-value span {
+  font-size: 0.6rem;
+  color: #3b82f6;
+  font-weight: 700;
+}
+
+.wl-drum-gauge {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  z-index: 5;
+}
+
+.wl-drum-gauge .gauge-label {
+  font-size: 0.65rem;
+  color: #94a3b8;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.wl-drum-gauge .gauge-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.6rem;
+  font-weight: 950;
+  color: #f59e0b;
+  line-height: 1;
+}
+
+.wl-drum-gauge .gauge-bar-track {
+  width: 50px;
+  height: 120px;
+  background: #f1f5f9;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #e2e8f0;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.wl-drum-gauge .gauge-fill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+}
+
+.wl-mute-indicator {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 5px 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.mute-label {
+  color: #64748b;
+  font-size: 0.75rem;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.mute-lamp {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #991b1b;
+  border: 2px solid #ef4444;
+  box-shadow: 0 0 8px #ef4444;
+  flex-shrink: 0;
+}
+
+/* FLOATING CONTROLLER RACK (Ultra-Compact Instrument Style) */
+.wl-floating-control-rack {
+  position: absolute;
+  bottom: 15rem;
+  /* Raised higher as requested */
+  right: 3rem;
+  display: flex;
+  gap: 1.5rem;
+  z-index: 100;
+}
+
+.wl-floating-control-rack .som-pid-card-premium {
+  width: 230px;
+  background: #111422;
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 15px rgba(245, 158, 11, 0.05);
+  border-radius: 12px;
+}
+
+/* Inherit row layout from base .pid-data-row instead of column override */
+.wl-floating-control-rack .p-label {
+  font-size: 0.55rem;
+  color: #64748b;
+  font-weight: 900;
+}
+
+.wl-floating-control-rack .p-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.2rem;
+  transform: translateY(-1px);
+}
+
+.wl-floating-control-rack .p-input-wrap input {
+  background: #000;
+  border: 1px solid #334155;
+  color: #f59e0b;
+  font-size: 1.1rem;
+  padding: 4px 6px;
+  width: 85px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.wl-floating-control-rack .mode-toggle-btn-v6 {
+  font-size: 0.65rem;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+/* --- STATION SPLIT LAYOUT (Modern Industrial) --- */
+.station-split-layout {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  gap: 1.5rem;
+  padding: 0.75rem 1.5rem 1.5rem 1.5rem;
+  background: #f8fafc;
+  overflow: hidden;
+}
+
+.station-schematic-side {
+  flex: 1.6;
+  background: #ffffff;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.station-control-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 500px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.station-control-side::-webkit-scrollbar {
+  width: 6px;
+}
+
+.station-control-side::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.station-control-side::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.station-control-side::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Specific Sidebar for Graphics / Dashboards */
+.station-sidebar-right {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --- REFINED PID CARD V7 (Professional Matrix Style) --- */
+.som-pid-card-v7 {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.pid-card-title-v7 {
+  font-size: 0.7rem;
+  font-weight: 950;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.pid-v7-data-matrix {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pid-v7-row {
+  display: grid;
+  grid-template-columns: 1fr 40px;
+  align-items: center;
+  background: #f8fafc;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.pid-v7-row.locked {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.val-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.v7-label {
+  font-size: 0.4rem;
+  color: #64748b;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.v7-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #0f172a;
+  line-height: 1;
+}
+
+.v7-value input {
+  background: #ffffff;
+  border: 1.5px solid #ffdb3b;
+  color: #0f172a;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 950;
+  width: 100%;
+  padding: 2px 8px;
+  border-radius: 4px;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.v7-value input:focus {
+  border-color: #f59e0b;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 1), 0 0 15px rgba(245, 158, 11, 0.2);
+}
+
+.v7-value.orange {
+  color: #f59e0b;
+}
+
+.v7-value.cyan {
+  color: #06b6d4;
+}
+
+.v7-value.green {
+  color: #f59e0b;
+}
+
+.v7-tag {
+  font-size: 0.6rem;
+  font-weight: 950;
+  color: #475569;
+  text-align: right;
+}
+
+.v7-manual-hud {
+  padding: 10px;
+  background: #f1f5f9;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 1px solid #e2e8f0;
+}
+
+.v7-slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+/* --- MOTOR HUB V7 --- */
+.som-motor-grid-v7 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.motor-pod-v7 {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.m-v7-header {
+  font-size: 0.65rem;
+  font-weight: 950;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.m-v7-visual {
+  width: 45px;
+  height: 45px;
+  background: #f8fafc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e2e8f0;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.m-v7-visual img {
+  width: 55px;
+  height: 55px;
+  opacity: 0.85;
+}
+
+.m-v7-visual.spinning img {
+  animation: fan-spin 0.6s linear infinite;
+}
+
+.m-v7-actions {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+}
+
+.m-v7-btn {
+  flex: 1;
+  padding: 8px 0;
+  font-size: 0.7rem;
+  font-weight: 950;
+  border-radius: 6px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.m-v7-btn.on {
+  background: #f59e0b;
+  color: #000;
+  border: none;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+}
+
+.m-v7-btn.off {
+  background: #1e293b;
+  color: #94a3b8;
+  border: 1.5px solid #334155;
+}
+
+/* --- TREND GRAPHICS FULL-VIEW --- */
+.trend-viewport-v7 {
+  flex: 1;
+  background: #020617;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8);
+}
+
+.trend-y-axes-container {
+  display: flex;
+  height: 100%;
+}
+
+.trend-y-axis-v7 {
+  width: 65px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 60px 0 40px 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 850;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: right;
+  position: relative;
+}
+
+.y-axis-main-label {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  font-size: 9px;
+  font-weight: 950;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.trend-plot-surface {
+  flex: 1;
+  position: relative;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1.5px, transparent 1.5px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1.5px, transparent 1.5px);
+  background-size: 50px 50px;
+}
+
+.trend-time-cursor {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+/* CALENDAR (PROFESSIONAL MINIMAL) */
+.som-calendar-professional {
+  background: #0f121d;
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.cal-pro-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  font-weight: 950;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+}
+
+.cal-pro-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.cal-pro-day {
+  font-size: 11px;
+  text-align: center;
+  color: #64748b;
+  font-weight: 950;
+  padding-bottom: 10px;
+}
+
+.cal-pro-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  color: #cbd5e1;
+  font-weight: 850;
+  border: 1px solid transparent;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cal-pro-cell:hover {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+  border-color: rgba(245, 158, 11, 0.2);
+}
+
+.cal-pro-cell.active {
+  background: #f59e0b;
+  color: #000;
+  font-weight: 950;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+}
+
+.backup-settings-pro {
+  background: #0f121d;
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.setting-row-pro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.setting-row-pro:last-child {
+  border-bottom: none;
+}
+
+.setting-label-pro {
+  font-size: 0.75rem;
+  font-weight: 950;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.pro-val-pill {
+  background: #000;
+  padding: 6px 14px;
+  border-radius: 6px;
+  color: #f59e0b;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 900;
+  font-size: 1.1rem;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 1);
+}
+
+/* --- WATER LEVEL STATION COMPACT OVERRIDES --- */
+.wl-compact-monitoring .som-boiler-mini-card {
+  min-width: 110px;
+}
+
+.wl-compact-monitoring .som-boiler-mini-header {
+  padding: 4px 8px;
+}
+
+.wl-compact-monitoring .som-boiler-mini-tag {
+  font-size: 9px;
+}
+
+.wl-compact-monitoring .som-boiler-mini-label {
+  font-size: 9px;
+}
+
+.wl-compact-monitoring .som-boiler-mini-value {
+  font-size: 1rem;
+}
+
+.wl-compact-monitoring .som-boiler-mini-unit {
+  font-size: 0.6rem;
+}
+
+.wl-compact-monitoring .wl-drum-gauge {
+  padding: 8px 12px;
+  gap: 6px;
+  border-radius: 8px;
+}
+
+.wl-compact-monitoring .wl-drum-gauge .gauge-label {
+  font-size: 0.5rem;
+}
+
+.wl-compact-monitoring .wl-drum-gauge .gauge-val {
+  font-size: 1.1rem;
+}
+
+.wl-compact-monitoring .wl-drum-gauge .gauge-bar-track {
+  width: 40px;
+  height: 90px;
+}
+
+/* --- PREMIUM WATER TREATMENT (PRESS STATION STYLE) --- */
+.som-press-mini-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 130px;
+  max-width: 280px;
+  overflow: hidden;
+}
+
+.som-press-mini-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(245, 158, 11, 0.3);
+  border-color: #f59e0b;
+}
+
+.som-press-mini-header {
+  background: #ffdb3b !important;
+  padding: 4px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgba(15, 23, 42, 0.05);
+}
+
+.som-press-mini-label {
+  font-size: 10px;
+  font-weight: 900;
+  color: #0f172a !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.som-press-mini-body {
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.som-press-param-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  padding-bottom: 4px;
+}
+
+.som-press-param-label {
+  font-size: 9px;
+  font-weight: 900;
+  color: #0f172a;
+  text-transform: uppercase;
+}
+
+.som-press-mini-value {
+  font-size: 14px;
+  font-weight: 950;
+  color: #0f172a;
+  font-family: 'Inter', sans-serif;
+}
+
+.som-press-mini-value[data-unit]::after {
+  content: attr(data-unit);
+  font-size: 10px;
+  margin-left: 3px;
+  color: #94a3b8;
+}
+
+.som-press-mini-status {
+  font-size: 9px;
+  font-weight: 900;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 6px;
+  text-transform: uppercase;
+}
+
+.status-running {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.status-stop {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.som-press-sp-value {
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #38bdf8;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 900;
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+}
+
+.som-press-gear-icon {
+  width: 12px;
+  height: 12px;
+  color: #64748b;
+  transition: transform 0.3s ease;
+}
+
+.som-press-mini-card:hover .som-press-gear-icon {
+  transform: rotate(90deg);
+  color: #3b82f6;
+}
+
+.pulsate {
+  animation: pulsate-glow 2s infinite ease-in-out;
+}
+
+@keyframes pulsate-glow {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.4));
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.8));
+  }
+}
+
+.animate-in {
+  animation: fadeInScale 0.4s ease-out forwards;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- ADVANCED ALERTS --- */
+.som-boiler-mini-card.alert-warning {
+  background: #fff !important;
+  border: 2px solid #f59e0b !important;
+  animation: pulse-warning 1s infinite ease-in-out !important;
+  overflow: hidden;
+}
+
+.som-boiler-mini-card.alert-danger {
+  background: #fff !important;
+  border: 2px solid #ef4444 !important;
+  animation: pulse-danger 1s infinite ease-in-out !important;
+  overflow: hidden;
+}
+
+/* Hazard stripes for both alerts */
+.som-boiler-mini-card.alert-warning::before,
+.som-boiler-mini-card.alert-danger::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-size: 30px 30px;
+  animation: move-stripes 1.5s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Warning Stripes (Orange) */
+.som-boiler-mini-card.alert-warning::before {
+  background-image: linear-gradient(
+    45deg,
+    rgba(245, 158, 11, 0.08) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(245, 158, 11, 0.08) 50%,
+    rgba(245, 158, 11, 0.08) 75%,
+    transparent 75%,
+    transparent
+  );
+}
+
+/* Danger Stripes (Red) */
+.som-boiler-mini-card.alert-danger::before {
+  background-image: linear-gradient(
+    45deg,
+    rgba(239, 68, 68, 0.1) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(239, 68, 68, 0.1) 50%,
+    rgba(239, 68, 68, 0.1) 75%,
+    transparent 75%,
+    transparent
+  );
+}
+
+@keyframes pulse-warning {
+  0%, 100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.2); }
+  50% { box-shadow: 0 0 35px rgba(245, 158, 11, 0.6); border-color: #facc15; }
+}
+
+@keyframes pulse-danger {
+  0%, 100% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.4); }
+  50% { box-shadow: 0 0 60px rgba(239, 68, 68, 0.9); border-color: #ff0000; }
+}
+
+@keyframes move-stripes {
+  from { background-position: 0 0; }
+  to { background-position: 60px 0; }
+}
+
+/* Ensure content stays above stripes */
+.som-boiler-mini-card.alert-warning > *,
+.som-boiler-mini-card.alert-danger > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Alert Text Colors */
+.som-boiler-mini-card.alert-warning .som-boiler-mini-value {
+  color: #f59e0b !important;
+}
+
+.som-boiler-mini-card.alert-danger .som-boiler-mini-value {
+  color: #ef4444 !important;
+}
+
+.som-boiler-mini-card.alert-danger .som-boiler-mini-tag {
+  color: #ff4d4d !important;
+}
+
+.som-boiler-mini-card.alert-warning .som-boiler-status-indicator {
+  background-color: #f59e0b !important;
+}
+
+.som-boiler-mini-card.alert-danger .som-boiler-status-indicator {
+  background-color: #ef4444 !important;
+}
+
+/* Ukuran card PAS (tidak terlalu besar, tidak terlalu kecil) */
+.som-boiler-mini-card .som-boiler-mini-header {
+  padding: 2px 8px !important;
+  min-height: 32px !important;
+}
+
+.som-boiler-mini-card .som-boiler-mini-body {
+  padding: 6px 10px !important;
+  gap: 2px !important;
+}
+
+.som-boiler-mini-card .som-boiler-mini-param {
+  gap: 6px !important;
+}
+
+.som-boiler-mini-card .som-boiler-mini-label {
+  font-size: 12px !important;
+}
+
+.som-boiler-mini-card .som-boiler-mini-value {
+  font-size: 20px !important;
+}
+
+.som-boiler-mini-card .som-boiler-mini-unit {
+  font-size: 7px !important;
+}
+
+.som-boiler-mini-card .som-boiler-mini-tag {
+  font-size: 9px !important;
+}
+
+.som-boiler-mini-card .som-boiler-status-indicator {
+  width: 6px !important;
+  height: 6px !important;
+}
+
+/* Water Treatment — permanent pipe flows above cards/overlay */
+.wt-permanent-flows {
+  pointer-events: none;
+}
+
+/* ============================================================
+   BOILER HOUSE - LIQUID FLOW & STEAM FLOW STYLES
+   ============================================================ */
+
+/* ── WATER PATH FLOW STYLES (Realistic Blue, adapted from Oil Clarification) ── */
+
+/* Base path - tidak ada animasi, hanya glow */
+.oc-water-path-base {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Stream - animasi aliran utama (mode: liquid) */
+.oc-water-path-stream {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: none; /* solid */
+  animation: none;
+}
+
+/* Highlight - kilatan permukaan cairan (mode: liquid) */
+.oc-water-path-highlight {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.75);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 3 50; /* titik kecil, jarak jauh */
+  animation: oc-flow-highlight 1.5s linear infinite;
+}
+
+/* Dotted - aliran titik-titik bergerak (mode: dotted) */
+.oc-water-path-dotted {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.5);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 4 18;
+  animation: oc-flow-dotted 1s linear infinite;
+}
+
+@keyframes oc-flow-highlight {
+  from {
+    stroke-dashoffset: 53;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes oc-flow-dotted {
+  from {
+    stroke-dashoffset: 22;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+/* ── STEAM PATH FLOW STYLES (Aura/Glow, adapted from Sterilizer Station) ── */
+
+.liquid-flow-glow {
+  stroke-width: 14px;
+  stroke-linecap: round;
+  filter: blur(8px);
+  opacity: 0.2;
+}
+
+.liquid-flow-aura {
+  stroke-width: 8px;
+  stroke-linecap: round;
+  filter: blur(3px);
+  opacity: 0.6;
+}
+
+/* MODE 1: FLOWING */
+.liquid-flow--flowing .liquid-flow-glow {
+  stroke-dasharray: 20, 40;
+  animation: move-liquid 0.6s linear infinite;
+}
+
+.liquid-flow--flowing .liquid-flow-aura {
+  stroke-dasharray: 15, 45;
+  animation: move-liquid 0.6s linear infinite;
+}
+
+/* MODE 2: STANDBY */
+.liquid-flow--standby .liquid-flow-glow {
+  stroke-dasharray: none;
+  animation: pulse-glow-steam 2.5s ease-in-out infinite;
+}
+
+.liquid-flow--standby .liquid-flow-aura {
+  stroke-dasharray: none;
+  animation: pulse-glow-steam 2.5s ease-in-out infinite;
+}
+
+/* MODE 3: LIQUID (Condensate) */
+.liquid-flow--liquid .liquid-flow-glow {
+  stroke-dasharray: 20, 40;
+  opacity: 0.25;
+}
+
+.liquid-flow--liquid .liquid-flow-aura {
+  stroke-dasharray: 15, 45;
+  opacity: 0.8;
+  animation: move-liquid 0.6s linear infinite;
+}
+
+@keyframes move-liquid {
+  from { stroke-dashoffset: 300; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes pulse-glow-steam {
+  0%, 100% { opacity: 0.6; stroke-width: 8px; }
+  50% { opacity: 1.0; stroke-width: 12px; }
+}

@@ -1,0 +1,388 @@
+/* ============================================
+   THRESHING STATION SETTINGS - AGROVISION LIGHT THEME
+   Strictly following original layout dimensions
+   ============================================ */
+
+.som-thresher-station {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #f8fafc;
+}
+
+.som-thresher-station-header {
+  padding: 0.4rem 1.75rem;
+  background: #ffffff;
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid #ffdb3b;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.som-header-left {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 1.5rem !important;
+}
+
+.som-thresher-station-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 950;
+  color: #0f172a;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #0f172a 0%, #ffdb3b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-right: 2px solid #e2e8f0;
+  padding-right: 1.5rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.som-station-tabs {
+  display: flex;
+  gap: 4px;
+  background: #f1f5f9;
+  padding: 3px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.som-station-tab {
+  padding: 5px 14px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.som-station-tab:hover {
+  background: #ffdb3b !important;
+  color: #0f172a !important;
+}
+
+.som-station-tab.active {
+  background: #ffdb3b !important;
+  color: #0f172a !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  font-weight: 900 !important;
+}
+
+.som-view-toggle-container {
+  display: flex;
+  gap: 4px;
+}
+
+.som-view-btn {
+  padding: 5px 14px;
+  border: none;
+  background: #f1f5f9;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.som-view-btn:hover {
+  background: #ffdb3b !important;
+  color: #0f172a !important;
+}
+
+.som-view-btn.active {
+  background: #ffdb3b !important;
+  color: #0f172a !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  font-weight: 900 !important;
+}
+
+.som-thresher-main {
+  flex: 1;
+  padding: 1rem;
+  overflow: hidden;
+  display: flex;
+}
+
+.som-thresher-layout {
+  flex: 1;
+  display: flex;
+  gap: 1rem;
+}
+
+.som-ts-page {
+  width: 100%;
+  height: 100%;
+  background-color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  color: #0f172a;
+}
+
+/* Main Content */
+.som-ts-content {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 10px;
+  padding: 10px;
+  overflow: hidden;
+}
+
+/* Panels */
+.som-ts-left-panel,
+.som-ts-right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+}
+
+/* Shared Card Styles */
+.som-ts-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.som-ts-card-header {
+  background: #ffdb3b;
+  padding: 3px 10px;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.som-ts-card-title {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 950;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.som-ts-card-body {
+  padding: 6px 10px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: hidden;
+}
+
+/* Value Box */
+.som-ts-val-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 950;
+  color: #0f172a;
+  min-width: 60px;
+  cursor: default;
+}
+
+.som-ts-val-box--editable {
+  cursor: pointer;
+  border-color: #ffdb3b;
+  transition: all 0.2s;
+}
+
+.som-ts-val-box--editable:hover {
+  background: rgba(255, 219, 59, 0.1);
+  border-color: #f59e0b;
+}
+
+.som-ts-val-unit {
+  font-size: 9px;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+/* Digester Card Layout */
+.som-ts-total-load-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  background: rgba(255, 255, 255, 0.4);
+  padding: 4px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.som-ts-total-load-label {
+  font-size: 12px;
+  font-weight: 900;
+  color: #0f172a;
+  text-transform: uppercase;
+}
+
+.som-ts-digester-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.som-ts-digester-unit {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 6px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.som-ts-digester-unit:hover {
+  transform: translateY(-2px);
+  border-color: #ffdb3b;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+.som-ts-digester-label {
+  font-size: 11px;
+  font-weight: 950;
+  color: #0f172a;
+  text-transform: uppercase;
+  border-bottom: 2px solid #ffdb3b;
+  padding-bottom: 2px;
+  width: 100%;
+  text-align: center;
+}
+
+.som-ts-digester-icon img {
+  height: 100%;
+  max-height: 200px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+}
+
+.som-ts-digester-unit:hover .som-ts-digester-icon img {
+  transform: scale(1.05);
+}
+
+.som-ts-digester-params {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+
+.som-ts-param-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+/* Return Conveyor */
+.som-ts-return-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 20px;
+}
+
+.som-ts-return-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.som-ts-return-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Frequency Tables */
+.som-ts-freq-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 16px;
+}
+
+.som-ts-minmax-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.som-ts-minmax-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.som-ts-freq-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.som-ts-freq-range {
+  font-size: 10px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+/* Footer */
+.som-ts-footer {
+  padding: 10px 16px;
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.som-ts-save-btn {
+  background: #f59e0b;
+  color: #ffffff;
+  border: none;
+  font-weight: 800;
+  padding: 10px 36px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 12px;
+}

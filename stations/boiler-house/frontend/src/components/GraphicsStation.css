@@ -1,0 +1,226 @@
+.scada-trend-viewer {
+    background: #0f172a;
+    border-radius: 12px;
+    padding: 20px;
+    color: #f1f5f9;
+    height: 100%;
+    width: 100%;
+    flex: 1;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.trend-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.trend-title {
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: #94a3b8;
+}
+
+.status-pill {
+    margin-left: 15px;
+    font-size: 0.65rem;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-weight: 700;
+}
+
+.status-pill.synced { background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2); }
+.status-pill.syncing { background: rgba(59, 130, 246, 0.1); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.2); }
+
+.trend-controls {
+    display: flex;
+    gap: 20px;
+}
+
+.zoom-group {
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.zoom-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.zoom-btn:hover { background: rgba(255,255,255,0.05); color: #3b82f6; }
+
+.zoom-label {
+    padding: 0 15px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #cbd5e1;
+}
+
+.calendar-mini {
+    display: flex;
+    gap: 4px;
+}
+
+.day-btn {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    color: #64748b;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.day-btn:hover { border-color: #3b82f6; color: #fff; }
+.day-btn.active { background: #3b82f6; color: #fff; border-color: #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
+
+.trend-main-container {
+    display: flex;
+    flex: 1;
+    gap: 10px;
+    min-height: 0;
+}
+
+.trend-y-axes {
+    display: flex;
+    gap: 8px;
+    border-left: 1px solid rgba(255,255,255,0.05);
+    padding-left: 10px;
+}
+
+.y-axis-col {
+    width: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.y-axis-label {
+    font-size: 0.5rem;
+    font-weight: 900;
+    text-align: center;
+    padding-top: 10px;
+    writing-mode: vertical-lr;
+    /* Removed rotate(180deg) so it reads bottom-to-top on the right */
+}
+
+.y-axis-ticks {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80%;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-align: left;
+    padding-bottom: 40px;
+}
+
+.trend-canvas-wrapper {
+    flex: 1;
+    position: relative;
+    background: rgba(2, 6, 23, 0.5);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.trend-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.grid-line {
+    stroke: rgba(255,255,255,0.05);
+    stroke-width: 1;
+}
+
+.trend-line {
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 5px currentColor);
+}
+
+.hover-line {
+    stroke: rgba(255,255,255,0.3);
+    stroke-width: 1;
+    stroke-dasharray: 4;
+}
+
+.trend-x-axis {
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+    font-size: 0.65rem;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.trend-tooltip {
+    position: absolute;
+    top: 50px;
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    padding: 12px;
+    border-radius: 8px;
+    pointer-events: none;
+    z-index: 100;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    min-width: 140px;
+}
+
+.tooltip-time {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 4px;
+}
+
+.tooltip-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+.tooltip-value {
+    color: #fff;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.4; }
+    50% { opacity: 1; }
+    100% { opacity: 0.4; }
+}

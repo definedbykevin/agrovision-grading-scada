@@ -1,0 +1,566 @@
+/* ==========================================================================
+   DAF / OSR Station — Trend Tab Styles
+   Saran 1: Sidebar Navigasi Kiri (10 Point) + Dedicated Main Graph Kanan
+   Theme: AgroVision Golden Yellow (#ffdb3b) & Slate/Dark Navy (#0f172a)
+   ========================================================================== */
+
+.som-daf-trend-layout {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  background: #f8fafc;
+  padding: 8px 14px;
+  gap: 12px;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ==========================================================================
+   SIDEBAR KIRI (10 PARAMETERS LIST)
+   ========================================================================== */
+.som-trend-sidebar {
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+}
+
+.som-trend-sidebar-header {
+  background: #ffdb3b;
+  padding: 10px 14px;
+  border-bottom: 2px solid #e2e8f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.som-trend-sidebar-title {
+  color: #0f172a;
+  font-size: 11.5px;
+  font-weight: 950;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.som-trend-sidebar-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  gap: 5px;
+}
+
+/* Scrollbar halus untuk sidebar */
+.som-trend-sidebar-list::-webkit-scrollbar {
+  width: 4px;
+}
+.som-trend-sidebar-list::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.som-trend-sidebar-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 7px 10px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  outline: none;
+}
+
+.som-trend-sidebar-item:hover {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  transform: translateX(2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.som-trend-sidebar-item.active {
+  background: #fffdf5 !important;
+  border: 1.5px solid #ffdb3b !important;
+  box-shadow: 0 3px 10px rgba(255, 219, 59, 0.25) !important;
+}
+
+.som-trend-sidebar-item.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #ffdb3b;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+}
+
+.som-trend-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+  padding-right: 6px;
+}
+
+.som-trend-item-name {
+  font-size: 10.5px;
+  font-weight: 850;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.som-trend-item-sub {
+  font-size: 8.5px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.som-trend-item-value-box {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.som-trend-item-val {
+  font-size: 13.5px;
+  font-weight: 950;
+  color: #0f172a;
+  letter-spacing: 0.01em;
+}
+
+.som-trend-sidebar-item.active .som-trend-item-val {
+  color: #0f172a;
+}
+
+.som-trend-item-unit {
+  font-size: 9px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+/* ==========================================================================
+   AREA KANAN (GRAFIK UTAMA DEDICATED)
+   ========================================================================== */
+.som-trend-main-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  gap: 10px;
+}
+
+.som-trend-graph-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  min-height: 0;
+}
+
+/* Header Grafik */
+.som-trend-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  border-bottom: 1.5px solid #f1f5f9;
+  background: #ffffff;
+  z-index: 5;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.som-trend-active-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.som-trend-color-pill {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.som-trend-active-title {
+  font-size: 13.5px;
+  font-weight: 950;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.som-trend-date-stamp {
+  font-size: 11px;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Filter Period Buttons */
+.som-trend-period-pill-group {
+  display: flex;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  padding: 2px;
+  border-radius: 8px;
+  gap: 2px;
+}
+
+.som-period-btn-inline {
+  background: transparent;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+.som-period-btn-inline:hover {
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.som-period-btn-inline.active {
+  background: #ffdb3b;
+  color: #0f172a;
+  font-weight: 900;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* Sumbu Y & Plot Body */
+.som-trend-body-row {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  min-height: 220px;
+  position: relative;
+  background: #ffffff;
+}
+
+.som-trend-y-axis {
+  display: flex;
+  flex-direction: row;
+  width: 74px;
+  min-width: 74px;
+  padding-right: 6px;
+  padding-left: 8px;
+  border-right: 1px solid #e2e8f0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.som-trend-y-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 10px;
+  font-weight: 950;
+  color: #0f172a;
+  margin-right: 6px;
+  align-self: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.som-trend-y-ticks {
+  flex: 1;
+  position: relative;
+  height: 100%;
+}
+
+.som-y-tick {
+  position: absolute;
+  right: 6px;
+  transform: translateY(-50%);
+  font-size: 10px;
+  font-weight: 800;
+  color: #64748b;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.som-trend-plot-wrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  padding: 0 16px;
+  min-height: 0;
+}
+
+.som-trend-svg {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: block;
+}
+
+/* Tooltip Card */
+.som-trend-tooltip-card {
+  position: absolute;
+  top: 35px;
+  z-index: 100;
+  pointer-events: none;
+  background: #ffffff;
+  backdrop-filter: blur(12px);
+  border: 1.5px solid #ffdb3b;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+  min-width: 160px;
+  padding: 0;
+  overflow: hidden;
+  transition: transform 0.1s ease-out;
+}
+
+.tooltip-header {
+  background: #f8fafc;
+  padding: 6px 10px;
+  font-size: 10px;
+  font-weight: 800;
+  color: #475569;
+  border-bottom: 1px solid #e2e8f0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tooltip-body {
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.tooltip-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.tooltip-row .label {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.tooltip-row .value {
+  font-size: 13.5px;
+  font-weight: 950;
+  color: #0f172a;
+}
+
+/* Sumbu X Bawah */
+.som-trend-x-axis-row {
+  display: flex;
+  flex-direction: row;
+  height: 20px;
+  background: #ffffff;
+  flex-shrink: 0;
+}
+
+.som-trend-y-axis-spacer {
+  width: 74px;
+  min-width: 74px;
+  box-sizing: border-box;
+}
+
+.som-trend-x-axis {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  height: 20px;
+  padding: 0 16px;
+  color: #64748b;
+  font-size: 9px;
+  font-weight: 800;
+  border-top: 1px solid #e2e8f0;
+  align-items: center;
+}
+
+.som-trend-x-axis span {
+  width: 0;
+  display: flex;
+  justify-content: center;
+  overflow: visible;
+  white-space: nowrap;
+}
+
+/* Timeline Controller */
+.som-trend-timeline-controller {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.som-timeline-nav-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 10.5px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+.som-timeline-nav-btn:hover:not(:disabled) {
+  background: #ffdb3b;
+  border-color: #ffdb3b;
+}
+
+.som-timeline-nav-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.som-timeline-slider-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.som-slider-time-label {
+  font-size: 10px;
+  font-weight: 800;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.som-timeline-range-slider {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  outline: none;
+  background: #cbd5e1;
+  cursor: pointer;
+}
+
+.som-timeline-live-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 10.5px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+.som-timeline-live-btn.live-active {
+  background: #10b981;
+  color: #ffffff;
+  border-color: #10b981;
+}
+
+.som-timeline-live-btn .live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+}
+
+.som-timeline-live-btn.live-active .live-dot {
+  background: #ffffff;
+}
+
+/* ==========================================================================
+   BOTTOM STATS FOOTER (4 KOTAK RINGKASAN PARAMETER AKTIF)
+   ========================================================================== */
+.som-trend-stats-footer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  height: 62px;
+  flex-shrink: 0;
+}
+
+.som-trend-stat-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 6px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.som-stat-label {
+  font-size: 9px;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+
+.som-stat-val-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.som-stat-val {
+  font-size: 16px;
+  font-weight: 950;
+  color: #0f172a;
+}
+
+.som-stat-unit {
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748b;
+}

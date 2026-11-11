@@ -1,0 +1,289 @@
+/* Editing Style */
+.som-recipe-input {
+  width: 100%;
+  height: 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 9px;
+  font-weight: 800;
+  color: #0f172a;
+  outline: none;
+  transition: border-color 0.2s;
+  padding: 0 4px;
+}
+
+.som-recipe-input:focus {
+  border-color: #ffdb3b;
+}
+
+.som-recipe-select-tiny {
+  width: 100%;
+  height: 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 800;
+  color: #0f172a;
+  outline: none;
+  cursor: pointer;
+  padding: 0 6px;
+  transition: all 0.2s;
+}
+
+.som-recipe-select-tiny:focus {
+  border-color: #ffdb3b;
+  background: #fffdf5;
+}
+
+.som-editable {
+  cursor: pointer;
+  border: 1px dashed #3b82f6 !important;
+}
+
+.som-editable:hover {
+  filter: brightness(1.3);
+  transform: scale(1.02);
+}
+
+.som-edit-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+.som-mini-save-btn {
+  background: #22c55e;
+  color: #020617;
+  border: none;
+  font-size: 8px;
+  font-weight: 800;
+  padding: 2px 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.som-mini-cancel-btn {
+  background: #475569;
+  color: #e2e8f0;
+  border: none;
+  font-size: 8px;
+  font-weight: 800;
+  padding: 2px 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   RECIPE VIEW (DARK INDUSTRIAL MISSION CONTROL)
+   ========================================================================== */
+.som-recipe-master-view {
+  background: #f8fafc;
+  height: calc(100vh - 120px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 12px;
+  overflow: hidden;
+}
+
+.som-recipe-panel {
+  background: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  min-height: 0; /* Crucial for scrolling in flex */
+}
+
+.som-recipe-panel-header {
+  background: #1e293b;
+  color: #ffdb3b;
+  padding: 6px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 900;
+  font-size: 11px;
+  border-bottom: 2px solid #ffdb3b;
+  text-transform: uppercase;
+}
+
+.som-recipe-panel-stats {
+  color: #64748b;
+}
+
+.som-recipe-dense-table {
+  flex: 1;
+  overflow: auto !important;
+  border-bottom: 2px solid #ffdb3b44;
+  min-height: 0; /* Crucial for scrolling in flex */
+}
+
+/* Custom Scrollbar for Recipe Table (AgroVision Theme) */
+.som-recipe-dense-table::-webkit-scrollbar {
+  width: 8px; /* Slightly wider */
+  height: 8px;
+}
+
+.som-recipe-dense-table::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.05);
+  border-radius: 10px;
+}
+
+.som-recipe-dense-table::-webkit-scrollbar-thumb {
+  background: #ffdb3b;
+  border-radius: 10px;
+  border: 2px solid #ffffff; /* Contrast border */
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.som-recipe-dense-table::-webkit-scrollbar-thumb:hover {
+  background: #eab308;
+}
+
+.som-ultra-table {
+  width: 100%;
+  border-collapse: separate; /* Changed for sticky header support */
+  border-spacing: 0;
+  font-size: 8.5px;
+  text-align: center;
+}
+
+.som-ultra-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #ff3000;
+  color: #ffffff;
+  padding: 8px 2px; /* Slightly more padding */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  font-weight: 950;
+  font-size: 8.5px;
+  text-transform: uppercase;
+}
+
+/* Unified Headers */
+.som-ultra-table thead tr:first-child th {
+  top: 0;
+  z-index: 11;
+}
+
+.som-ultra-table thead tr:nth-child(2) th {
+  position: sticky;
+  top: 25px; /* Offset by the height of the first row header */
+  z-index: 10;
+  background: #1e293b;
+  color: #64748b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.som-ultra-table tbody td {
+  padding: 4px 1px;
+  border: 1px solid #e2e8f0;
+  font-weight: 700;
+  height: 28px;
+  color: #0f172a;
+  background: #ffffff;
+}
+
+.som-ultra-table tbody tr:nth-child(even) td {
+  background: #f8fafc;
+}
+
+.som-n {
+  background: #64748b !important;
+  color: #ffffff !important;
+  width: 20px;
+  font-weight: 900;
+}
+
+/* Rectangular Status Boxes (Dark) */
+.som-rect-status {
+  padding: 3px 0;
+  border-radius: 4px;
+  font-weight: 900;
+  font-size: 8px;
+  text-transform: uppercase;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.som-rect-status.open {
+  background: #39ff14;
+  color: #000000;
+  border-color: #39ff14;
+}
+
+.som-rect-status.close {
+  background: #a1a1aa;
+  color: #000000;
+  border-color: #71717a;
+}
+
+.som-rect-status.off {
+  background: #93c5fd;
+  color: #000000;
+  border-color: #60a5fa;
+}
+
+.som-rect-status.mode-high {
+  background: #3b82f6;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+.som-rect-status.mode-low {
+  background: #99ff99;
+  color: #000000;
+  border-color: #39ff14;
+}
+
+.som-rect-status.mode-off {
+  background: #93c5fd;
+  color: #000000;
+  border-color: #60a5fa;
+}
+
+.som-val {
+  background: #ffffff;
+  border: 1px solid #e2e8f0 !important;
+  color: #0f172a;
+}
+
+.som-tiny-txt {
+  font-size: 7.5px;
+  color: #64748b;
+}
+
+.som-recipe-panel-footer {
+  padding: 4px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+.som-mini-edit-btn {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #0f172a;
+  font-size: 8px;
+  font-weight: 800;
+  width: 100%;
+  padding: 3px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.som-mini-edit-btn:hover {
+  background: #ffdb3b;
+  color: #0f172a;
+  border-color: #ffdb3b;
+}

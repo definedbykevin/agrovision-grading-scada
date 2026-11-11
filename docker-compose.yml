@@ -1,0 +1,744 @@
+version: "3.8"
+
+# ═══════════════════════════════════════════════════════════════════════
+# AGROVISION SCADA Docker Compose
+# Architecture: Distributed Industrial Microservices
+# ═══════════════════════════════════════════════════════════════════════
+
+networks:
+  scada-net:
+    driver: bridge
+
+volumes:
+  mysql-data:
+  redis-data:
+
+services:
+  # ─────────────────────────────────────────────────────────────
+  # INFRASTRUCTURE
+  # ─────────────────────────────────────────────────────────────
+
+  mysql:
+    image: mysql:8.0
+    container_name: scada-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root_change_me}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./main-service/database/schema.sql:/docker-entrypoint-initdb.d/01_auth_config.sql:ro
+      - ./plc-collector/database/schema.sql:/docker-entrypoint-initdb.d/02_plc.sql:ro
+      - ./services/station-service/database/schema.sql:/docker-entrypoint-initdb.d/03_station.sql:ro
+      - ./maintenance/database/schema.sql:/docker-entrypoint-initdb.d/04_maintenance.sql:ro
+      - ./services/logsheet-service/database/schema.sql:/docker-entrypoint-initdb.d/05_logsheet.sql:ro
+      - ./services/grading-service/database/schema.sql:/docker-entrypoint-initdb.d/06_grading.sql:ro
+    networks:
+      - scada-net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: kip-redis
+    restart: unless-stopped
+    command: redis-server --requirepass ${REDIS_PASSWORD:-redis_change_me}
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - kip-net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  # ─────────────────────────────────────────────────────────────
+  # API GATEWAY
+  # ─────────────────────────────────────────────────────────────
+
+  nginx:
+    image: nginx:alpine
+    container_name: kip-gateway
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./gateway/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./gateway/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - main-service
+      - realtime-service
+      - station-service
+      - maintenance-service
+      - logsheet-service
+      - grading-service
+      - reporting-service
+      - sterilizer
+    networks:
+      - kip-net
+
+  # ─────────────────────────────────────────────────────────────
+  # PLC COLLECTOR
+  # ─────────────────────────────────────────────────────────────
+
+  plc-collector:
+    build: ./plc-collector
+    container_name: kip-plc-collector
+    restart: unless-stopped
+    environment:
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_change_me}@redis:6379
+      REDIS_CHANNEL: kip:plc:data
+      DB_HOST: mysql
+      DB_USER: kip_snap7
+      DB_PASSWORD: ${SNAP7_DB_PASSWORD:-snap7_change_me}
+      DB_NAME: agrovision_plc
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  # ─────────────────────────────────────────────────────────────
+  # BACKEND MICROSERVICES
+  # ─────────────────────────────────────────────────────────────
+
+  main-service:
+    build: ./main-service/backend
+    container_name: kip-main-service
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+      - "3008:3008"
+    environment:
+      PORT: 3001
+      DB_HOST: mysql
+      DB_USER_AUTH: kip_auth
+      DB_PASSWORD_AUTH: ${AUTH_DB_PASSWORD:-auth_change_me}
+      DB_NAME_AUTH: agrovision_auth
+      DB_USER_CONFIG: kip_config
+      DB_PASSWORD_CONFIG: ${CONFIG_DB_PASSWORD:-config_change_me}
+      DB_NAME_CONFIG: agrovision_config
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_change_me}@redis:6379
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      JWT_EXPIRES_IN: 7d
+      NODE_ENV: ${NODE_ENV:-development}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      kip-net:
+        aliases:
+          - auth-service
+          - config-service
+
+  realtime-service:
+    build: ./services/realtime-service
+    container_name: kip-realtime-service
+    restart: unless-stopped
+    ports:
+      - "3002:3002"
+    environment:
+      PORT: 3002
+      DB_HOST: mysql
+      DB_USER: kip_realtime
+      DB_PASSWORD: ${REALTIME_DB_PASSWORD:-realtime_change_me}
+      DB_NAME: agrovision_plc
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_change_me}@redis:6379
+      REDIS_CHANNEL: kip:plc:data
+      AUTH_SERVICE_URL: http://auth-service:3001
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173}
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      auth-service:
+        condition: service_started
+    networks:
+      - kip-net
+
+  station-service:
+    build: ./services/station-service
+    container_name: kip-station-service
+    restart: unless-stopped
+    ports:
+      - "3003:3003"
+    environment:
+      PORT: 3003
+      DB_HOST: mysql
+      DB_USER: kip_station
+      DB_PASSWORD: ${STATION_DB_PASSWORD:-station_change_me}
+      DB_NAME: agrovision_station
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_change_me}@redis:6379
+      REDIS_CHANNEL: kip:plc:data
+      CONFIG_SERVICE_URL: http://config-service:3008
+      REALTIME_SERVICE_URL: http://realtime-service:3002
+      AUTH_SERVICE_URL: http://auth-service:3001
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  security:
+    build: ./stations/security/backend
+    container_name: kip-security-station
+    restart: unless-stopped
+    ports:
+      - "3101:3101"
+    environment:
+      PORT: 3101
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: agrovision_security
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_change_me}@redis:6379
+      REDIS_CHANNEL: kip:plc:data
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      STATION_SLUG: security
+      TAG_PREFIX: SEC_
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  weighbridge:
+    build: ./stations/weighbridge/backend
+    container_name: kip-weighbridge-station
+    restart: unless-stopped
+    ports:
+      - "3102:3102"
+    environment:
+      PORT: 3102
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: agrovision_weighbridge
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_change_me}@redis:6379
+      REDIS_CHANNEL: kip:plc:data
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      STATION_SLUG: weighbridge
+      TAG_PREFIX: WEIGH_
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  grading-ramp:
+    build: ./stations/grading-ramp/backend
+    container_name: kip-grading-ramp-station
+    restart: unless-stopped
+    ports:
+      - "3103:3103"
+    environment:
+      PORT: 3103
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: agrovision_grading_ramp
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_change_me}@redis:6379
+      REDIS_CHANNEL: kip:plc:data
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      STATION_SLUG: grading-ramp
+      TAG_PREFIX: GRADING_
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  loading-ramp:
+    build: ./stations/loading-ramp/backend
+    container_name: kip-loading-ramp-station
+    restart: unless-stopped
+    ports:
+      - "3104:3104"
+    environment:
+      PORT: 3104
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: agrovision_loading_ramp
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_change_me}@redis:6379
+      REDIS_CHANNEL: kip:plc:data
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      STATION_SLUG: loading-ramp
+      TAG_PREFIX: LOADING_
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  sterilizer:
+    build: ./stations/sterilizer/backend
+    container_name: kip-sterilizer-station
+    restart: unless-stopped
+    ports:
+      - "3105:3105"
+    environment:
+      PORT: 3105
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: agrovision_sterilizer
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_change_me}@redis:6379
+      REDIS_CHANNEL: kip:plc:data
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      STATION_SLUG: sterilizer
+      TAG_PREFIX: STERI_
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  threshing:
+    build: ./stations/threshing/backend
+    container_name: kip-threshing-station
+    restart: unless-stopped
+    ports:
+      - "3106:3106"
+    environment:
+      PORT: 3106
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: agrovision_threshing
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_change_me}@redis:6379
+      REDIS_CHANNEL: kip:plc:data
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      STATION_SLUG: threshing
+      TAG_PREFIX: THRESH_
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  efb-plant:
+    build: ./stations/efb-plant/backend
+    container_name: kip-efb-plant-station
+    restart: unless-stopped
+    ports:
+      - "3107:3107"
+    environment:
+      PORT: 3107
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: agrovision_efb_plant
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_change_me}@redis:6379
+      REDIS_CHANNEL: kip:plc:data
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      STATION_SLUG: efb-plant
+      TAG_PREFIX: EFB_
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  press:
+    build: ./stations/press/backend
+    container_name: kip-press-station
+    restart: unless-stopped
+    ports:
+      - "3108:3108"
+    environment:
+      PORT: 3108
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: agrovision_press
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_change_me}@redis:6379
+      REDIS_CHANNEL: kip:plc:data
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      STATION_SLUG: press
+      TAG_PREFIX: PRESS_
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  kernel-plant:
+    build: ./stations/kernel-plant/backend
+    container_name: kip-kernel-plant-station
+    restart: unless-stopped
+    ports:
+      - "3109:3109"
+    environment:
+      PORT: 3109
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: agrovision_kernel_plant
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_change_me}@redis:6379
+      REDIS_CHANNEL: kip:plc:data
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      STATION_SLUG: kernel-plant
+      TAG_PREFIX: KERNEL_
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  oil-clarification:
+    build: ./stations/oil-clarification/backend
+    container_name: kip-oil-clarification-station
+    restart: unless-stopped
+    ports:
+      - "3110:3110"
+    environment:
+      PORT: 3110
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: agrovision_oil_clarification
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_change_me}@redis:6379
+      REDIS_CHANNEL: kip:plc:data
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      STATION_SLUG: oil-clarification
+      TAG_PREFIX: CLAR_
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  boiler-house:
+    build: ./stations/boiler-house/backend
+    container_name: kip-boiler-house-station
+    restart: unless-stopped
+    ports:
+      - "3111:3111"
+    environment:
+      PORT: 3111
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: agrovision_boiler_house
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_change_me}@redis:6379
+      REDIS_CHANNEL: kip:plc:data
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      STATION_SLUG: boiler-house
+      TAG_PREFIX: BOILER_
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  engine-room:
+    build: ./stations/engine-room/backend
+    container_name: kip-engine-room-station
+    restart: unless-stopped
+    ports:
+      - "3112:3112"
+    environment:
+      PORT: 3112
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: agrovision_engine_room
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_change_me}@redis:6379
+      REDIS_CHANNEL: kip:plc:data
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      STATION_SLUG: engine-room
+      TAG_PREFIX: ENGINE_
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  raw-water-treatment:
+    build: ./stations/raw-water-treatment/backend
+    container_name: kip-raw-water-treatment-station
+    restart: unless-stopped
+    ports:
+      - "3113:3113"
+    environment:
+      PORT: 3113
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: agrovision_raw_water_treatment
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_change_me}@redis:6379
+      REDIS_CHANNEL: kip:plc:data
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      STATION_SLUG: raw-water-treatment
+      TAG_PREFIX: WATER_
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  daf-osr:
+    build: ./stations/daf-osr/backend
+    container_name: kip-daf-osr-station
+    restart: unless-stopped
+    ports:
+      - "3114:3114"
+    environment:
+      PORT: 3114
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: agrovision_daf_osr
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_change_me}@redis:6379
+      REDIS_CHANNEL: kip:plc:data
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      STATION_SLUG: daf-osr
+      TAG_PREFIX: DAF_
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  cmrs:
+    build: ./stations/cmrs/backend
+    container_name: kip-cmrs-station
+    restart: unless-stopped
+    ports:
+      - "3115:3115"
+    environment:
+      PORT: 3115
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: agrovision_cmrs
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_change_me}@redis:6379
+      REDIS_CHANNEL: kip:plc:data
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      STATION_SLUG: cmrs
+      TAG_PREFIX: CMRS_
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  effluent-treatment:
+    build: ./stations/effluent-treatment/backend
+    container_name: kip-effluent-treatment-station
+    restart: unless-stopped
+    ports:
+      - "3116:3116"
+    environment:
+      PORT: 3116
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: agrovision_effluent_treatment
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_change_me}@redis:6379
+      REDIS_CHANNEL: kip:plc:data
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      STATION_SLUG: effluent-treatment
+      TAG_PREFIX: EFFLUENT_
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  maintenance-service:
+    build: ./maintenance/backend
+    container_name: kip-maintenance-service
+    restart: unless-stopped
+    ports:
+      - "3200:3200"
+    environment:
+      PORT: 3200
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: agrovision_maintenance
+      AUTH_SERVICE_URL: http://auth-service:3001
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  alarm-service:
+    build: ./alarm/backend
+    container_name: kip-alarm-service
+    restart: unless-stopped
+    ports:
+      - "3300:3300"
+    environment:
+      PORT: 3300
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: agrovision_alarm
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_change_me}@redis:6379
+      REDIS_CHANNEL: kip:plc:data
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  contacts-service:
+    build: ./contacts/backend
+    container_name: kip-contacts-service
+    restart: unless-stopped
+    ports:
+      - "3400:3400"
+    environment:
+      PORT: 3400
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: agrovision_contacts
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  logsheet-service:
+    build: ./services/logsheet-service
+    container_name: kip-logsheet-service
+    restart: unless-stopped
+    ports:
+      - "3005:3005"
+    environment:
+      PORT: 3005
+      DB_HOST: mysql
+      DB_USER: kip_logsheet
+      DB_PASSWORD: ${LOGSHEET_DB_PASSWORD:-logsheet_change_me}
+      DB_NAME: agrovision_logsheet
+      AUTH_SERVICE_URL: http://auth-service:3001
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  grading-service:
+    build: ./services/grading-service
+    container_name: kip-grading-service
+    restart: unless-stopped
+    ports:
+      - "3006:3006"
+    environment:
+      PORT: 3006
+      DB_HOST: mysql
+      DB_USER: kip_grading
+      DB_PASSWORD: ${GRADING_DB_PASSWORD:-grading_change_me}
+      DB_NAME: agrovision_grading
+      AUTH_SERVICE_URL: http://auth-service:3001
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - kip-net
+
+  reporting-service:
+    build: ./services/reporting-service
+    container_name: kip-reporting-service
+    restart: unless-stopped
+    ports:
+      - "3007:3007"
+    environment:
+      PORT: 3007
+      DB_HOST: mysql
+      DB_USER: kip_reporting_ro
+      DB_PASSWORD: ${REPORTING_DB_PASSWORD:-reporting_change_me}
+      DB_NAME: agrovision_plc
+      AUTH_SERVICE_URL: http://auth-service:3001
+      JWT_SECRET: ${JWT_SECRET:-jwt_change_me_in_production}
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - kip-net

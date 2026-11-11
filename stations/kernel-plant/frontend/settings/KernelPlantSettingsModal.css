@@ -1,0 +1,568 @@
+/* ==========================================================================
+   KERNEL PLANT SETTINGS - AGROVISION PREMIUM THEME
+   Matches Sterilizer Station Settings style
+   ========================================================================== */
+
+/* Main page wrapper */
+.som-kp-settings-page {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  background-color: #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow: hidden;
+  color: #0f172a;
+  box-sizing: border-box;
+}
+
+/* Main content area: 2 columns */
+.som-kp-settings-content {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 0.72fr 1.28fr;
+  gap: 6px;
+  padding: 6px;
+  min-height: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   LTDS RIGHT PANEL: 2-column card grid
+   ========================================================= */
+.som-kp-ltds-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* =========================================================
+   CARDS (inherits from Sterilizer settings)
+   ========================================================= */
+.som-settings-card {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+}
+
+.som-settings-card-header {
+  background: #ffdb3b;
+  padding: 3px 10px;
+  border-bottom: 1px solid #cbd5e1;
+  font-size: 10px;
+  font-weight: 800;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.som-card-header-icon {
+  font-size: 11px;
+}
+
+.som-settings-card-body {
+  padding: 6px;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.som-kp-rm-scroll-container {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 4px;
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.som-kp-rm-scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.som-kp-rm-scroll-container::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.som-kp-rm-scroll-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.som-kp-rm-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.som-kp-rm-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* =========================================================
+   MONITOR PANEL ELEMENTS
+   ========================================================= */
+.som-kp-monitor-section {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 6px 10px;
+  text-align: center;
+}
+
+.som-kp-monitor-label {
+  font-size: 9.5px;
+  font-weight: 800;
+  color: #d97706;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.som-kp-total-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.som-kp-total-text {
+  font-size: 10px;
+  font-weight: 700;
+  color: #475569;
+}
+
+/* Value boxes */
+.som-kp-value-box {
+  background: #ffffff;
+  border: 1px solid #ffe082;
+  padding: 3px 8px;
+  min-width: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.som-kp-value-box--sm {
+  min-width: 36px;
+  padding: 2px 5px;
+  flex: 1;
+}
+
+.som-kp-value {
+  color: #0f172a;
+  font-family: 'Roboto Mono', 'Inter', monospace;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.som-kp-unit {
+  color: #94a3b8;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+/* SP row */
+.som-kp-sp-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.som-kp-sp-label {
+  font-size: 9px;
+  color: #475569;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.som-kp-sp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  width: 100%;
+}
+
+/* =========================================================
+   SILO DIAGRAM
+   ========================================================= */
+.som-kp-silo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  flex: 1;
+  min-height: 0;
+}
+
+.som-kp-silo-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-height: 0;
+}
+
+.som-kp-silo-svg {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  max-height: 130px;
+}
+
+.som-kp-mill-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.som-kp-mill-name {
+  font-size: 9px;
+  text-align: center;
+  color: #475569;
+  font-weight: 800;
+  margin-bottom: 1px;
+}
+
+.som-kp-param-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3px;
+}
+
+.som-kp-param-label {
+  font-size: 9px;
+  color: #94a3b8;
+  font-weight: 700;
+  width: 24px;
+}
+
+/* =========================================================
+   LTDS FREQUENCY CARD ELEMENTS
+   ========================================================= */
+.som-kp-minmax-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.som-kp-minmax-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  flex: 1;
+}
+
+.som-kp-minmax-label {
+  font-size: 9px;
+  color: #475569;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Frequency input box */
+.som-kp-freq-box {
+  background: #ffffff;
+  border: 1px solid #ffe082;
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.15s;
+}
+
+.som-kp-freq-box:hover {
+  border-color: #f59e0b;
+  background: rgba(255, 219, 59, 0.15);
+}
+
+.som-kp-freq-box--table {
+  padding: 2px 6px;
+  width: 80px;
+  margin: 0 auto;
+}
+
+.som-kp-freq-val {
+  color: #0f172a;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.som-kp-freq-unit {
+  font-size: 9px;
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+/* Frequency table */
+.som-kp-freq-table-wrap {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+}
+
+.som-kp-freq-table-wrap::-webkit-scrollbar { width: 4px; }
+.som-kp-freq-table-wrap::-webkit-scrollbar-track { background: #f1f5f9; }
+.som-kp-freq-table-wrap::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+
+.som-kp-freq-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.5px;
+}
+
+.som-kp-freq-table th {
+  background: #f1f5f9;
+  color: #0f172a;
+  font-weight: 800;
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 6px;
+  border-bottom: 1px solid #cbd5e1;
+  border-right: 1px solid #cbd5e1;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.som-kp-freq-table th:last-child { border-right: none; }
+
+.som-kp-freq-table td {
+  padding: 3px 6px;
+  border-bottom: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+  text-align: center;
+  font-weight: 700;
+  color: #334155;
+  height: 24px;
+}
+
+.som-kp-freq-table td:first-child {
+  text-align: left;
+  color: #475569;
+  font-size: 9px;
+}
+
+.som-kp-freq-table td:last-child { border-right: none; }
+
+.som-kp-freq-table tbody tr:nth-child(even) td { background: #fafaf9; }
+.som-kp-freq-table tbody tr:hover td { background: #fffbeb; }
+
+/* =========================================================
+   FOOTER ACTIONS BAR (inherited from Sterilizer)
+   ========================================================= */
+.som-settings-footer-actions {
+  background-color: #ffffff;
+  border-top: 1px solid #cbd5e1;
+  padding: 4px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.som-footer-left-group,
+.som-footer-right-group {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.som-footer-btn {
+  height: 24px;
+  padding: 0 12px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  box-sizing: border-box;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.som-footer-btn svg {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+}
+
+.som-btn-save-settings {
+  background-color: #f59e0b;
+  border: 1px solid #f59e0b;
+  color: #ffffff;
+}
+
+.som-btn-save-settings:hover:not(:disabled) {
+  background-color: #d97706;
+  border-color: #d97706;
+}
+
+.som-btn-save-settings:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.som-btn-cancel-settings {
+  background-color: #475569;
+  border: 1px solid #475569;
+  color: #ffffff;
+}
+
+.som-btn-cancel-settings:hover {
+  background-color: #334155;
+}
+
+/* =========================================================
+   NUMERIC KEYPAD (AGROVISION light style)
+   ========================================================= */
+.som-numeric-keypad-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15, 23, 42, 0.3);
+  backdrop-filter: blur(2px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.som-numeric-keypad {
+  background: #ffffff;
+  border: 1px solid #ffdb3b;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  width: 320px;
+}
+
+.som-numeric-keypad-header {
+  background: #f8fafc;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.som-numeric-keypad-label {
+  color: #0f172a;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.som-numeric-keypad-display {
+  background: #ffffff;
+  margin: 16px;
+  border: 1px solid #ffdb3b;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.som-numeric-keypad-value {
+  font-size: 32px;
+  font-weight: bold;
+  color: #0f172a;
+}
+
+.som-numeric-keypad-unit {
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* =========================================================
+   HEADER / VIEW BUTTONS — inherits from Sterilizer globals
+   These classes are used by .som-sterilizer-station-header,
+   .som-view-btn, etc. defined in the station-level CSS.
+   If not globally available, duplicate here:
+   ========================================================= */
+.som-sterilizer-station-header {
+  display: flex;
+  align-items: center;
+  padding: 8px 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+}
+
+.som-sterilizer-station-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: #1e293b;
+  letter-spacing: 0.3px;
+}
+
+.som-view-toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.som-view-btn {
+  background: transparent;
+  border: none;
+  padding: 5px 12px;
+  color: #64748b;
+  font-weight: 700;
+  font-size: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.15s;
+}
+
+.som-view-btn:hover:not(:disabled) {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.som-view-btn.active {
+  background: #ffdb3b;
+  color: #0f172a;
+}

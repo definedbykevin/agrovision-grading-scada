@@ -1,0 +1,683 @@
+/* ==========================================
+   TREND PAGE STYLES (DARK MODE)
+   ========================================== */
+.som-trend-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 8px;
+  gap: 10px;
+}
+
+.som-trend-graph-main {
+  flex: 1;
+  display: flex;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.som-trend-y-axis {
+  display: flex;
+  flex-direction: row;
+  padding-right: 12px;
+  padding-left: 8px;
+  border-right: 2px solid #0f172a;
+}
+
+.som-trend-y-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 11px;
+  font-weight: 950;
+  color: #0f172a;
+  margin-right: 15px;
+  align-self: center;
+  margin-bottom: 70px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.som-trend-y-ticks {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 40px;
+  height: calc(100% - 143px);
+  padding-right: 6px;
+  font-size: 0.70rem;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.som-trend-plot-wrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  padding: 0 15px;
+}
+
+.som-trend-tooltip-card {
+  position: absolute;
+  top: 60px;
+  z-index: 100;
+  pointer-events: none;
+  background: #ffffff;
+  backdrop-filter: blur(12px);
+  border: 1px solid #ffdb3b;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  min-width: 180px;
+  padding: 0;
+  overflow: hidden;
+  transition: transform 0.1s ease-out;
+}
+
+.tooltip-header {
+  background: rgba(30, 41, 59, 0.8);
+  padding: 8px 12px;
+  font-size: 10px;
+  font-weight: 800;
+  color: #94a3b8;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tooltip-body {
+  padding: 10px 12px;
+}
+
+.tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.tooltip-row:last-child {
+  margin-bottom: 0;
+}
+
+.tooltip-row .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.tooltip-row.s1 .dot { background: #ef4444; box-shadow: 0 0 6px rgba(239, 68, 68, 0.5); }
+.tooltip-row.s2 .dot { background: #3b82f6; box-shadow: 0 0 6px rgba(59, 130, 246, 0.5); }
+.tooltip-row.s3 .dot { background: #0f172a; box-shadow: 0 0 6px rgba(15, 23, 42, 0.5); }
+.tooltip-row.s4 .dot { background: #16a34a; box-shadow: 0 0 6px rgba(22, 163, 74, 0.5); }
+.tooltip-row.bpv .dot { background: #a855f7; box-shadow: 0 0 6px rgba(168, 85, 247, 0.5); }
+
+.tooltip-row .label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #94a3b8;
+  flex: 1;
+}
+
+.tooltip-row .value {
+  font-size: 11px;
+  font-weight: 800;
+  color: #e2e8f0;
+}
+
+.som-trend-tools {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+/* TYPE TOGGLE BUTTON (Temperature chart / Pressure chart) */
+.som-trend-type-toggle-btn {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  color: #0f172a;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  user-select: none;
+  white-space: nowrap;
+}
+
+.som-trend-type-toggle-btn .som-trend-type-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.som-trend-type-toggle-btn .som-trend-type-text {
+  letter-spacing: 0.02em;
+}
+
+.som-trend-type-toggle-btn:hover {
+  background: #f8fafc;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.som-trend-type-toggle-btn:active {
+  transform: translateY(0);
+}
+
+/* When viewing Pressure, button offers switching to Temperature */
+.som-trend-type-toggle-btn.active-press {
+  border-color: #f97316;
+  color: #c2410c;
+  background: #fff7ed;
+}
+
+.som-trend-type-toggle-btn.active-press:hover {
+  background: #ffedd5;
+  border-color: #ea580c;
+}
+
+/* When viewing Temperature, button offers switching to Pressure */
+.som-trend-type-toggle-btn.active-temp {
+  border-color: #3b82f6;
+  color: #1d4ed8;
+  background: #eff6ff;
+}
+
+.som-trend-type-toggle-btn.active-temp:hover {
+  background: #dbeafe;
+  border-color: #2563eb;
+}
+
+.som-trend-tool-btn {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.som-trend-tool-btn:hover {
+  background: #f8fafc;
+  color: #ffdb3b;
+  border-color: #ffdb3b;
+}
+
+.som-trend-tool-btn.active {
+  background: #ffdb3b;
+  color: #0f172a;
+  border-color: #ffdb3b;
+}
+
+/* SETTINGS DROPDOWN (DARK) */
+.som-trend-settings-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 200px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.som-trend-settings-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.som-settings-label {
+  font-size: 10px;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.som-settings-item-btn {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0f172a;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.som-settings-item-btn:hover {
+  background: rgba(57, 255, 20, 0.08);
+  border-color: rgba(57, 255, 20, 0.2);
+}
+
+.som-period-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.som-period-btn {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+}
+
+.som-period-btn:hover {
+  background: #ffffff;
+  color: #0f172a;
+  border-color: #ffdb3b;
+}
+
+.som-period-btn.active {
+  background: #ffdb3b;
+  color: #0f172a;
+  border-color: #ffdb3b;
+  box-shadow: 0 4px 10px rgba(255, 219, 59, 0.3);
+}
+
+/* FULLSCREEN MODE */
+.som-trend-container.som-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background: #020617;
+  padding: 20px;
+}
+
+.som-trend-date-stamp {
+  padding: 8px 15px;
+  font-size: 14px;
+  font-weight: 950;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.som-trend-svg {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 250px;
+}
+
+.som-trend-x-axis {
+  display: flex;
+  justify-content: space-between;
+  height: 20px;
+  padding: 0 15px;
+  margin-top: 0;
+  color: #64748b;
+  font-size: 0.65rem;
+  font-weight: 800;
+  border-top: 2px solid #0f172a;
+  align-items: center;
+}
+
+.som-trend-x-axis span {
+  width: 0;
+  display: flex;
+  justify-content: center;
+  overflow: visible;
+  font-size: 8px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.som-trend-legend {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 10px;
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+}
+
+.som-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #94a3b8;
+}
+
+.som-box {
+  width: 18px;
+  height: 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 2px;
+}
+.som-box.s1 { background: #ef4444; }
+.som-box.s2 { background: #3b82f6; }
+.som-box.s3 { background: #0f172a; }
+.som-box.s4 { background: #16a34a; }
+.som-box.bpv { background: #a855f7; }
+
+/* SUMMARY FOOTER (DARK) */
+.som-trend-container .som-trend-summary-footer {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  height: 66px;
+  flex-shrink: 0;
+}
+
+.som-trend-container .som-trend-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+
+.som-trend-container .som-trend-card:hover {
+  border-color: #ffdb3b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(255, 219, 59, 0.15);
+}
+
+.som-trend-container .som-trend-card-section {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: all 0.2s ease;
+}
+
+.som-trend-container .som-trend-card-section.focus-section {
+  background: rgba(255, 219, 59, 0.12);
+  border-radius: 6px;
+  padding: 2px 4px;
+}
+
+.som-trend-container .som-trend-card-label {
+  font-size: 0.65rem;
+  font-weight: 850;
+  color: #64748b;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.som-trend-container .som-trend-card-val {
+  font-size: 1.10rem;
+  font-weight: 900;
+  color: #0f172a;
+  line-height: 1;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.som-trend-container .som-trend-accent-val {
+  color: #d4ac0d;
+}
+
+.som-trend-container .som-unit {
+  font-size: 0.60rem;
+  font-weight: 800;
+  margin-left: 2px;
+  color: #64748b;
+}
+
+/* Historical Timeline Controller Styles */
+.som-trend-timeline-controller {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 10px 15px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.som-timeline-nav-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.som-timeline-nav-btn:hover:not(:disabled) {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.som-timeline-nav-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.som-timeline-slider-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.som-slider-time-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: #475569;
+  white-space: nowrap;
+  font-family: 'JetBrains Mono', monospace;
+  background: #e2e8f0;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.som-timeline-range-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: #cbd5e1;
+  outline: none;
+  cursor: pointer;
+}
+
+.som-timeline-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ffdb3b;
+  border: 2px solid #0f172a;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  transition: transform 0.1s;
+}
+
+.som-timeline-range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.som-timeline-live-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.som-timeline-live-btn .live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #94a3b8;
+  display: inline-block;
+}
+
+.som-timeline-live-btn.live-active {
+  background: #f0fdf4;
+  border-color: #4ade80;
+  color: #166534;
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.2);
+}
+
+.som-timeline-live-btn.live-active .live-dot {
+  background: #22c55e;
+  box-shadow: 0 0 6px #22c55e;
+  animation: live-pulse 1.5s infinite;
+}
+
+@keyframes live-pulse {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.6; }
+}
+
+/* Dynamic Polyline Animation & Visual Loading Overlay */
+.som-trend-svg polyline {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.som-trend-loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #0f172a;
+  z-index: 80;
+  border-radius: 8px;
+}
+
+.som-trend-spinner {
+  width: 18px;
+  height: 18px;
+  border: 3px solid #cbd5e1;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.som-trend-header-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 15px 4px 15px;
+}
+
+.som-trend-mode-badge {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.som-trend-mode-badge.live {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+.som-trend-mode-badge.history {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fcd34d;
+}
+
+/* Mini loading badge (background refresh indicator) */
+.som-trend-mini-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(59, 130, 246, 0.1);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.som-trend-mini-spinner {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid rgba(96, 165, 250, 0.4);
+  border-top-color: #60a5fa;
+  display: inline-block;
+  animation: som-spin 0.7s linear infinite;
+}
+
+@keyframes som-spin {
+  to { transform: rotate(360deg); }
+}

@@ -1,0 +1,322 @@
+/* ==========================================================================
+   DAF / OSR CALIBRATION VIEW - AGROVISION PREMIUM THEME
+   ========================================================================== */
+
+/* Base Card using AGROVISION style - Contained Scroll strictly inside Box */
+.daf-calib-card {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  max-height: 100%;
+  width: 100%;
+  max-width: 980px;
+  overflow: hidden;
+}
+
+/* Scroll area strictly inside the card */
+.daf-calib-table-scroll {
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 10px 18px 16px 18px;
+}
+
+/* Clean Custom Scrollbar inside the Box */
+.daf-calib-table-scroll::-webkit-scrollbar {
+  width: 7px;
+}
+.daf-calib-table-scroll::-webkit-scrollbar-track {
+  background: #f8fafc;
+  border-radius: 4px;
+}
+.daf-calib-table-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.daf-calib-table-scroll::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.daf-calib-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 10px 8px;
+}
+
+/* Sticky Header strictly inside the Box */
+.daf-calib-table thead tr:first-child th {
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  z-index: 6;
+  padding-top: 4px;
+  padding-bottom: 2px;
+}
+
+.daf-calib-table thead tr:nth-child(2) th {
+  position: sticky;
+  top: 38px;
+  background: #ffffff;
+  z-index: 5;
+  padding-top: 2px;
+  padding-bottom: 6px;
+}
+
+/* AgroVision Premium Header Badge */
+.daf-calib-header-badge {
+  background-color: #ffdb3b;
+  color: #0f172a;
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.daf-calib-sub-header {
+  font-size: 10px;
+  font-weight: 800;
+  color: #475569;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+.daf-pv-header {
+  font-size: 11px;
+  font-weight: 900;
+  color: #0f172a;
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 6px !important;
+  letter-spacing: 0.05em;
+}
+
+.daf-calib-label {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #0f172a;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+/* Value Display Box matching AGROVISION style */
+.daf-calib-valbox {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  padding: 6px 10px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  min-width: 80px;
+  cursor: default;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.daf-calib-valbox.editable {
+  cursor: pointer;
+  border-color: #cbd5e1;
+}
+
+.daf-calib-valbox.editable:hover {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+  transform: translateY(-1px);
+}
+
+.daf-calib-valbox.edited {
+  background: #fffbeb !important;
+  border-color: #f59e0b !important;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.35) !important;
+}
+
+.daf-calib-valbox.no-tag {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.daf-calib-valbox.no-tag .val {
+  color: #94a3b8 !important;
+  font-style: italic !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  width: 100% !important;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  letter-spacing: 0.02em;
+}
+
+.daf-calib-valbox.pending .val {
+  color: #64748b !important;
+  text-align: center !important;
+  width: 100% !important;
+  font-weight: 800 !important;
+}
+
+.daf-calib-valbox .val {
+  font-family: 'JetBrains Mono', 'Inter', monospace;
+  font-size: 12.5px;
+  font-weight: 900;
+  color: #0f172a;
+  flex: 1;
+  text-align: right;
+}
+
+.daf-calib-valbox .unit {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #64748b;
+  min-width: 24px;
+}
+
+/* Read-Only ValBox (PV Column) matching Sterilizer SCADA style */
+.daf-calib-valbox.read-only {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.daf-calib-valbox.read-only:not(.editable) {
+  cursor: default !important;
+}
+
+.daf-calib-valbox.read-only:not(.editable):hover {
+  border-color: #cbd5e1 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.daf-calib-valbox.read-only .val {
+  color: #334155;
+}
+
+/* Save Calibration Button — Kuning AgroVision */
+.daf-calib-save-btn {
+  padding: 6px 18px;
+  border-radius: 6px;
+  font-weight: 900;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cbd5e1;
+  transition: all 0.2s ease;
+}
+
+.daf-calib-save-btn.active {
+  background: #ffdb3b !important;
+  color: #0f172a !important;
+  border-color: #facc15;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.daf-calib-save-btn.active:hover {
+  background: #facc15 !important;
+  box-shadow: 0 6px 14px rgba(250, 204, 21, 0.35);
+  transform: translateY(-1px);
+}
+
+.daf-calib-save-btn.active:active {
+  transform: translateY(0);
+}
+
+.daf-calib-save-btn.disabled {
+  background: #ffdb3b !important;
+  color: #0f172a !important;
+  opacity: 0.45 !important;
+  border-color: #d4ac0d;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* ==========================================================================
+   NUMERIC KEYPAD (PORTAL OVERLAY) — MATCHING STERILIZER STATION
+   ========================================================================== */
+.som-numeric-keypad-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.3);
+  backdrop-filter: blur(2px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.som-numeric-keypad {
+  background: #ffffff;
+  border: 1px solid #ffdb3b;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  width: 320px;
+  overflow: hidden;
+}
+
+.som-numeric-keypad-header {
+  background: #f8fafc;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.som-numeric-keypad-label {
+  color: #0f172a;
+  font-weight: 800;
+  font-size: 13.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 8px;
+}
+
+.som-numeric-keypad-display {
+  background: #ffffff;
+  margin: 16px;
+  border: 1px solid #ffdb3b;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.som-numeric-keypad-value {
+  font-size: 32px;
+  font-weight: bold;
+  color: #0f172a;
+  font-family: monospace;
+}
+
+.som-numeric-keypad-unit {
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 600;
+}

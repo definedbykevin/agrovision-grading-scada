@@ -1,0 +1,709 @@
+:root {
+    --wb-scale: clamp(0.7, 0.9vw, 1.2);
+    /* Base scaling factor */
+    --wb-bg: #f8fafc;
+    --wb-card-bg: #ffffff;
+    --wb-gold: #ffdb3b;
+    --wb-gold-dark: #d4ac0d;
+    --wb-border: #e2e8f0;
+}
+
+.som-weighbridge-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--wb-bg);
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    /* This scales everything inside that uses em units */
+    font-size: calc(16px * var(--wb-scale));
+}
+
+/* Header Section */
+.som-wb-header {
+    padding: 0.4rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--wb-gold);
+    flex-shrink: 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.som-wb-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #0f172a 0%, var(--wb-gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sidebar-title {
+    font-size: clamp(0.7rem, 0.9vw, 1rem);
+    font-weight: 900;
+    color: #0f172a;
+    background: var(--wb-gold);
+    padding: 8px 12px;
+    margin: -1.25rem -1.25rem 0.5rem -1.25rem;
+    border-radius: 12px 12px 0 0;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.stat-label {
+    font-size: clamp(0.6rem, 0.8vw, 1rem);
+    /* Larger labels */
+    color: #94a3b8;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.stat-value {
+    font-size: clamp(0.8rem, 1.2vw, 1.4rem);
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.som-wb-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.6rem;
+    font-weight: 800;
+    color: #64748b;
+    margin-top: 0.2rem;
+    text-transform: uppercase;
+}
+
+.som-wb-status .dot.stable {
+    width: 0.4rem;
+    height: 0.4rem;
+    background: var(--wb-gold);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--wb-gold);
+}
+
+.som-wb-stats-top {
+    display: flex;
+    gap: 2rem;
+}
+
+.top-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.top-stat .label {
+    font-size: 0.55rem;
+    font-weight: 800;
+    color: #64748b;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.top-stat .value {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--wb-gold-dark);
+}
+
+.top-stat .value small {
+    font-size: 0.6rem;
+    color: #64748b;
+}
+
+.som-wb-content {
+    flex: 1;
+    min-height: 0;
+    padding: 1.5vh 1.5vw;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5vw;
+    overflow: hidden;
+}
+
+/* Sidebar Section */
+.som-wb-sidebar {
+    width: 22vw;
+    min-width: 320px;
+    /* Increased to fit larger text */
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+    min-height: 0;
+}
+
+.sidebar-section {
+    background: #ffffff;
+    border: 1px solid var(--wb-border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    min-height: 0;
+}
+
+.sidebar-section:first-child {
+    flex: 6; /* 60% Share */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+/* Wrapper for stats groups to distribute them */
+.stats-groups-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow-y: auto;
+    padding-right: 6px;
+    margin-right: -6px; /* Offset padding to keep layout clean */
+    min-height: 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--wb-gold) transparent;
+}
+
+.stats-groups-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.stats-groups-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.stats-groups-container::-webkit-scrollbar-thumb {
+    background: var(--wb-gold);
+    border-radius: 10px;
+}
+
+.stats-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* Distinct gap between rows */
+}
+
+
+
+
+/* Weight Indicators */
+.weight-indicators {
+    flex: 4; /* 40% Share */
+    flex-shrink: 1; /* Allow to shrink if needed */
+    min-height: 200px; /* Lower minimum height */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Parent card doesn't scroll anymore */
+}
+
+.weight-scales-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    overflow-y: auto;
+    padding-right: 6px;
+    margin-right: -6px; /* Match performance card scrollbar alignment */
+    scrollbar-width: thin;
+    scrollbar-color: var(--wb-gold) transparent;
+}
+
+.weight-scales-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.weight-scales-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.weight-scales-container::-webkit-scrollbar-thumb {
+    background: var(--wb-gold);
+    border-radius: 10px;
+}
+
+.weight-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 0.8rem 1.1rem; /* Slightly reduced but still spacious */
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem; /* Reduced gap */
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    min-height: 72px; /* Slightly reduced height */
+}
+
+.weight-box::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+}
+
+.weight-box.in::before {
+    background: #10b981;
+}
+
+.weight-box.out::before {
+    background: #ef4444;
+}
+
+.weight-box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.weight-label {
+    font-size: 0.6rem;
+    font-weight: 800;
+    color: #64748b;
+    letter-spacing: 0.05em;
+}
+
+.status-dot {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+}
+
+.status-dot.stable {
+    background: #10b981;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+}
+
+.status-dot.unstable {
+    background: #ef4444;
+    box-shadow: 0 0 8px #ef4444;
+    animation: blink 0.5s infinite;
+}
+
+.weight-scale-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    padding: 0 2px;
+}
+
+.weight-scale-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--text-muted, #8899aa);
+    text-transform: uppercase;
+}
+
+.weight-truck-label {
+    font-size: 0.7rem;
+    color: var(--text-muted, #8899aa);
+    margin-bottom: 4px;
+}
+
+.weight-truck-number {
+    color: var(--text-primary, #ffffff);
+    font-weight: 600;
+}
+
+.weight-sublabel {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-muted, #8899aa);
+    margin-top: 4px;
+    text-transform: uppercase;
+}
+
+.weight-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.85rem; /* Balanced font size */
+    font-weight: 800;
+    color: #f8fafc;
+    text-align: right;
+    line-height: 1;
+    margin: 2px 0;
+}
+
+.weight-box.in .weight-value {
+    color: #10b981;
+    text-shadow: none;
+}
+
+.weight-box.out .weight-value {
+    color: #ef4444;
+}
+
+.weight-value .unit {
+    font-size: 0.8rem;
+    color: #475569;
+}
+
+/* CCTV Grid */
+.som-wb-cctv-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 4px;
+    /* Tight gap for authentic monitoring look */
+    min-height: 0;
+    background: #000;
+    /* Black background for gaps */
+}
+
+.som-bridge-cctv {
+    background: #000;
+    position: relative;
+    overflow: hidden;
+    min-height: 0;
+}
+
+.cctv-feed-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cctv-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+}
+
+/* Overlays */
+.cctv-label-overlay {
+    position: absolute;
+    top: 0.6em;
+    left: 0.6em;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 0.25em 0.75em;
+    font-size: 0.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    z-index: 5;
+    border-radius: 2px;
+}
+
+.cctv-top-right-overlay {
+    position: absolute;
+    top: 0.6em;
+    right: 0.6em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.1em;
+    z-index: 5;
+}
+
+.cctv-timestamps {
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 0.15em 0.5em;
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.cctv-status-rec {
+    color: #ef4444;
+    font-size: 0.7rem;
+    font-weight: 900;
+    text-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
+    animation: blink-rec 1s infinite;
+}
+
+@keyframes blink-rec {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+.cctv-data-overlay {
+    position: absolute;
+    bottom: 0.8em;
+    left: 0.8em;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 0.4em 1.2em;
+    font-size: clamp(0.7rem, 0.9vw, 0.9rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    z-index: 5;
+    border-radius: 2px;
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cctv-scanline {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to bottom, transparent, var(--wb-gold), transparent);
+    box-shadow: 0 0 15px var(--wb-gold), 0 0 30px rgba(255, 219, 59, 0.4);
+    top: 0;
+    left: 0;
+    animation: cctv-scan 5s linear infinite;
+    z-index: 4;
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+@keyframes cctv-scan {
+    0% {
+        top: 0;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
+/* Sidebar Custom Scrollbar */
+.sidebar-section:first-child::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar-section:first-child::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar-section:first-child::-webkit-scrollbar-thumb {
+    background: var(--wb-gold);
+    border-radius: 10px;
+}
+
+.sidebar-section:first-child::-webkit-scrollbar-thumb:hover {
+    background: rgba(57, 255, 20, 0.4);
+}
+
+/* Specific Responsive Adjustments for 786px and below */
+@media (max-width: 786px) {
+    :root {
+        --wb-scale: 0.55;
+        /* Further shrink for small screens */
+    }
+
+    .som-wb-content {
+        padding: 0.4rem;
+        gap: 0.6rem;
+    }
+
+    .som-wb-sidebar {
+        width: 180px;
+        min-width: 160px;
+        gap: 0.4rem;
+    }
+
+    .sidebar-section {
+        padding: 0.6rem;
+        gap: 0.4rem;
+    }
+
+    .sidebar-title {
+        font-size: 0.65rem;
+        padding-bottom: 0.25rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .stats-groups-container {
+        padding-top: 0.2rem;
+    }
+
+    .stats-group {
+        gap: 0.2rem;
+    }
+
+    .stat-row {
+        padding: 0.15rem 0;
+    }
+
+    .stat-label {
+        font-size: 0.5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100px;
+    }
+}
+
+/* ── Sub-header label (LOGISTICS FLOW / DAILY THROUGHPUT) ── */
+.stats-subheader {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #94a3b8;
+    padding: 1.25rem 0 0.6rem 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.stats-subheader::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #eef2f6;
+}
+
+.throughput-group {
+    margin-top: 0.5rem;
+}
+
+/* ── Logistics rows: colored left border per row ── */
+.logistics-row {
+    border-left: 4px solid transparent;
+    padding-left: 0.8rem;
+    margin-left: 2px;
+}
+
+.logistics-row.waiting  { border-left-color: var(--wb-gold); }
+.logistics-row.weighing { border-left-color: #f97316; }
+.logistics-row.grading  { border-left-color: #10b981; }
+
+/* ── Colored values for logistics ── */
+.stat-value.weighing-val { color: #f97316; }
+.stat-value.grading-val  { color: #10b981; }
+
+/* ── Improve stat row spacing ── */
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0.75rem; /* Generous horizontal padding */
+    background: #fcfdfe;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    gap: 12px;
+}
+
+.stat-row:hover {
+    background: #ffffff;
+    border-color: #e2e8f0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.stat-row:last-child {
+    border-bottom: 1px solid transparent; /* Override global row border if any */
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: #64748b;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    flex: 1;
+}
+
+.stat-value {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #0f172a;
+    white-space: nowrap;
+    text-align: right;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.stat-value small {
+    font-size: 0.6rem;
+    color: #94a3b8;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.stat-value.highlight {
+    color: var(--wb-gold-dark);
+}
+
+/* ── Responsive at 786px ── */
+@media (max-width: 786px) {
+    .stats-subheader {
+        font-size: 0.48rem;
+        letter-spacing: 0.08em;
+        padding: 0.3rem 0 0.2rem 0;
+    }
+
+    .logistics-row {
+        padding-left: 0.4rem;
+    }
+
+    .stat-row {
+        padding: 0.15rem 0;
+    }
+
+    .stat-label {
+        font-size: 0.5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100px;
+    }
+
+    .stat-value {
+        font-size: 0.65rem;
+    }
+
+    .som-wb-cctv-grid {
+        gap: 2px;
+    }
+
+    .cctv-label-overlay,
+    .cctv-timestamps,
+    .cctv-data-overlay {
+        font-size: 0.5rem;
+    }
+
+    .weight-value {
+        font-size: 1.2rem;
+    }
+}
+
+
+/* Extra small screens (Mobile) */
+@media (max-width: 600px) {
+    .som-wb-sidebar {
+        width: 140px;
+        min-width: 130px;
+    }
+
+    .stat-label {
+        max-width: 70px;
+    }
+}
