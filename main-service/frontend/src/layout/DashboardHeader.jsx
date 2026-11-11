@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import "../core/theme/dashboard.css";
-import agrovisionLogo from "../core/layout/assets/agrovision.png";
-import premierLogo from "../core/layout/assets/premier.png";
 
 const MENU_ITEMS = [
   "Dashboard",

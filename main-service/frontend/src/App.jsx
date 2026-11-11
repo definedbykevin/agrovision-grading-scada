@@ -24,6 +24,20 @@ function App() {
     const checkSession = async () => {
       try {
         const token = localStorage.getItem("kip_token");
+        if (token === "demo-portfolio-token") {
+          setUser({
+            id: 1,
+            username: "portfolio_demo",
+            name: "Demo Engineer",
+            role: "developer",
+            userRole: "developer",
+            permissions: ["all"],
+            mustChangePassword: false,
+          });
+          setCheckingSession(false);
+          return;
+        }
+
         const response = await fetch('/auth/me', {
           method: 'GET',
           headers: {

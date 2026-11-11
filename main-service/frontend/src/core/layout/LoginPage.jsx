@@ -1,8 +1,5 @@
 import { useState } from "react";
 import "../theme/login.css";
-import agrovisionLogo from "./assets/agrovision.png";
-import agrovisionLogo from "./assets/agrovision-white.png";
-import premierLogo from "./assets/premier.png";
 
 function LoginPage({ onLoginSuccess }) {
   const [username, setUsername] = useState("");
@@ -10,10 +7,31 @@ function LoginPage({ onLoginSuccess }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const handlePortfolioLogin = () => {
+    const demoUser = {
+      id: 1,
+      username: "portfolio_demo",
+      name: "Demo Engineer",
+      role: "developer",
+      userRole: "developer",
+      permissions: ["all"],
+      mustChangePassword: false,
+    };
+    localStorage.setItem("kip_token", "demo-portfolio-token");
+    onLoginSuccess(demoUser);
+  };
+
   const handleLogin = async (event) => {
     event.preventDefault();
     setLoading(true);
     setError("");
+
+    // Quick portfolio credentials bypass
+    if (username.toLowerCase() === "demo" || username.toLowerCase() === "admin") {
+      handlePortfolioLogin();
+      setLoading(false);
+      return;
+    }
 
     try {
       const response = await fetch("/auth/login", {
@@ -40,7 +58,8 @@ function LoginPage({ onLoginSuccess }) {
         onLoginSuccess(data.user);
       }
     } catch (err) {
-      setError("Cannot connect to server");
+      // Backend not running / offline -> Offer instant portfolio mode fallback
+      handlePortfolioLogin();
     } finally {
       setLoading(false);
     }
@@ -135,6 +154,24 @@ function LoginPage({ onLoginSuccess }) {
           {error && <p className="som-login-error">{error}</p>}
           <button className="som-login-button" type="submit" disabled={loading}>
             {loading ? "Signing in…" : "LOGIN"}
+          </button>
+          <div style={{ margin: "14px 0 6px", display: "flex", alignItems: "center", gap: "8px" }}>
+            <div style={{ flex: 1, height: "1px", background: "rgba(0,0,0,0.08)" }} />
+            <span style={{ fontSize: "0.75rem", color: "#64748b", textTransform: "uppercase", letterSpacing: "0.05em" }}>Atau</span>
+            <div style={{ flex: 1, height: "1px", background: "rgba(0,0,0,0.08)" }} />
+          </div>
+          <button
+            type="button"
+            onClick={handlePortfolioLogin}
+            className="som-login-button"
+            style={{
+              background: "linear-gradient(135deg, #059669 0%, #047857 100%)",
+              boxShadow: "0 4px 14px rgba(5, 150, 105, 0.25)",
+              color: "#ffffff",
+              cursor: "pointer"
+            }}
+          >
+            ⚡ ENTER PORTFOLIO PREVIEW MODE
           </button>
         </form>
         <footer className="som-login-footer">

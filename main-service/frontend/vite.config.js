@@ -122,6 +122,7 @@ export default defineConfig({
       allow: ["../.."],
     },
     port: 5173,
+    strictPort: false,
     proxy: {
       "/auth": "http://localhost:3009",
       "/api/admin": "http://localhost:3009",

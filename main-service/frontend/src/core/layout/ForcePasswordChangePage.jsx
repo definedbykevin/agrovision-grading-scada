@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "../theme/login.css";
-import agrovisionLogo from "./assets/agrovision.png";
 
 function ForcePasswordChangePage({ user, onPasswordChanged, onLogout }) {
   const [newPassword, setNewPassword] = useState("");
